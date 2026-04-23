@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sandcastles Listings — SpaceCoastStays</title>
+  <meta name="description" content="Browse vacation rental units at Sandcastles Condominiums, Cocoa Beach FL. Oceanfront, ocean view, and pool-side condos on Airbnb and VRBO.">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Space<span>Coast</span>Stays</a>
+      <ul class="nav__links">
+        <li><a href="sandcastles.html" class="active">Browse Units</a></li>
+        <li><a href="cocoa-beach-guide.html">Cocoa Beach Guide</a></li>
+        <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
+        <li><a href="mailto:hello@spacecoaststays.com" class="nav__cta">List Your Unit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div style="background: var(--foam); border-bottom: 1px solid var(--sand-dark); padding: 56px 0 0; background-image: url('images/DJI_0244.jpg'); background-size: cover; background-position: center 60%; position: relative;">
+  <div style="position:absolute;inset:0;background:rgba(238,247,251,.88);"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="container">
+      <div class="listings-header">
+        <p style="font-size:.78rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ocean); margin-bottom:8px;">
+          1000 N Atlantic Ave · Cocoa Beach, FL
+        </p>
+        <h1>Sandcastles Condominiums</h1>
+        <p>Individually owned vacation rentals — all on the same stretch of beachfront. Book directly on Airbnb or VRBO.</p>
+      </div>
+
+      <!-- FILTER BAR -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Units</button>
+        <button class="filter-btn" data-filter="oceanfront">🌊 Oceanfront</button>
+        <button class="filter-btn" data-filter="ocean-view">Ocean View</button>
+        <button class="filter-btn" data-filter="pool-view">Pool View</button>
+        <button class="filter-btn" data-filter="airbnb">Airbnb</button>
+        <button class="filter-btn" data-filter="vrbo">VRBO</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- LISTINGS GRID -->
+  <div class="container">
+    <div id="listings-grid" class="listings-grid"></div>
+  </div>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Own a unit at Sandcastles?</h2>
+      <p>Get your Airbnb or VRBO listing featured here — free for owners.</p>
+      <a href="mailto:hello@spacecoaststays.com" class="btn btn--primary">
+        hello@spacecoaststays.com →
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">SpaceCoastStays.com</p>
+          <p class="footer__desc">
+            A curated directory of vacation rentals at Sandcastles Condominiums,
+            1000 N Atlantic Ave, Cocoa Beach FL. All bookings handled on Airbnb and VRBO.
+          </p>
+        </div>
+        <div>
+          <p class="footer__heading">Explore</p>
+          <ul class="footer__links">
+            <li><a href="sandcastles.html">Browse Units</a></li>
+            <li><a href="cocoa-beach-guide.html">Cocoa Beach Guide</a></li>
+            <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">Contact</p>
+          <ul class="footer__links">
+            <li><a href="mailto:hello@spacecoaststays.com">hello@spacecoaststays.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 SpaceCoastStays.com · Not affiliated with Airbnb or VRBO</span>
+        <span>Made with ☀️ in Cocoa Beach</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="listings.js"></script>
+</body>
+</html>
