@@ -471,6 +471,35 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
 .guide-card__body h3 { margin-bottom: 8px; font-size: 1.1rem; }
 .guide-card__body p { font-size: .88rem; color: var(--text-muted); line-height: 1.55; }
 
+/* Linked guide card (for SpaceCoastStays CTA card) */
+a.guide-card--linked {
+  display: block;
+  color: inherit;
+  transition: transform .25s, box-shadow .25s;
+}
+a.guide-card--linked:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.guide-card__img { position: relative; }
+.guide-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--ocean);
+  color: white;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.guide-card__link-cta {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--ocean);
+}
+
 /* ── ROCKET PAGE ── */
 .rocket-hero {
   background: #0a0e1a;
