@@ -24,6 +24,10 @@
 
   <!-- HERO -->
   <section class="rocket-hero">
+    <video class="rocket-hero__video" autoplay muted loop playsinline poster="images/DJI_0293.jpg">
+      <source src="https://videos.pexels.com/video-files/854261/854261-hd_1920_1080_30fps.mp4" type="video/mp4" />
+    </video>
+    <div class="rocket-hero__overlay" aria-hidden="true"></div>
     <div class="rocket-hero__stars" aria-hidden="true"></div>
     <div class="rocket-hero__glow" aria-hidden="true"></div>
     <div class="container rocket-hero__content">
@@ -611,6 +615,30 @@
       return `<span class="launch-status ${cls}">${escHtml(label)}</span>`;
     }
 
+    /* ── Pick best external URL for a launch card ── */
+    function bestLaunchUrl(launch) {
+      // 1. Prefer a mission/info page (SpaceX, NASA, etc.) over a raw webcast
+      const info = launch.infoURLs || [];
+      const vids = launch.vidURLs  || [];
+      const allUrls = [...info, ...vids];
+
+      // Prefer SpaceX or NASA official pages
+      const preferred = allUrls.find(u =>
+        u.includes('spacex.com') || u.includes('nasa.gov') || u.includes('ula.com') || u.includes('rocketlabusa.com')
+      );
+      if (preferred) return preferred;
+
+      // Any info/vid URL beats nothing
+      if (allUrls.length) return allUrls[0];
+
+      // Fallback: SpaceX launches page or KSC events
+      const provider = (launch.launch_service_provider?.name || '').toLowerCase();
+      if (provider.includes('spacex')) return 'https://www.spacex.com/launches/';
+      if (provider.includes('ula'))    return 'https://www.ulalaunch.com/launches/launch-schedule';
+      if (provider.includes('nasa'))   return 'https://www.nasa.gov/missions/';
+      return 'https://www.kennedyspacecenter.com/launches-and-events';
+    }
+
     /* ── Build launch card ── */
     function buildLaunchCard(launch) {
       const mission   = launch.name || 'Unknown Mission';
@@ -621,13 +649,13 @@
       const precision = launch.net_precision?.name || 'second';
       const status    = launch.status;
       const imgUrl    = launch.image || '';
-      const infoUrl   = launch.url || '#';
+      const linkUrl   = bestLaunchUrl(launch);
 
       const dateStr   = fmtDate(netIso, precision);
       const bgColor   = providerColor(provider);
 
       return `
-        <article class="launch-card">
+        <a href="${escHtml(linkUrl)}" target="_blank" rel="noopener noreferrer" class="launch-card" aria-label="${escHtml(mission)} — view mission details">
           <div class="launch-card__img" style="background:${escHtml(bgColor)};">
             ${imgUrl ? `<img src="${escHtml(imgUrl)}" alt="${escHtml(mission)}" loading="lazy" onerror="this.parentElement.style.background='${escHtml(bgColor)}'; this.remove();" />` : ''}
             <div class="launch-card__img-overlay"></div>
@@ -638,9 +666,9 @@
             <h3 class="launch-card__mission">${escHtml(mission)}</h3>
             ${vehicle ? `<p class="launch-card__vehicle">🚀 ${escHtml(vehicle)}</p>` : ''}
             ${pad ? `<p class="launch-card__pad">📍 ${escHtml(pad)}</p>` : ''}
-            <p class="launch-card__date">${escHtml(dateStr)}</p>
+            <p class="launch-card__date">${escHtml(dateStr)}<span class="launch-card__cta">Mission details ↗</span></p>
           </div>
-        </article>`;
+        </a>`;
     }
 
     /* ── Escape HTML ── */

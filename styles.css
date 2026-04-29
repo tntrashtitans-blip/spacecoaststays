@@ -525,6 +525,22 @@ a.guide-card--linked:hover { transform: translateY(-4px); box-shadow: var(--shad
     radial-gradient(1px 1px at 88% 85%, white .4, transparent 0);
   opacity: .75;
 }
+.rocket-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .38;
+  z-index: 0;
+}
+.rocket-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(6,10,20,.65) 0%, rgba(6,10,20,.3) 40%, rgba(6,10,20,.75) 100%);
+  z-index: 1;
+}
 .rocket-hero__glow {
   position: absolute;
   bottom: -60px;
@@ -534,8 +550,10 @@ a.guide-card--linked:hover { transform: translateY(-4px); box-shadow: var(--shad
   height: 300px;
   background: radial-gradient(ellipse, rgba(0, 140, 200, .18) 0%, transparent 70%);
   pointer-events: none;
+  z-index: 2;
 }
-.rocket-hero__content { position: relative; z-index: 1; }
+.rocket-hero__stars { z-index: 2; }
+.rocket-hero__content { position: relative; z-index: 3; }
 .rocket-hero__eyebrow {
   font-size: .75rem;
   font-weight: 600;
@@ -647,15 +665,20 @@ a.guide-card--linked:hover { transform: translateY(-4px); box-shadow: var(--shad
   margin-bottom: 20px;
 }
 .launch-card {
+  display: block;
   background: #0f1628;
   border: 1px solid rgba(90,180,212,.15);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: transform .25s, border-color .25s;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 .launch-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(90,180,212,.4);
+  transform: translateY(-4px);
+  border-color: rgba(90,180,212,.5);
+  box-shadow: 0 12px 40px rgba(0,0,0,.4);
 }
 .launch-card--loading {
   min-height: 220px;
@@ -738,7 +761,19 @@ a.guide-card--linked:hover { transform: translateY(-4px); box-shadow: var(--shad
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+.launch-card__cta {
+  font-size: .72rem;
+  font-weight: 600;
+  color: #5ab4d4;
+  letter-spacing: .04em;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.launch-card:hover .launch-card__cta { opacity: 1; }
 .launches-attribution {
   font-size: .75rem;
   color: rgba(255,255,255,.25);
