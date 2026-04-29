@@ -1,0 +1,41 @@
+# SpaceCoastStays.com — robots.txt
+# This site is open to all crawlers including AI/LLM indexers.
+
+User-agent: *
+Allow: /
+
+# Explicitly welcome major AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+Sitemap: https://spacecoaststays.com/sitemap.xml

@@ -1,0 +1,34 @@
+# SpaceCoastStays
+
+> SpaceCoastStays.com is a curated vacation rental directory for Sandcastles Condominiums, a beachfront condominium building at 1000 N Atlantic Ave, Cocoa Beach, FL 32931. The building sits on the Atlantic Ocean, 12 miles south of Kennedy Space Center and its launch pads. Guests can watch rocket launches — including SpaceX Falcon 9 missions — directly from oceanfront balconies or from the beach 100 feet away. Units are listed on Airbnb and VRBO and range from oceanfront (direct Atlantic and launch pad view) to ocean view and pool view.
+
+## Pages
+
+- [Home](https://spacecoaststays.com/): Introduction to SpaceCoastStays and featured rental listings at Sandcastles Condominiums.
+- [Browse Vacation Rentals](https://spacecoaststays.com/sandcastles.html): Full directory of available units at Sandcastles — filterable by view type (oceanfront, ocean view, pool view) and platform (Airbnb, VRBO). Includes unit number, floor, bedroom count, description, and direct booking links.
+- [Watch a Rocket Launch](https://spacecoaststays.com/watch-a-rocket-launch.html): Live countdown to the next Cape Canaveral launch (via Launch Library 2 API), upcoming missions grid, post-launch T+ timeline, best free viewing spots near Cocoa Beach, SpaceX drone ship return tracking guide, and jetty viewing locations for when the drone ship transits Port Canaveral.
+- [Cocoa Beach Guide](https://spacecoaststays.com/cocoa-beach-guide.html): Local travel guide covering restaurants, beaches, surf spots, things to do, and insider tips for Cocoa Beach, FL.
+
+## Key Facts
+
+- **Property**: Sandcastles Condominiums, 1000 N Atlantic Ave, Cocoa Beach, FL 32931
+- **Location**: Cocoa Beach, Brevard County, Florida — on the Atlantic Ocean
+- **Distance to KSC launch pads**: ~12–14 miles south of LC-39A and SLC-40
+- **Launch visibility**: Oceanfront units have a clear NW sightline to Kennedy Space Center launch complexes
+- **Nearby**: Port Canaveral (6 miles north), Jetty Park (6 miles), Cocoa Beach Pier (1 mile south), Kennedy Space Center (12 miles)
+- **Booking platforms**: Airbnb and VRBO (direct listing links provided)
+- **Contact**: hello@spacecoaststays.com
+
+## Rocket Launch Viewing — Key Information
+
+- Cocoa Beach is one of the closest public locations to Kennedy Space Center launch pads
+- Best free viewing spots: Cocoa Beach shoreline (public beach, facing north), Jetty Park at Port Canaveral (400 E Jetty Rd — closest free public land to pads), SR-528 Banana River bridges (8–12 miles from pads), Cocoa Beach Pier (800 ft over Atlantic)
+- KSC Visitor Complex offers paid launch viewing at the Apollo/Saturn V Center lawn (3.9 miles from pad, bleacher seating on Banana Creek)
+- SpaceX drone ship "A Shortfall of Gravitas" (ASOG) returns to Port Canaveral 2–5 days after a drone ship landing and passes through the Port Canaveral jetties — visible from Jetty Park and waterfront restaurants (Fishlips, Grills, Rusty's)
+- Track ASOG in real time at MarineTraffic.com or SpaceXFleet.com; follow @SpaceXFleet on X for transit ETAs
+- Launch data sourced from Launch Library 2 API (thespacedevs.com)
+- Sonic boom from RTLS booster landings at Cape Canaveral arrives 6–8 minutes after liftoff and is audible from Cocoa Beach
+
+## Optional: Full Content
+
+For full page content, visit the links above. All pages are static HTML with no login required.
