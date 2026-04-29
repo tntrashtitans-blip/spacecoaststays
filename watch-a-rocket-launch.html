@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Watch a Rocket Launch — SpaceCoastStays</title>
-  <meta name="description" content="Your guide to watching a rocket launch from Cocoa Beach. Best viewing spots, launch schedules, and tips for guests staying at Sandcastles Condominiums.">
+  <meta name="description" content="Live launch countdowns, upcoming Cape Canaveral missions, drone ship return tracking, and the best spots to watch from Cocoa Beach. Your complete rocket launch guide.">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -25,53 +25,292 @@
   <!-- HERO -->
   <section class="rocket-hero">
     <div class="rocket-hero__stars" aria-hidden="true"></div>
+    <div class="rocket-hero__glow" aria-hidden="true"></div>
     <div class="container rocket-hero__content">
-      <p style="font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#a8c8e8; margin-bottom:12px;">Kennedy Space Center · 12 Miles Away</p>
+      <p class="rocket-hero__eyebrow">Kennedy Space Center · 12 Miles Away</p>
       <h1>Watch a Rocket Launch</h1>
       <p>
-        Staying at Sandcastles puts you front-row for one of the most extraordinary
-        experiences on Earth. SpaceX Falcon 9s, ULA Atlas Vs, and NASA missions all
-        launch from Kennedy Space Center — visible right from your balcony.
+        SpaceX Falcon 9s, Falcon Heavies, and NASA missions all lift off from Kennedy Space Center
+        — visible right from your Sandcastles balcony. Live countdown below. No ticket required.
       </p>
-    </div>
-  </section>
-
-  <!-- INTRO -->
-  <section class="section section--foam">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
-        <div>
-          <p style="font-size:.78rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ocean); margin-bottom:12px;">Why the Space Coast</p>
-          <h2 style="margin-bottom:16px;">The best seats aren't at KSC</h2>
-          <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:16px;">
-            Kennedy Space Center charges for viewing access — and puts you close to the pad
-            but packed in a crowd. From Sandcastles' upper floors, you get an unobstructed
-            view of the rocket clearing the pad, the arc across the sky, and the sonic boom
-            rolling in seconds later.
-          </p>
-          <p style="color:var(--text-muted); font-size:1.05rem;">
-            Night launches are particularly spectacular — the engine glow lights up the
-            Atlantic and reflects off the water. Guests who've watched from a seventh-floor
-            balcony say it's the highlight of their entire trip.
-          </p>
-        </div>
-        <div style="border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4/3;">
-          <img
-            src="images/DJI_0293.jpg"
-            alt="Sandcastles balconies with ocean view at dusk"
-            loading="lazy"
-            style="width:100%; height:100%; object-fit:cover;"
-          />
-        </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:28px;">
+        <a href="#countdown" class="btn btn--outline" style="border-color:rgba(255,255,255,.5); color:white;">View Countdown ↓</a>
+        <a href="#drone-ship" class="btn btn--outline" style="border-color:rgba(255,255,255,.3); color:rgba(255,255,255,.75); font-size:.875rem;">Drone Ship Return →</a>
       </div>
     </div>
   </section>
 
-  <!-- VIEWING SPOTS -->
-  <section class="section">
+  <!-- ════════════════════════════════════════
+       LIVE COUNTDOWN
+  ════════════════════════════════════════ -->
+  <section class="countdown-section" id="countdown">
+    <div class="container" style="text-align:center;">
+      <p class="countdown-eyebrow" id="cd-eyebrow">Next Cape Canaveral Launch</p>
+      <h2 class="countdown-mission" id="cd-mission">
+        <span class="countdown-mission__shimmer">Loading launch data…</span>
+      </h2>
+      <p class="countdown-detail" id="cd-detail"></p>
+
+      <div class="countdown" id="countdown-timer" aria-live="polite">
+        <div class="countdown__block">
+          <span class="countdown__num" id="cd-days">--</span>
+          <span class="countdown__label">Days</span>
+        </div>
+        <span class="countdown__sep" aria-hidden="true">:</span>
+        <div class="countdown__block">
+          <span class="countdown__num" id="cd-hrs">--</span>
+          <span class="countdown__label">Hrs</span>
+        </div>
+        <span class="countdown__sep" aria-hidden="true">:</span>
+        <div class="countdown__block">
+          <span class="countdown__num" id="cd-min">--</span>
+          <span class="countdown__label">Min</span>
+        </div>
+        <span class="countdown__sep" aria-hidden="true">:</span>
+        <div class="countdown__block">
+          <span class="countdown__num" id="cd-sec">--</span>
+          <span class="countdown__label">Sec</span>
+        </div>
+      </div>
+
+      <p class="countdown-note" id="cd-note"></p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       UPCOMING LAUNCHES
+  ════════════════════════════════════════ -->
+  <section class="section section--space" id="launches">
     <div class="container">
-      <h2 style="margin-bottom: 8px;">Best Viewing Spots</h2>
-      <p style="color:var(--text-muted); margin-bottom: 40px;">Ranked by how easy they are to reach from Sandcastles.</p>
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:32px;">
+        <div>
+          <p style="font-size:.75rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#5ab4d4; margin-bottom:8px;">Live Data · Launch Library 2</p>
+          <h2 style="color:white; margin-bottom:0;">Upcoming Missions</h2>
+        </div>
+        <p style="color:rgba(255,255,255,.45); font-size:.8rem; max-width:280px; text-align:right; line-height:1.5;">
+          All times in your local timezone. NET = No Earlier Than — launches can move.
+        </p>
+      </div>
+      <div id="launches-grid" class="launches-grid">
+        <!-- Injected by JS -->
+        <div class="launch-card launch-card--loading">
+          <div class="launch-card__shimmer"></div>
+        </div>
+        <div class="launch-card launch-card--loading">
+          <div class="launch-card__shimmer"></div>
+        </div>
+        <div class="launch-card launch-card--loading">
+          <div class="launch-card__shimmer"></div>
+        </div>
+      </div>
+      <p class="launches-attribution">Launch data: <a href="https://thespacedevs.com/" target="_blank" rel="noopener noreferrer">The Space Devs Launch Library 2</a></p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       POST-LAUNCH TIMELINE
+  ════════════════════════════════════════ -->
+  <section class="section section--foam">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+        <div>
+          <p style="font-size:.75rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ocean); margin-bottom:12px;">T+ Timeline</p>
+          <h2 style="margin-bottom:12px;">What Happens After Liftoff</h2>
+          <p style="color:var(--text-muted); font-size:1rem; margin-bottom:8px;">
+            A typical SpaceX Falcon 9 mission compresses an extraordinary amount into the first ten minutes. Here's what to watch for from your balcony.
+          </p>
+          <p style="color:var(--text-muted); font-size:.9rem;">
+            The sonic boom from a booster landing arrives 6–8 minutes after liftoff — you'll hear it before you see landing confirmation on any stream.
+          </p>
+        </div>
+        <div class="launch-timeline">
+
+          <div class="timeline-event">
+            <div class="timeline-event__marker timeline-event__marker--launch"></div>
+            <div class="timeline-event__content">
+              <span class="timeline-event__time">T+0:00</span>
+              <h4 class="timeline-event__title">Liftoff</h4>
+              <p class="timeline-event__desc">Engine ignition and launch. The plume is visible within seconds — look northwest toward LC-39A or SLC-40.</p>
+            </div>
+          </div>
+
+          <div class="timeline-event">
+            <div class="timeline-event__marker"></div>
+            <div class="timeline-event__content">
+              <span class="timeline-event__time">T+1:09</span>
+              <h4 class="timeline-event__title">Max-Q</h4>
+              <p class="timeline-event__desc">Maximum aerodynamic pressure. Engines throttle down briefly — you may notice the exhaust plume change shape.</p>
+            </div>
+          </div>
+
+          <div class="timeline-event">
+            <div class="timeline-event__marker"></div>
+            <div class="timeline-event__content">
+              <span class="timeline-event__time">T+2:26</span>
+              <h4 class="timeline-event__title">MECO &amp; Stage Separation</h4>
+              <p class="timeline-event__desc">Main engines cut off, first and second stage separate. The booster begins its flip and coast back toward Florida.</p>
+            </div>
+          </div>
+
+          <div class="timeline-event">
+            <div class="timeline-event__marker timeline-event__marker--land"></div>
+            <div class="timeline-event__content">
+              <span class="timeline-event__time">T+7–8 min</span>
+              <h4 class="timeline-event__title">Booster Landing</h4>
+              <p class="timeline-event__desc">
+                <strong>RTLS missions</strong> — the booster lands at Landing Zone 1 or 2 at Cape Canaveral. A bright re-entry burn is visible before landing, followed by a double sonic boom.<br><br>
+                <strong>Drone ship missions</strong> — the booster lands on a ship ~400 miles downrange. You won't see it, but the stream will confirm.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-event timeline-event--last">
+            <div class="timeline-event__marker timeline-event__marker--ship"></div>
+            <div class="timeline-event__content">
+              <span class="timeline-event__time">T+2–5 days</span>
+              <h4 class="timeline-event__title">Drone Ship Returns to Port</h4>
+              <p class="timeline-event__desc">The drone ship sails back through the Port Canaveral jetties — visible from shore. <a href="#drone-ship" style="color:var(--ocean); font-weight:600;">See tracking guide ↓</a></p>
+            </div>
+          </div>
+
+        </div><!-- /launch-timeline -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       DRONE SHIP RETURN
+  ════════════════════════════════════════ -->
+  <section class="section" id="drone-ship">
+    <div class="container">
+      <p style="font-size:.75rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--ocean); margin-bottom:12px;">SpaceX Vessels</p>
+      <h2 style="margin-bottom:12px;">Watch the Drone Ship Come Home</h2>
+      <p style="color:var(--text-muted); font-size:1.05rem; max-width:640px; margin-bottom:48px;">
+        After landing a booster at sea, SpaceX's drone ship <em>A Shortfall of Gravitas</em> (ASOG) tows the booster back to Port Canaveral. The return voyage takes 2–5 days. When it passes through the jetties, it's a 300-foot ship with a rocket standing upright on its deck — absolutely worth watching from shore.
+      </p>
+
+      <!-- Two-column: when + how to track -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:56px;">
+
+        <div class="drone-info-box">
+          <div class="drone-info-box__icon">🛳️</div>
+          <h3>The Return Window</h3>
+          <p>Drone ship landings happen 400–600 miles off the coast. ASOG travels at roughly 10–12 knots, so plan on:</p>
+          <ul class="drone-info-box__list">
+            <li><span class="drone-info-box__bullet">2 days</span> — LEO / Starlink missions (shorter downrange)</li>
+            <li><span class="drone-info-box__bullet">3–5 days</span> — GTO or high-energy missions</li>
+          </ul>
+          <p>Ships often arrive early morning (5–8 AM) to align with favorable tide windows through the port channel.</p>
+        </div>
+
+        <div class="drone-info-box">
+          <div class="drone-info-box__icon">📡</div>
+          <h3>How to Know When It's Coming</h3>
+          <p>No published schedule exists — the transit timing depends on sea conditions and port traffic. Your best sources:</p>
+          <ul class="drone-info-box__list">
+            <li><span class="drone-info-box__bullet">Live AIS</span> — MarineTraffic and SpaceXFleet show real-time vessel positions</li>
+            <li><span class="drone-info-box__bullet">Twitter/X</span> — @SpaceXFleet posts every movement; @PortCanaveral announces arrivals</li>
+            <li><span class="drone-info-box__bullet">SpaceXFleet.com</span> — dedicated community tracker with vessel history</li>
+          </ul>
+          <p>Once ASOG is within 12–18 hours of port, the @SpaceXFleet account typically posts an ETA.</p>
+        </div>
+
+      </div>
+
+      <!-- Tracking Tools -->
+      <h3 style="margin-bottom:24px; font-size:1.2rem;">Live Tracking Tools</h3>
+      <div class="tracker-grid">
+
+        <a href="https://www.marinetraffic.com/en/ais/home/centerx:-80.6/centery:28.5/zoom:8" target="_blank" rel="noopener noreferrer" class="tracker-card">
+          <div class="tracker-card__icon">🗺️</div>
+          <div>
+            <h4>MarineTraffic.com</h4>
+            <p>Global AIS vessel tracker. Search "A Shortfall of Gravitas" or zoom into the Atlantic east of Cape Canaveral to find ASOG in real time.</p>
+            <span class="tracker-card__cta">Open Map ↗</span>
+          </div>
+        </a>
+
+        <a href="https://www.spacexfleet.com/" target="_blank" rel="noopener noreferrer" class="tracker-card">
+          <div class="tracker-card__icon">🚀</div>
+          <div>
+            <h4>SpaceXFleet.com</h4>
+            <p>Community-built tracker for all SpaceX ships. Shows ASOG, recovery tugs, fairing ships, and support vessels with voyage history.</p>
+            <span class="tracker-card__cta">Track Fleet ↗</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/SpaceXFleet" target="_blank" rel="noopener noreferrer" class="tracker-card">
+          <div class="tracker-card__icon">🐦</div>
+          <div>
+            <h4>@SpaceXFleet on X</h4>
+            <p>Automated account that posts every significant vessel movement, port arrival, and departure. Follow this for text alerts on your phone.</p>
+            <span class="tracker-card__cta">Follow ↗</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/PortCanaveral" target="_blank" rel="noopener noreferrer" class="tracker-card">
+          <div class="tracker-card__icon">⚓</div>
+          <div>
+            <h4>@PortCanaveral on X</h4>
+            <p>The port's official account announces major vessel arrivals. Less frequent than @SpaceXFleet but official confirmation when the ship docks.</p>
+            <span class="tracker-card__cta">Follow ↗</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Jetty Viewing Spots for Drone Ship -->
+      <h3 style="margin-bottom:8px; margin-top:56px;">Best Spots to Watch the Ship Come In</h3>
+      <p style="color:var(--text-muted); margin-bottom:32px;">The ship passes through a narrow channel — these spots put you right on the water.</p>
+
+      <div class="guide-grid">
+
+        <div class="guide-card">
+          <div class="guide-card__img" style="background:linear-gradient(135deg, #1a3d5c, #2B6B8A);">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80" alt="Jetty Park at Port Canaveral at sunrise" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category">Best Spot · Jetty Park</p>
+            <h3>Jetty Park</h3>
+            <p>400 E Jetty Rd, Cape Canaveral. Right at the port entrance — the ship passes within 200 feet. The jetty walkway gives you an unobstructed view of the entire channel. Arrive 30–60 min before the expected arrival. Parking lot opens at 7 AM.</p>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-card__img" style="background:linear-gradient(135deg, #2d4a2a, #4a7a4a);">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Waterfront at Port Canaveral" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category">North Side · Freddie Patrick Park</p>
+            <h3>Freddie Patrick Park</h3>
+            <p>On the north bank of the Port Canaveral inlet. Less crowded than Jetty Park, still a direct sightline across the channel as ASOG enters port. Free parking.</p>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-card__img" style="background:linear-gradient(135deg, #4a2a1a, #8a4a2B);">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Waterfront restaurant at Port Canaveral" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category">Waterfront Dining · South Side</p>
+            <h3>Grills, Rusty's &amp; Fishlips</h3>
+            <p>Three waterfront restaurants along the south bank of the port — Grills Seafood Deck, Rusty's Seafood, and Fishlips Waterfront Bar. Order breakfast or lunch on the deck and watch ASOG glide past with a rocket on its back. Open as early as 7 AM.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       VIEWING SPOTS (Rocket Launch)
+  ════════════════════════════════════════ -->
+  <section class="section section--foam">
+    <div class="container">
+      <p style="font-size:.75rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ocean); margin-bottom:12px;">Viewing Spots</p>
+      <h2 style="margin-bottom: 8px;">Best Places to Watch the Launch</h2>
+      <p style="color:var(--text-muted); margin-bottom: 40px;">Ranked by ease of access from Sandcastles Condominiums.</p>
       <div class="guide-grid">
 
         <div class="guide-card">
@@ -81,29 +320,29 @@
           <div class="guide-card__body">
             <p class="guide-card__category">Best Option · 0 miles</p>
             <h3>Your Sandcastles Balcony</h3>
-            <p>Upper-floor oceanfront units have a clear northwest sightline toward LC-39 and SLC-40. No traffic, no crowds — just step outside with your drink.</p>
+            <p>Upper-floor oceanfront units have a clear northwest sightline toward LC-39 and SLC-40. No traffic, no crowds — just step outside with your drink and watch history.</p>
           </div>
         </div>
 
         <div class="guide-card">
           <div class="guide-card__img" style="background: linear-gradient(135deg, #4a7a6a, #2d5a4a);">
-            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80" alt="Beach at night" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Beach at Cocoa Beach at night" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category">Easy Walk · 0 miles</p>
             <h3>The Beach at Sandcastles</h3>
-            <p>Walk 100 feet to the sand and face north. Wide open sky, no buildings blocking your view. Great for photos with the ocean in frame.</p>
+            <p>Walk 100 feet to the sand and face north. Wide open sky, no buildings blocking your view. Perfect for photos with the Atlantic Ocean in frame.</p>
           </div>
         </div>
 
         <div class="guide-card">
           <div class="guide-card__img">
-            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Jetty at Cape Canaveral" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Jetty Park at Port Canaveral" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category">Short Drive · 6 miles</p>
             <h3>Jetty Park, Port Canaveral</h3>
-            <p>The closest public land to the launchpads outside of KSC. Free parking, a beach, and a direct sightline to both launch complexes. Get there 30 min early.</p>
+            <p>The closest public land to the launchpads outside of KSC itself. Free parking, a beach, and a direct sightline to both launch complexes. Get there 30–45 min early.</p>
           </div>
         </div>
 
@@ -114,7 +353,7 @@
           <div class="guide-card__body">
             <p class="guide-card__category">Official · 12 miles</p>
             <h3>KSC Visitor Complex</h3>
-            <p>Paid launch viewing tickets give you access to their official viewing site and countdown commentary. Worth it once — especially if paired with a day at the complex.</p>
+            <p>Paid launch viewing tickets include official viewing access and live countdown commentary. Worth it once — especially if you're spending a full day at the complex.</p>
           </div>
         </div>
 
@@ -122,7 +361,9 @@
     </div>
   </section>
 
-  <!-- TIPS -->
+  <!-- ════════════════════════════════════════
+       LAUNCH TIPS
+  ════════════════════════════════════════ -->
   <section class="section section--sand">
     <div class="container">
       <h2 style="margin-bottom: 8px;">Launch Day Tips</h2>
@@ -133,7 +374,7 @@
           <div class="launch-tip__icon">📅</div>
           <div>
             <h4>Launches Scrub — A Lot</h4>
-            <p>Weather, technical issues, and range conflicts cause delays. Always treat a launch date as tentative and check 24 hours before your viewing plan.</p>
+            <p>Weather, technical issues, and range conflicts cause delays. Always treat a launch date as tentative and check the countdown above 24 hours before your viewing plan.</p>
           </div>
         </div>
 
@@ -141,7 +382,7 @@
           <div class="launch-tip__icon">📱</div>
           <div>
             <h4>Get Alerts</h4>
-            <p>Download Space Launch Now or follow @SpaceX and @NASA_Kennedy on X. You'll get real-time updates if a launch is delayed or scrubbed.</p>
+            <p>Download Space Launch Now or follow @SpaceX and @NASA_Kennedy on X. You'll get real-time scrub and reschedule notifications immediately.</p>
           </div>
         </div>
 
@@ -149,7 +390,7 @@
           <div class="launch-tip__icon">🌙</div>
           <div>
             <h4>Night Launches Are Magical</h4>
-            <p>If there's a night launch during your stay, rearrange your evening around it. The glow, the reflection on the water, and the boom overhead are unforgettable.</p>
+            <p>If there's a night launch during your stay, rearrange your evening around it. The engine glow lights up the Atlantic, reflects off the water, and the shock wave arrives seconds later.</p>
           </div>
         </div>
 
@@ -157,23 +398,23 @@
           <div class="launch-tip__icon">📷</div>
           <div>
             <h4>Camera Settings</h4>
-            <p>Use a tripod. For night launches: ISO 800, f/5.6, 2–4 sec shutter. Day: burst mode. Video on your phone actually works well for the arc and sonic boom.</p>
+            <p>Use a tripod. Night launches: ISO 800–1600, f/4–5.6, 2–4 sec shutter. Day launches: burst mode at 1/2000s. Your phone's video mode actually captures the arc and sonic boom better than photos.</p>
           </div>
         </div>
 
         <div class="launch-tip">
-          <div class="launch-tip__icon">⏱️</div>
+          <div class="launch-tip__icon">💥</div>
           <div>
             <h4>The Sonic Boom</h4>
-            <p>If a booster returns to land at Cape Canaveral, expect a double boom 6–8 minutes after launch. It's louder than you expect. Windows rattle. Totally normal.</p>
+            <p>If the booster lands at Cape Canaveral (RTLS mission), expect a double boom 6–8 minutes after launch. It's louder than you expect. Windows rattle. It's completely normal — and honestly incredible.</p>
           </div>
         </div>
 
         <div class="launch-tip">
-          <div class="launch-tip__icon">👟</div>
+          <div class="launch-tip__icon">🅿️</div>
           <div>
             <h4>Jetty Park Parking</h4>
-            <p>For Jetty Park, arrive at least 30–45 minutes early. Parking fills fast for popular missions. Rideshare out and walk back if you want the best spot.</p>
+            <p>For popular missions, arrive 45–60 minutes early. Parking fills fast. Some guests rideshare to Jetty Park and walk back along the beach. Rideshare availability can be spotty after launches.</p>
           </div>
         </div>
 
@@ -181,27 +422,32 @@
     </div>
   </section>
 
-  <!-- LAUNCH SCHEDULE CTA -->
+  <!-- ════════════════════════════════════════
+       LAUNCH SCHEDULE CTA
+  ════════════════════════════════════════ -->
   <section class="section section--foam">
     <div class="container" style="text-align: center; max-width: 600px;">
-      <p style="font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--ocean); margin-bottom:12px;">Plan Your Trip</p>
-      <h2 style="margin-bottom:16px;">Check the Launch Schedule</h2>
+      <p style="font-size:.75rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--ocean); margin-bottom:12px;">Plan Your Trip</p>
+      <h2 style="margin-bottom:16px;">Time Your Stay Around a Mission</h2>
       <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:32px;">
-        SpaceX, ULA, and NASA all publish upcoming launch windows. Time your stay
-        around a mission that excites you — Crew Dragon, Starlink, or a rare NASA mission.
+        SpaceX, ULA, and NASA publish upcoming launch windows months in advance.
+        Plan your trip around a Crew Dragon, Starlink, or rare NASA science mission.
       </p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a href="https://www.spacex.com/launches/" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="background:var(--ocean); color:white;">SpaceX Launch Schedule ↗</a>
+        <a href="https://www.spacex.com/launches/" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="background:var(--ocean); color:white;">SpaceX Schedule ↗</a>
         <a href="https://www.kennedyspacecenter.com/launches-and-events" target="_blank" rel="noopener noreferrer" class="btn btn--outline" style="border-color:var(--ocean); color:var(--ocean);">KSC Events ↗</a>
+        <a href="https://rocketlaunch.live/?filter=cape+canaveral" target="_blank" rel="noopener noreferrer" class="btn btn--outline" style="border-color:var(--ocean); color:var(--ocean);">RocketLaunch.live ↗</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- ════════════════════════════════════════
+       BOOK CTA
+  ════════════════════════════════════════ -->
   <section class="cta-band">
     <div class="container">
       <h2>Book a balcony with a view</h2>
-      <p>Upper-floor oceanfront units at Sandcastles have the clearest sightline to the launchpads.</p>
+      <p>Upper-floor oceanfront units at Sandcastles have the clearest sightline to the launchpads. Reserve before the next big mission.</p>
       <a href="sandcastles.html" class="btn btn--primary">Browse Oceanfront Units →</a>
     </div>
   </section>
@@ -235,6 +481,218 @@
       </div>
     </div>
   </footer>
+
+  <!-- ════════════════════════════════════════
+       JAVASCRIPT — Live Launch Data
+  ════════════════════════════════════════ -->
+  <script>
+  (function() {
+    'use strict';
+
+    /* ── Config ── */
+    const LL2_URL  = 'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=10&location__ids=12&format=json';
+    const CACHE_KEY = 'scs_launches_v2';
+    const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+    let countdownInterval = null;
+    let nextLaunchTime    = null;
+
+    /* ── Fetch with session cache ── */
+    async function fetchLaunches() {
+      try {
+        const cached = sessionStorage.getItem(CACHE_KEY);
+        if (cached) {
+          const { ts, data } = JSON.parse(cached);
+          if (Date.now() - ts < CACHE_TTL) return data;
+        }
+      } catch(e) { /* ignore */ }
+
+      try {
+        const res  = await fetch(LL2_URL);
+        if (!res.ok) throw new Error('API ' + res.status);
+        const json = await res.json();
+        const data = json.results || [];
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data }));
+        return data;
+      } catch(e) {
+        console.warn('Launch Library fetch failed:', e);
+        return null;
+      }
+    }
+
+    /* ── Countdown ── */
+    function startCountdown(isoTime, missionName, padName, statusName) {
+      nextLaunchTime = new Date(isoTime).getTime();
+
+      const missionEl = document.getElementById('cd-mission');
+      const detailEl  = document.getElementById('cd-detail');
+      const noteEl    = document.getElementById('cd-note');
+
+      missionEl.innerHTML = escHtml(missionName);
+      detailEl.textContent = padName ? '📍 ' + padName : '';
+
+      const isTBD = statusName && (statusName.toLowerCase().includes('tbd') || statusName.toLowerCase().includes('to be'));
+      if (isTBD) {
+        noteEl.textContent = '⚠️ Launch window is TBD — date may shift. Check 24 hours before.';
+      } else {
+        noteEl.textContent = 'All times shown in your local timezone (NET — No Earlier Than).';
+      }
+
+      function tick() {
+        const diff = nextLaunchTime - Date.now();
+        if (diff <= 0) {
+          // Launch has passed — refresh data
+          clearInterval(countdownInterval);
+          document.getElementById('cd-days').textContent = '00';
+          document.getElementById('cd-hrs').textContent  = '00';
+          document.getElementById('cd-min').textContent  = '00';
+          document.getElementById('cd-sec').textContent  = '00';
+          document.getElementById('cd-eyebrow').textContent = '🚀 Launch Window';
+          noteEl.textContent = 'Launch window reached. Refreshing data…';
+          setTimeout(() => location.reload(), 5000);
+          return;
+        }
+
+        const days = Math.floor(diff / 86400000);
+        const hrs  = Math.floor((diff % 86400000) / 3600000);
+        const min  = Math.floor((diff % 3600000)  / 60000);
+        const sec  = Math.floor((diff % 60000)    / 1000);
+
+        document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+        document.getElementById('cd-hrs').textContent  = String(hrs).padStart(2, '0');
+        document.getElementById('cd-min').textContent  = String(min).padStart(2, '0');
+        document.getElementById('cd-sec').textContent  = String(sec).padStart(2, '0');
+      }
+
+      tick();
+      countdownInterval = setInterval(tick, 1000);
+    }
+
+    /* ── Format date for display ── */
+    function fmtDate(iso, precision) {
+      const d = new Date(iso);
+      if (isNaN(d.getTime())) return 'TBD';
+      const opts = { month: 'short', day: 'numeric', year: 'numeric' };
+      if (precision === 'hour' || precision === 'minute' || precision === 'second') {
+        opts.hour   = 'numeric';
+        opts.minute = '2-digit';
+        opts.timeZoneName = 'short';
+      }
+      return d.toLocaleDateString('en-US', opts);
+    }
+
+    /* ── Provider badge color ── */
+    function providerColor(name) {
+      if (!name) return '#4a5568';
+      const n = name.toLowerCase();
+      if (n.includes('spacex'))      return '#005288';
+      if (n.includes('nasa'))        return '#0b3d91';
+      if (n.includes('ula'))         return '#c45000';
+      if (n.includes('rocket lab'))  return '#9b1c1c';
+      if (n.includes('blue origin')) return '#1a365d';
+      return '#2d4a6e';
+    }
+
+    /* ── Status badge ── */
+    function statusBadge(status) {
+      if (!status) return '';
+      const name = status.name || status;
+      const n    = name.toLowerCase();
+      let cls    = 'launch-status--tbd';
+      let label  = name;
+
+      if (n === 'go' || n.includes('go for launch')) { cls = 'launch-status--go'; label = '✓ Go'; }
+      else if (n.includes('tbd') || n.includes('to be determined')) { cls = 'launch-status--tbd'; label = '◎ TBD'; }
+      else if (n.includes('hold'))   { cls = 'launch-status--hold';   label = '⏸ On Hold'; }
+      else if (n.includes('scrub'))  { cls = 'launch-status--hold';   label = '✕ Scrubbed'; }
+
+      return `<span class="launch-status ${cls}">${escHtml(label)}</span>`;
+    }
+
+    /* ── Build launch card ── */
+    function buildLaunchCard(launch) {
+      const mission   = launch.name || 'Unknown Mission';
+      const provider  = launch.launch_service_provider?.name || '';
+      const vehicle   = launch.rocket?.configuration?.name  || '';
+      const pad       = launch.pad?.name || '';
+      const netIso    = launch.net || '';
+      const precision = launch.net_precision?.name || 'second';
+      const status    = launch.status;
+      const imgUrl    = launch.image || '';
+      const infoUrl   = launch.url || '#';
+
+      const dateStr   = fmtDate(netIso, precision);
+      const bgColor   = providerColor(provider);
+
+      return `
+        <article class="launch-card">
+          <div class="launch-card__img" style="background:${escHtml(bgColor)};">
+            ${imgUrl ? `<img src="${escHtml(imgUrl)}" alt="${escHtml(mission)}" loading="lazy" onerror="this.parentElement.style.background='${escHtml(bgColor)}'; this.remove();" />` : ''}
+            <div class="launch-card__img-overlay"></div>
+            ${statusBadge(status)}
+          </div>
+          <div class="launch-card__body">
+            ${provider ? `<p class="launch-card__provider">${escHtml(provider)}</p>` : ''}
+            <h3 class="launch-card__mission">${escHtml(mission)}</h3>
+            ${vehicle ? `<p class="launch-card__vehicle">🚀 ${escHtml(vehicle)}</p>` : ''}
+            ${pad ? `<p class="launch-card__pad">📍 ${escHtml(pad)}</p>` : ''}
+            <p class="launch-card__date">${escHtml(dateStr)}</p>
+          </div>
+        </article>`;
+    }
+
+    /* ── Escape HTML ── */
+    function escHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    /* ── Error state ── */
+    function showError() {
+      document.getElementById('cd-mission').innerHTML =
+        '<span style="font-size:1.2rem;">Could not load live data</span>';
+      document.getElementById('cd-detail').textContent = '';
+      document.getElementById('cd-note').innerHTML =
+        'Check the <a href="https://www.spacex.com/launches/" target="_blank" style="color:#5ab4d4;">SpaceX</a> or <a href="https://www.kennedyspacecenter.com/launches-and-events" target="_blank" style="color:#5ab4d4;">KSC</a> schedule directly.';
+      ['cd-days','cd-hrs','cd-min','cd-sec'].forEach(id => {
+        document.getElementById(id).textContent = '--';
+      });
+      document.getElementById('launches-grid').innerHTML =
+        '<p style="color:rgba(255,255,255,.45); grid-column:1/-1; padding:24px 0;">Could not load launch data. Try refreshing, or check <a href="https://ll.thespacedevs.com" target="_blank" style="color:#5ab4d4;">thespacedevs.com</a>.</p>';
+    }
+
+    /* ── Main init ── */
+    async function init() {
+      const launches = await fetchLaunches();
+
+      if (!launches || launches.length === 0) {
+        showError();
+        return;
+      }
+
+      /* First launch with a real NET time */
+      const next = launches.find(l => l.net && !isNaN(new Date(l.net)));
+      if (next) {
+        const padName     = next.pad?.name || '';
+        const statusName  = next.status?.name || '';
+        startCountdown(next.net, next.name, padName, statusName);
+      } else {
+        showError();
+      }
+
+      /* Render launch cards */
+      const grid = document.getElementById('launches-grid');
+      const cards = launches.slice(0, 6).map(buildLaunchCard).join('');
+      grid.innerHTML = cards || '<p style="color:rgba(255,255,255,.45); grid-column:1/-1;">No upcoming launches found.</p>';
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+
+  })();
+  </script>
 
 </body>
 </html>
