@@ -88,7 +88,7 @@ const LISTINGS = [
     platforms: [
       { name: "vrbo", url: "https://www.vrbo.com/9714032ha" }
     ],
-    photo: "images/024A5959.jpg",
+    photo: "https://media.vrbo.com/lodging/84000000/83410000/83405600/83405508/2deb60a0.jpg",
   },
   {
     unit: null,
@@ -101,7 +101,7 @@ const LISTINGS = [
     platforms: [
       { name: "vrbo", url: "https://www.vrbo.com/7017430ha" }
     ],
-    photo: "images/024A5938.jpg",
+    photo: "https://media.vrbo.com/lodging/34000000/33550000/33545900/33545820/5a359a4f.jpg",
   },
 
   // ── FLOOR 5 ────────────────────────────────────────────────────────────────
@@ -116,7 +116,7 @@ const LISTINGS = [
     platforms: [
       { name: "vrbo", url: "https://www.vrbo.com/7120752ha" }
     ],
-    photo: "images/024A6004.jpg",
+    photo: "https://media.vrbo.com/lodging/35000000/34100000/34097000/34096988/33019497.jpg",
   },
   {
     unit: null,
@@ -129,7 +129,7 @@ const LISTINGS = [
     platforms: [
       { name: "vrbo", url: "https://www.vrbo.com/1993285" }
     ],
-    photo: "images/024A5990.jpg",
+    photo: "https://media.vrbo.com/lodging/54000000/53970000/53961000/53960925/91a0ca75.jpg",
   },
 
   // ── FLOOR 6 ────────────────────────────────────────────────────────────────
@@ -157,7 +157,7 @@ const LISTINGS = [
     platforms: [
       { name: "vrbo", url: "https://www.vrbo.com/1167578" }
     ],
-    photo: "images/024A6047.jpg",
+    photo: "https://media.vrbo.com/lodging/35000000/34080000/34076200/34076120/3fb05c0a.jpg",
   },
 
   // ── FLOOR 7 ────────────────────────────────────────────────────────────────
@@ -239,7 +239,7 @@ const LISTINGS = [
     platforms: [
       { name: "vrbo", url: "https://www.vrbo.com/296240" }
     ],
-    photo: "images/024A5980.jpg",
+    photo: "https://media.vrbo.com/lodging/35000000/34330000/34329700/34329669/bdde75ce.jpg",
   },
 
   // ── OCEAN VIEW (floor unlisted) ─────────────────────────────────────────────
