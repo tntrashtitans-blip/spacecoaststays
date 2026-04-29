@@ -395,6 +395,22 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
 .card__link--airbnb { background: var(--airbnb); }
 .card__link--vrbo    { background: var(--vrbo); }
 
+/* Split dual-platform buttons */
+.card__links-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.card__links-split .card__link {
+  font-size: .8rem;
+  padding: 10px 6px;
+}
+
+/* Dual-platform badge */
+.card__platform--both {
+  background: linear-gradient(90deg, var(--airbnb) 50%, var(--vrbo) 50%);
+}
+
 /* ── CTA BAND ── */
 .cta-band {
   background: linear-gradient(135deg, var(--ocean-dark) 0%, var(--ocean) 100%);
