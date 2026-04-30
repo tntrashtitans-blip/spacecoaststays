@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cocoa Beach Vacation Rentals — Condos & Complexes | SpaceCoastStays</title>
+  <meta name="description" content="Browse all vacation rental condo complexes in Cocoa Beach, FL. Oceanfront buildings, pools, and direct beach access — steps from Kennedy Space Center.">
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── 2-ROW NAV ─────────────────────────────────── */
+    .nav { flex-direction: column; height: auto; padding: 0; }
+
+    .nav__row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav__row--primary {
+      padding: 0 24px;
+      height: 60px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      justify-content: space-between;
+    }
+
+    .nav__row--areas {
+      background: #1D4E66;
+      padding: 0 24px;
+      height: 44px;
+      gap: 0;
+    }
+
+    /* area tabs */
+    .nav__areas {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      height: 100%;
+    }
+
+    .nav__area-item {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav__area-item > a {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 18px;
+      color: rgba(255,255,255,.85);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+      gap: 5px;
+    }
+
+    .nav__area-item > a:hover,
+    .nav__area-item.active > a {
+      background: rgba(255,255,255,.12);
+      color: white;
+    }
+
+    .nav__area-item.active > a {
+      border-bottom: 2px solid var(--ocean-light);
+    }
+
+    /* dropdown */
+    .nav__dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      list-style: none;
+      margin: 0; padding: 8px 0;
+      min-width: 200px;
+      z-index: 200;
+    }
+
+    .nav__area-item:hover .nav__dropdown { display: block; }
+
+    .nav__dropdown li a {
+      display: block;
+      padding: 9px 20px;
+      color: var(--text);
+      font-size: .83rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .12s;
+    }
+
+    .nav__dropdown li a:hover { background: var(--foam); color: var(--ocean); }
+
+    .nav__dropdown li.dropdown__section {
+      padding: 10px 20px 4px;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-top: 1px solid var(--sand-dark);
+      margin-top: 4px;
+    }
+    .nav__dropdown li.dropdown__section:first-child { border-top: none; margin-top: 0; }
+
+    /* ── AREA HERO ─────────────────────────────────── */
+    .area-hero {
+      position: relative;
+      height: 380px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .area-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/DJI_0244.jpg');
+      background-size: cover;
+      background-position: center 60%;
+    }
+
+    .area-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,10,20,.78) 0%, rgba(6,10,20,.2) 60%, transparent 100%);
+    }
+
+    .area-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 0 0 48px;
+      width: 100%;
+    }
+
+    .area-hero__eyebrow {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 8px;
+    }
+
+    .area-hero h1 {
+      color: white;
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+    }
+
+    .area-hero__sub {
+      color: rgba(255,255,255,.95);
+      font-size: 1rem;
+      font-weight: 600;
+      max-width: 540px;
+      text-shadow: 0 1px 4px rgba(0,0,0,.4);
+    }
+
+    .area-hero__stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    .area-hero__stat-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      line-height: 1;
+    }
+
+    .area-hero__stat-label {
+      font-size: .72rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.6);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* ── COMPLEX CARDS ─────────────────────────────── */
+    .complex-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 960px) { .complex-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .complex-grid { grid-template-columns: 1fr; } }
+
+    .complex-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      transition: transform .22s, box-shadow .22s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .complex-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.12);
+    }
+
+    .complex-card__img {
+      height: 200px;
+      overflow: hidden;
+      background: var(--sand);
+      position: relative;
+    }
+
+    .complex-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .complex-card:hover .complex-card__img img { transform: scale(1.04); }
+
+    .complex-card__badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--ocean);
+      color: white;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .complex-card__body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .complex-card__location {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .complex-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .complex-card__desc {
+      font-size: .87rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .complex-card__amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 14px 0;
+    }
+
+    .complex-card__tag {
+      background: var(--foam);
+      color: var(--ocean);
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .complex-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--sand);
+      margin-top: auto;
+    }
+
+    .complex-card__count {
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+
+    .complex-card__count strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .btn--sm {
+      padding: 8px 16px;
+      font-size: .8rem;
+    }
+
+    /* ── WEATHER STRIP ─────────────────────────────── */
+    .weather-strip {
+      background: var(--ocean);
+      color: white;
+      padding: 16px 0;
+    }
+
+    .weather-inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .weather-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .7;
+    }
+
+    .weather-temp {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .weather-desc {
+      font-size: .85rem;
+      opacity: .85;
+    }
+
+    .weather-details {
+      display: flex;
+      gap: 24px;
+      margin-left: auto;
+    }
+
+    .weather-detail {
+      text-align: center;
+    }
+
+    .weather-detail__val {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .weather-detail__key {
+      font-size: .68rem;
+      opacity: .65;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ── AREA NAV STRIP ─────────────────────────────── */
+    .area-strip {
+      background: white;
+      border-bottom: 1px solid var(--sand-dark);
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+
+    .area-strip__inner {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+
+    .area-strip__link {
+      padding: 14px 20px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all .15s;
+    }
+
+    .area-strip__link:hover { color: var(--ocean); }
+    .area-strip__link.active { color: var(--ocean); border-bottom-color: var(--ocean); }
+
+    /* ── LOCAL EVENTS ──────────────────────────────── */
+    .events-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 800px) { .events-row { grid-template-columns: 1fr; } }
+
+    .event-card {
+      background: white;
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .event-card__date {
+      background: var(--ocean);
+      color: white;
+      border-radius: 8px;
+      padding: 8px 12px;
+      text-align: center;
+      min-width: 48px;
+      flex-shrink: 0;
+    }
+
+    .event-card__month {
+      font-size: .62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      opacity: .8;
+    }
+
+    .event-card__day {
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .event-card__title {
+      font-size: .92rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .event-card__meta {
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ 2-ROW NAV ══════════════════════════════════ -->
+  <nav class="nav">
+
+    <!-- Row 1: Logo + main links -->
+    <div class="nav__row nav__row--primary">
+      <a href="index.html" class="nav__logo">Space<span>Coast</span>Stays</a>
+      <ul class="nav__links">
+        <li><a href="cocoa-beach-guide.html">Things to Do</a></li>
+        <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="mailto:hello@spacecoaststays.com" class="nav__cta">List Your Unit</a></li>
+      </ul>
+    </div>
+
+    <!-- Row 2: Area tabs with complex dropdowns -->
+    <div class="nav__row nav__row--areas">
+      <ul class="nav__areas">
+
+        <li class="nav__area-item active">
+          <a href="cocoa-beach.html">Cocoa Beach ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Cocoa Beach</li>
+            <li><a href="sandcastles.html">Sandcastles</a></li>
+            <li><a href="cocoa-beach-club.html">Cocoa Beach Club</a></li>
+            <li><a href="chateau-by-the-sea.html">Chateau By The Sea</a></li>
+            <li><a href="spanish-main.html">Spanish Main</a></li>
+            <li><a href="twin-towers.html">Twin Towers</a></li>
+            <li><a href="diplomat.html">Diplomat</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__area-item">
+          <a href="#">Cape Canaveral ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Cape Canaveral</li>
+            <li><a href="#">Canaveral Towers</a></li>
+            <li><a href="#">Cape Winds</a></li>
+            <li><a href="#">Canaveral Sands</a></li>
+            <li><a href="#">Shorewood</a></li>
+            <li><a href="#">Royal Mansions</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__area-item">
+          <a href="#">Satellite Beach ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Satellite Beach</li>
+            <li><a href="#">Paradise Beach Club</a></li>
+            <li><a href="#">Sea Breakers</a></li>
+            <li><a href="#">Sandpiper Towers</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__area-item">
+          <a href="#">Merritt Island ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Coming Soon</li>
+            <li><a href="#" style="opacity:.5; pointer-events:none;">Listings coming soon</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══ AREA HERO ══════════════════════════════════ -->
+  <section class="area-hero">
+    <div class="area-hero__bg"></div>
+    <div class="area-hero__overlay"></div>
+    <div class="area-hero__content container">
+      <p class="area-hero__eyebrow">Florida's Space Coast</p>
+      <h1>Cocoa Beach</h1>
+      <p class="area-hero__sub">Beachfront condos steps from the Atlantic — 12 miles from Kennedy Space Center launch pads.</p>
+      <div class="area-hero__stats">
+        <div>
+          <div class="area-hero__stat-num">6</div>
+          <div class="area-hero__stat-label">Complexes</div>
+        </div>
+        <div>
+          <div class="area-hero__stat-num">50+</div>
+          <div class="area-hero__stat-label">Available Units</div>
+        </div>
+        <div>
+          <div class="area-hero__stat-num">12 mi</div>
+          <div class="area-hero__stat-label">From KSC</div>
+        </div>
+        <div>
+          <div class="area-hero__stat-num">1 mi</div>
+          <div class="area-hero__stat-label">From the Pier</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WEATHER STRIP ══════════════════════════════ -->
+  <div class="weather-strip">
+    <div class="container">
+      <div class="weather-inner">
+        <div>
+          <div class="weather-label">Cocoa Beach Today</div>
+          <div class="weather-temp">82°F</div>
+          <div class="weather-desc">Partly Cloudy · SE Wind 12 mph</div>
+        </div>
+        <div class="weather-details">
+          <div class="weather-detail">
+            <div class="weather-detail__val">78°F</div>
+            <div class="weather-detail__key">Water Temp</div>
+          </div>
+          <div class="weather-detail">
+            <div class="weather-detail__val">2–3 ft</div>
+            <div class="weather-detail__key">Surf</div>
+          </div>
+          <div class="weather-detail">
+            <div class="weather-detail__val">UV 9</div>
+            <div class="weather-detail__key">UV Index</div>
+          </div>
+          <div class="weather-detail">
+            <div class="weather-detail__val">30%</div>
+            <div class="weather-detail__key">Rain</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ AREA STRIP NAV ═════════════════════════════ -->
+  <div class="area-strip">
+    <div class="container">
+      <div class="area-strip__inner">
+        <a href="#complexes" class="area-strip__link active">Complexes</a>
+        <a href="#events" class="area-strip__link">Local Events</a>
+        <a href="cocoa-beach-guide.html" class="area-strip__link">Things to Do</a>
+        <a href="watch-a-rocket-launch.html" class="area-strip__link">Rocket Launches</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ COMPLEXES GRID ═════════════════════════════ -->
+  <section class="section" id="complexes">
+    <div class="container">
+      <h2 style="margin-bottom:8px;">Vacation Rental Complexes</h2>
+      <p style="color:var(--text-muted); margin-bottom:40px;">Every unit books directly on Airbnb or VRBO. Click a complex to browse available units.</p>
+
+      <div class="complex-grid">
+
+        <!-- Sandcastles -->
+        <div class="complex-card">
+          <div class="complex-card__img">
+            <img src="images/DJI_0297.jpg" alt="Sandcastles Condominiums Cocoa Beach" />
+            <span class="complex-card__badge">On the Site</span>
+          </div>
+          <div class="complex-card__body">
+            <p class="complex-card__location">1000 N Atlantic Ave · Cocoa Beach</p>
+            <h3>Sandcastles Condominiums</h3>
+            <p class="complex-card__desc">Right on the sand. One of Cocoa Beach's most beloved beachfront buildings with oceanfront, ocean view, and pool-side units.</p>
+            <div class="complex-card__amenities">
+              <span class="complex-card__tag">Oceanfront</span>
+              <span class="complex-card__tag">Heated Pool</span>
+              <span class="complex-card__tag">Beach Access</span>
+              <span class="complex-card__tag">Balconies</span>
+              <span class="complex-card__tag">Launch Views</span>
+            </div>
+            <div class="complex-card__footer">
+              <div class="complex-card__count"><strong>15+</strong> units listed</div>
+              <a href="sandcastles.html" class="btn btn--primary btn--sm">View Listings →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cocoa Beach Club -->
+        <div class="complex-card">
+          <div class="complex-card__img">
+            <img src="https://www.happypalmstays.com/wp-content/uploads/2021/04/cocoa-beach-club-condo-rentals-from-sky.jpeg" alt="Cocoa Beach Club aerial view" />
+          </div>
+          <div class="complex-card__body">
+            <p class="complex-card__location">5200 Ocean Beach Blvd · Near the Pier</p>
+            <h3>Cocoa Beach Club</h3>
+            <p class="complex-card__desc">50-unit oceanfront complex with a large heated pool and putting green, just steps from the Cocoa Beach Pier. A mix of 1–3BR condos with covered parking.</p>
+            <div class="complex-card__amenities">
+              <span class="complex-card__tag">Oceanfront</span>
+              <span class="complex-card__tag">Heated Pool</span>
+              <span class="complex-card__tag">Near Pier</span>
+              <span class="complex-card__tag">Putting Green</span>
+            </div>
+            <div class="complex-card__footer">
+              <div class="complex-card__count"><strong>9</strong> units listed</div>
+              <a href="cocoa-beach-club.html" class="btn btn--primary btn--sm">View Listings →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chateau By The Sea -->
+        <div class="complex-card">
+          <div class="complex-card__img">
+            <img src="https://www.happypalmstays.com/wp-content/uploads/2025/09/DJI_0211.jpg" alt="Chateau By The Sea Cocoa Beach aerial" />
+          </div>
+          <div class="complex-card__body">
+            <p class="complex-card__location">Steps from the Pier · Oceanfront</p>
+            <h3>Chateau By The Sea</h3>
+            <p class="complex-card__desc">5-story oceanfront building steps from Cocoa Beach Pier with a rooftop deck for 360° views, heated pool, and private beach access. Penthouse corner units available.</p>
+            <div class="complex-card__amenities">
+              <span class="complex-card__tag">Oceanfront</span>
+              <span class="complex-card__tag">Rooftop Deck</span>
+              <span class="complex-card__tag">Heated Pool</span>
+              <span class="complex-card__tag">Near Pier</span>
+            </div>
+            <div class="complex-card__footer">
+              <div class="complex-card__count"><strong>7</strong> units listed</div>
+              <a href="chateau-by-the-sea.html" class="btn btn--primary btn--sm">View Listings →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spanish Main -->
+        <div class="complex-card">
+          <div class="complex-card__img">
+            <img src="https://www.happypalmstays.com/wp-content/uploads/2021/04/spanish-main-condos-building-from-sky-beach-view.jpeg" alt="Spanish Main condos aerial Cocoa Beach" />
+          </div>
+          <div class="complex-card__body">
+            <p class="complex-card__location">North Cocoa Beach · Oceanfront</p>
+            <h3>Spanish Main</h3>
+            <p class="complex-card__desc">Charming 4-story direct oceanfront complex built in 1974 with 76 spacious units (1,153 sq ft each), heated pool, and wide natural beachfront. Wide balconies with Atlantic views.</p>
+            <div class="complex-card__amenities">
+              <span class="complex-card__tag">Oceanfront</span>
+              <span class="complex-card__tag">Heated Pool</span>
+              <span class="complex-card__tag">Beach Access</span>
+              <span class="complex-card__tag">76 Units</span>
+            </div>
+            <div class="complex-card__footer">
+              <div class="complex-card__count"><strong>12</strong> units listed</div>
+              <a href="spanish-main.html" class="btn btn--primary btn--sm">View Listings →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Twin Towers -->
+        <div class="complex-card">
+          <div class="complex-card__img">
+            <img src="https://u.realgeeks.media/terrypalmiter/cocoabeach/twin_towers/twin_towers_01.jpg" alt="Twin Towers condo complex Cocoa Beach" />
+          </div>
+          <div class="complex-card__body">
+            <p class="complex-card__location">2020 N Atlantic Ave · 8-Acre Resort</p>
+            <h3>Twin Towers</h3>
+            <p class="complex-card__desc">Iconic dual 6-story towers on 8 oceanfront acres built in 1964. 192 units with direct beach access, heated pool, sauna, shuffleboard, and on-site management.</p>
+            <div class="complex-card__amenities">
+              <span class="complex-card__tag">Oceanfront</span>
+              <span class="complex-card__tag">8 Acres</span>
+              <span class="complex-card__tag">Heated Pool</span>
+              <span class="complex-card__tag">Sauna</span>
+            </div>
+            <div class="complex-card__footer">
+              <div class="complex-card__count"><strong>4</strong> units listed</div>
+              <a href="twin-towers.html" class="btn btn--primary btn--sm">View Listings →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diplomat -->
+        <div class="complex-card">
+          <div class="complex-card__img">
+            <img src="https://u.realgeeks.media/terrypalmiter/cocoabeach/diplomat/diplomat_01.jpg" alt="The Diplomat condos Cocoa Beach" />
+          </div>
+          <div class="complex-card__body">
+            <p class="complex-card__location">3150 N Atlantic Ave · Cocoa Beach</p>
+            <h3>The Diplomat</h3>
+            <p class="complex-card__desc">Low-rise 3-story oceanfront complex with a spacious, resort-like feel and plenty of elbow room. Solid concrete construction with pool, tennis, shuffleboard, and bocce courts.</p>
+            <div class="complex-card__amenities">
+              <span class="complex-card__tag">Oceanfront</span>
+              <span class="complex-card__tag">Pool</span>
+              <span class="complex-card__tag">Tennis</span>
+              <span class="complex-card__tag">Updated Units</span>
+            </div>
+            <div class="complex-card__footer">
+              <div class="complex-card__count"><strong>8</strong> units listed</div>
+              <a href="diplomat.html" class="btn btn--primary btn--sm">View Listings →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ LOCAL EVENTS ═══════════════════════════════ -->
+  <section class="section section--sand" id="events">
+    <div class="container">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:40px;">
+        <div>
+          <h2 style="margin-bottom:6px;">Upcoming in Cocoa Beach</h2>
+          <p style="color:var(--text-muted);">Local events, festivals, and launches happening during your stay.</p>
+        </div>
+        <a href="#" style="font-size:.85rem; font-weight:600; color:var(--ocean);">View all events →</a>
+      </div>
+
+      <div class="events-row">
+
+        <div class="event-card">
+          <div class="event-card__date">
+            <div class="event-card__month">May</div>
+            <div class="event-card__day">10</div>
+          </div>
+          <div>
+            <div class="event-card__title">SpaceX Falcon 9 Launch</div>
+            <div class="event-card__meta">LC-39A · Kennedy Space Center<br>Window: 9:42 PM EDT</div>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-card__date">
+            <div class="event-card__month">May</div>
+            <div class="event-card__day">17</div>
+          </div>
+          <div>
+            <div class="event-card__title">Cocoa Beach Air Show</div>
+            <div class="event-card__meta">Cocoa Beach Pier · Free<br>10 AM – 4 PM</div>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <div class="event-card__date">
+            <div class="event-card__month">Jun</div>
+            <div class="event-card__day">1</div>
+          </div>
+          <div>
+            <div class="event-card__title">Sea Turtle Nesting Season</div>
+            <div class="event-card__meta">Canaveral National Seashore<br>Guided night walks begin</div>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="margin-top:20px; font-size:.78rem; color:var(--text-muted);">* Live event calendar coming soon.</p>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ═════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">SpaceCoastStays.com</p>
+          <p class="footer__desc">A curated directory of vacation rentals across the Space Coast — Cocoa Beach, Cape Canaveral, and Satellite Beach.</p>
+        </div>
+        <div>
+          <p class="footer__heading">Cocoa Beach</p>
+          <ul class="footer__links">
+            <li><a href="sandcastles.html">Sandcastles</a></li>
+            <li><a href="cocoa-beach-club.html">Cocoa Beach Club</a></li>
+            <li><a href="chateau-by-the-sea.html">Chateau By The Sea</a></li>
+            <li><a href="spanish-main.html">Spanish Main</a></li>
+            <li><a href="twin-towers.html">Twin Towers</a></li>
+            <li><a href="diplomat.html">The Diplomat</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">Explore</p>
+          <ul class="footer__links">
+            <li><a href="cocoa-beach-guide.html">Space Coast Guide</a></li>
+            <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">Contact</p>
+          <ul class="footer__links">
+            <li><a href="mailto:hello@spacecoaststays.com">hello@spacecoaststays.com</a></li>
+            <li><a href="mailto:hello@spacecoaststays.com">List Your Unit</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 SpaceCoastStays.com · Not affiliated with Airbnb or VRBO</span>
+        <span>Made with ☀️ in Cocoa Beach</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -3,96 +3,198 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SpaceCoastStays — Cocoa Beach Vacation Rentals at Sandcastles Condominiums</title>
-  <meta name="description" content="Book vacation rentals at Sandcastles Condominiums, 1000 N Atlantic Ave, Cocoa Beach FL. Oceanfront and ocean-view condos 12 miles from Kennedy Space Center — watch rocket launches from your balcony.">
+  <title>SpaceCoastStays — Cocoa Beach & Space Coast Vacation Rentals</title>
+  <meta name="description" content="Browse vacation rental condos across the Space Coast — Cocoa Beach, Cape Canaveral, and Satellite Beach. Oceanfront complexes, direct beach access, and front-row seats to Kennedy Space Center launches. Book on Airbnb or VRBO.">
 
   <link rel="canonical" href="https://spacecoaststays.com/" />
 
   <meta property="og:type"         content="website" />
   <meta property="og:site_name"    content="SpaceCoastStays" />
   <meta property="og:url"          content="https://spacecoaststays.com/" />
-  <meta property="og:title"        content="SpaceCoastStays — Cocoa Beach Vacation Rentals at Sandcastles" />
-  <meta property="og:description"  content="Oceanfront and ocean-view vacation rentals at Sandcastles Condominiums, Cocoa Beach FL. Watch rocket launches from your balcony. Book on Airbnb or VRBO." />
+  <meta property="og:title"        content="SpaceCoastStays — Space Coast Vacation Rentals" />
+  <meta property="og:description"  content="Oceanfront condo rentals across Cocoa Beach, Cape Canaveral, and Satellite Beach. Watch rocket launches from your balcony." />
   <meta property="og:image"        content="https://spacecoaststays.com/images/DJI_0293.jpg" />
-  <meta property="og:image:alt"    content="Aerial view of Sandcastles Condominiums on Cocoa Beach at dusk" />
 
   <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="SpaceCoastStays — Cocoa Beach Vacation Rentals" />
-  <meta name="twitter:description" content="Oceanfront condos at Sandcastles, Cocoa Beach FL. Watch rocket launches from your balcony. 12 miles from Kennedy Space Center." />
+  <meta name="twitter:title"       content="SpaceCoastStays — Space Coast Vacation Rentals" />
+  <meta name="twitter:description" content="Oceanfront condos across the Space Coast. Rocket launches from your balcony. Book on Airbnb or VRBO." />
   <meta name="twitter:image"       content="https://spacecoaststays.com/images/DJI_0293.jpg" />
 
-  <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "SpaceCoastStays",
-      "url": "https://spacecoaststays.com",
-      "description": "Vacation rental directory for Sandcastles Condominiums in Cocoa Beach, FL — 12 miles from Kennedy Space Center.",
-      "publisher": { "@type": "Organization", "name": "SpaceCoastStays", "email": "hello@spacecoaststays.com" }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "LodgingBusiness",
-      "name": "Sandcastles Condominiums",
-      "url": "https://spacecoaststays.com/sandcastles.html",
-      "description": "Beachfront condominium complex at 1000 N Atlantic Ave, Cocoa Beach FL. Vacation rental units on Airbnb and VRBO. Oceanfront units have a clear northwest view of Kennedy Space Center launch pads LC-39A and SLC-40.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1000 N Atlantic Ave",
-        "addressLocality": "Cocoa Beach",
-        "addressRegion": "FL",
-        "postalCode": "32931",
-        "addressCountry": "US"
-      },
-      "geo": { "@type": "GeoCoordinates", "latitude": 28.3361, "longitude": -80.6081 },
-      "amenityFeature": [
-        { "@type": "LocationFeatureSpecification", "name": "Oceanfront", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Swimming Pool", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Beach Access", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Private Balcony", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Rocket Launch View", "value": true }
-      ],
-      "nearbyAttraction": [
-        { "@type": "TouristAttraction", "name": "Kennedy Space Center", "description": "12 miles north — launch pads LC-39A and SLC-40 visible from oceanfront balconies" },
-        { "@type": "TouristAttraction", "name": "Port Canaveral and Jetty Park", "description": "6 miles north" },
-        { "@type": "TouristAttraction", "name": "Cocoa Beach Pier", "description": "1 mile south — 800-foot pier over the Atlantic" }
-      ]
-    }
-  ]
-  </script>
-
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── 2-ROW NAV ─────────────────────────────────── */
+    .nav { flex-direction: column; height: auto; padding: 0; }
+    .nav__row { width: 100%; display: flex; align-items: center; }
+    .nav__row--primary { padding: 0 24px; height: 60px; border-bottom: 1px solid rgba(255,255,255,.1); justify-content: space-between; }
+    .nav__row--areas { background: #1D4E66; padding: 0 24px; height: 44px; gap: 0; }
+    .nav__areas { list-style: none; margin: 0; padding: 0; display: flex; height: 100%; }
+    .nav__area-item { position: relative; height: 100%; display: flex; align-items: center; }
+    .nav__area-item > a { display: flex; align-items: center; height: 100%; padding: 0 18px; color: rgba(255,255,255,.85); font-size: .82rem; font-weight: 600; letter-spacing: .04em; text-decoration: none; white-space: nowrap; transition: background .15s, color .15s; gap: 5px; }
+    .nav__area-item > a:hover { background: rgba(255,255,255,.12); color: white; }
+    .nav__dropdown { display: none; position: absolute; top: 100%; left: 0; background: white; border-radius: 0 0 8px 8px; box-shadow: 0 8px 24px rgba(0,0,0,.12); list-style: none; margin: 0; padding: 8px 0; min-width: 200px; z-index: 200; }
+    .nav__area-item:hover .nav__dropdown { display: block; }
+    .nav__dropdown li a { display: block; padding: 9px 20px; color: var(--text); font-size: .83rem; font-weight: 500; text-decoration: none; transition: background .12s; }
+    .nav__dropdown li a:hover { background: var(--foam); color: var(--ocean); }
+    .nav__dropdown li.dropdown__section { padding: 10px 20px 4px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); border-top: 1px solid var(--sand-dark); margin-top: 4px; }
+    .nav__dropdown li.dropdown__section:first-child { border-top: none; margin-top: 0; }
+
+    /* ── AREA CARDS ─────────────────────────────────── */
+    .area-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 800px) { .area-cards { grid-template-columns: 1fr; } }
+
+    .area-card {
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      height: 280px;
+      display: flex;
+      align-items: flex-end;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,.12);
+      transition: transform .22s, box-shadow .22s;
+    }
+    .area-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.18); }
+
+    .area-card__bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .4s;
+    }
+    .area-card:hover .area-card__bg { transform: scale(1.04); }
+
+    .area-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,10,20,.8) 0%, rgba(6,10,20,.15) 60%, transparent 100%);
+    }
+
+    .area-card--soon .area-card__overlay {
+      background: linear-gradient(to top, rgba(6,10,20,.85) 0%, rgba(6,10,20,.5) 100%);
+    }
+
+    .area-card__body {
+      position: relative;
+      z-index: 2;
+      padding: 24px;
+      width: 100%;
+    }
+
+    .area-card__label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ocean-light);
+      margin-bottom: 6px;
+    }
+
+    .area-card__name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .area-card__sub {
+      font-size: .82rem;
+      color: rgba(255,255,255,.75);
+      font-weight: 500;
+    }
+
+    .area-card__cta {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: .78rem;
+      font-weight: 700;
+      color: white;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 100px;
+      padding: 5px 14px;
+      transition: background .15s, border-color .15s;
+    }
+    .area-card:hover .area-card__cta { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.7); }
+
+    .area-card--soon .area-card__cta { opacity: .6; pointer-events: none; }
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ══ NAV ═══════════════════════════════════════ -->
   <nav class="nav">
-    <div class="container nav__inner">
+    <div class="nav__row nav__row--primary">
       <a href="index.html" class="nav__logo">Space<span>Coast</span>Stays</a>
       <ul class="nav__links">
-        <li><a href="sandcastles.html">Browse Units</a></li>
-        <li><a href="cocoa-beach-guide.html">Cocoa Beach Guide</a></li>
+        <li><a href="cocoa-beach-guide.html">Things to Do</a></li>
         <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
+        <li><a href="#">Events</a></li>
         <li><a href="mailto:hello@spacecoaststays.com" class="nav__cta">List Your Unit</a></li>
+      </ul>
+    </div>
+    <div class="nav__row nav__row--areas">
+      <ul class="nav__areas">
+        <li class="nav__area-item">
+          <a href="cocoa-beach.html">Cocoa Beach ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Cocoa Beach</li>
+            <li><a href="sandcastles.html">Sandcastles</a></li>
+            <li><a href="cocoa-beach-club.html">Cocoa Beach Club</a></li>
+            <li><a href="chateau-by-the-sea.html">Chateau By The Sea</a></li>
+            <li><a href="spanish-main.html">Spanish Main</a></li>
+            <li><a href="twin-towers.html">Twin Towers</a></li>
+            <li><a href="diplomat.html">Diplomat</a></li>
+          </ul>
+        </li>
+        <li class="nav__area-item">
+          <a href="#">Cape Canaveral ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Cape Canaveral</li>
+            <li><a href="#">Canaveral Towers</a></li>
+            <li><a href="#">Cape Winds</a></li>
+            <li><a href="#">Canaveral Sands</a></li>
+          </ul>
+        </li>
+        <li class="nav__area-item">
+          <a href="#">Satellite Beach ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Satellite Beach</li>
+            <li><a href="#">Paradise Beach Club</a></li>
+            <li><a href="#">Sea Breakers</a></li>
+            <li><a href="#">Sandpiper Towers</a></li>
+          </ul>
+        </li>
+        <li class="nav__area-item">
+          <a href="#">Merritt Island ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Coming Soon</li>
+            <li><a href="#" style="opacity:.5;pointer-events:none;">Listings coming soon</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ══ HERO ══════════════════════════════════════ -->
   <section class="hero">
     <div class="hero__bg" style="background-image: url('images/DJI_0280.jpg'); background-size: cover; background-position: center; opacity: .55;" aria-hidden="true"></div>
     <div class="container">
       <div class="hero__content">
-        <span class="hero__eyebrow">Cocoa Beach, Florida</span>
+        <span class="hero__eyebrow">Florida's Space Coast</span>
         <h1 class="hero__title">Your home on the<br><em>Space Coast.</em></h1>
         <p class="hero__sub">
-          Handpicked vacation rentals at Sandcastles Condominiums — oceanfront, ocean view,
-          and pool-side units steps from the Atlantic. Rocket launches included.
+          Oceanfront vacation rentals across Cocoa Beach, Cape Canaveral, and Satellite Beach.
+          Beachfront condos, heated pools, and front-row seats to Kennedy Space Center rocket launches.
         </p>
         <div class="hero__actions">
-          <a href="sandcastles.html" class="btn btn--primary">Browse Available Units →</a>
-          <a href="cocoa-beach-guide.html" class="btn btn--outline">Explore Cocoa Beach</a>
+          <a href="cocoa-beach.html" class="btn btn--primary">Browse Cocoa Beach Rentals →</a>
+          <a href="cocoa-beach-guide.html" class="btn btn--outline">Explore the Space Coast</a>
         </div>
       </div>
     </div>
@@ -104,17 +206,17 @@
     </div>
   </section>
 
-  <!-- STATS STRIP -->
+  <!-- ══ STATS STRIP ════════════════════════════════ -->
   <div class="intro-strip">
     <div class="container">
       <div class="intro-strip__grid">
         <div class="intro-strip__item">
-          <div class="intro-strip__num">15+</div>
-          <div class="intro-strip__label">Available Units</div>
+          <div class="intro-strip__num">6</div>
+          <div class="intro-strip__label">Cocoa Beach Complexes</div>
         </div>
         <div class="intro-strip__item">
-          <div class="intro-strip__num">7</div>
-          <div class="intro-strip__label">Floors of Ocean Views</div>
+          <div class="intro-strip__num">50+</div>
+          <div class="intro-strip__label">Available Units</div>
         </div>
         <div class="intro-strip__item">
           <div class="intro-strip__num">45 mi</div>
@@ -128,78 +230,85 @@
     </div>
   </div>
 
-  <!-- BUILDING INTRO -->
-  <section class="building section">
+  <!-- ══ BROWSE BY AREA ════════════════════════════ -->
+  <section class="section">
     <div class="container">
-      <div class="building__grid">
-        <div class="building__img">
-          <img
-            src="images/DJI_0297.jpg"
-            alt="Sandcastles Condominiums — aerial view of building, pool, and ocean"
-            loading="lazy"
-          />
-        </div>
-        <div class="building__text">
-          <p class="building__eyebrow">Sandcastles Condominiums</p>
-          <h2>1000 N Atlantic Ave,<br>Cocoa Beach</h2>
-          <p>
-            Right on the sand. Sandcastles is one of Cocoa Beach's most beloved
-            beachfront condominium buildings — a community of owners who love
-            this stretch of the Space Coast and open their doors to guests
-            looking for a real Florida beach experience.
-          </p>
-          <p>
-            Every unit is individually owned and uniquely decorated, but all share
-            the same unbeatable location: direct beach access, a heated pool,
-            and front-row seats to Kennedy Space Center rocket launches.
-          </p>
-          <ul class="building__features">
-            <li class="building__feature">Direct beach access</li>
-            <li class="building__feature">Heated pool & sundeck</li>
-            <li class="building__feature">Covered parking</li>
-            <li class="building__feature">Elevator access</li>
-            <li class="building__feature">Oceanfront balconies</li>
-            <li class="building__feature">Pet-friendly units available</li>
-          </ul>
-        </div>
+      <h2 style="margin-bottom:8px;">Browse by Area</h2>
+      <p style="color:var(--text-muted); margin-bottom:40px;">Every complex books directly on Airbnb or VRBO — no middleman.</p>
+
+      <div class="area-cards">
+
+        <a href="cocoa-beach.html" class="area-card">
+          <div class="area-card__bg" style="background-image:url('images/DJI_0244.jpg');"></div>
+          <div class="area-card__overlay"></div>
+          <div class="area-card__body">
+            <p class="area-card__label">Florida's Space Coast</p>
+            <p class="area-card__name">Cocoa Beach</p>
+            <p class="area-card__sub">6 complexes · 50+ units · 1 mi from the Pier</p>
+            <span class="area-card__cta">Browse Rentals →</span>
+          </div>
+        </a>
+
+        <a href="#" class="area-card area-card--soon">
+          <div class="area-card__bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Cape_Canaveral_Air_Force_Station_looking_north.jpg/1280px-Cape_Canaveral_Air_Force_Station_looking_north.jpg');"></div>
+          <div class="area-card__overlay"></div>
+          <div class="area-card__body">
+            <p class="area-card__label">Florida's Space Coast</p>
+            <p class="area-card__name">Cape Canaveral</p>
+            <p class="area-card__sub">Canaveral Towers · Cape Winds · Canaveral Sands</p>
+            <span class="area-card__cta">Coming Soon</span>
+          </div>
+        </a>
+
+        <a href="#" class="area-card area-card--soon">
+          <div class="area-card__bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Satellite_Beach_FL_aerial01.jpg/1280px-Satellite_Beach_FL_aerial01.jpg');"></div>
+          <div class="area-card__overlay"></div>
+          <div class="area-card__body">
+            <p class="area-card__label">Florida's Space Coast</p>
+            <p class="area-card__name">Satellite Beach</p>
+            <p class="area-card__sub">Paradise Beach Club · Sea Breakers · Sandpiper Towers</p>
+            <span class="area-card__cta">Coming Soon</span>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
 
-  <!-- FEATURED PAGES -->
+  <!-- ══ FEATURED LINKS ════════════════════════════ -->
   <section class="section section--sand">
     <div class="container">
-      <h2 style="text-align:center; margin-bottom: 12px;">Make the most of Cocoa Beach</h2>
+      <h2 style="text-align:center; margin-bottom: 12px;">Make the most of your stay</h2>
       <p style="text-align:center; color:var(--text-muted); margin-bottom: 48px; font-size:1.05rem;">
-        Everything you need before, during, and after your stay.
+        Everything you need before, during, and after your trip.
       </p>
       <div class="guide-grid">
 
-        <a href="sandcastles.html" class="guide-card" style="display:block;">
+        <a href="cocoa-beach.html" class="guide-card" style="display:block;">
           <div class="guide-card__img">
-            <img src="images/024A6047.jpg" alt="Sandcastles heated pool" loading="lazy" />
+            <img src="images/DJI_0297.jpg" alt="Oceanfront condos in Cocoa Beach" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category">Browse Rentals</p>
-            <h3>Sandcastles Listings</h3>
-            <p>Filter by oceanfront, ocean view, Airbnb, or VRBO. Every unit is steps from the Atlantic.</p>
+            <h3>Cocoa Beach Complexes</h3>
+            <p>6 oceanfront buildings. Filter by complex, Airbnb, or VRBO. Every unit is steps from the Atlantic.</p>
           </div>
         </a>
 
         <a href="cocoa-beach-guide.html" class="guide-card" style="display:block;">
           <div class="guide-card__img">
-            <img src="images/024A6050.jpg" alt="Beach boardwalk at Cocoa Beach" loading="lazy" />
+            <img src="images/024A6050.jpg" alt="Cocoa Beach boardwalk" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category">Local Guide</p>
-            <h3>The Cocoa Beach Guide</h3>
+            <h3>The Space Coast Guide</h3>
             <p>Best restaurants, surf shops, parks, and hidden gems on the Space Coast — curated by locals.</p>
           </div>
         </a>
 
         <a href="watch-a-rocket-launch.html" class="guide-card" style="display:block;">
           <div class="guide-card__img">
-            <img src="images/DJI_0280.jpg" alt="Aerial view of Sandcastles at sunset" loading="lazy" />
+            <img src="images/DJI_0280.jpg" alt="Aerial view at sunset" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category">Space</p>
@@ -212,42 +321,52 @@
     </div>
   </section>
 
-  <!-- CTA BAND -->
+  <!-- ══ CTA BAND ══════════════════════════════════ -->
   <section class="cta-band">
     <div class="container">
-      <h2>Own a unit at Sandcastles?</h2>
-      <p>Get your listing in front of guests already looking to stay here. It's free to be featured.</p>
+      <h2>Own a unit on the Space Coast?</h2>
+      <p>Get your Airbnb or VRBO listing featured here — free for owners at any of our complexes.</p>
       <a href="mailto:hello@spacecoaststays.com" class="btn btn--primary">
         Contact Us → hello@spacecoaststays.com
       </a>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ══ FOOTER ════════════════════════════════════ -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div>
           <p class="footer__brand">SpaceCoastStays.com</p>
           <p class="footer__desc">
-            A curated directory of vacation rentals at Sandcastles Condominiums,
-            1000 N Atlantic Ave, Cocoa Beach FL. We link to Airbnb and VRBO listings
-            — all bookings are handled directly on those platforms.
+            A curated directory of vacation rentals across the Space Coast — Cocoa Beach, Cape Canaveral, and Satellite Beach. All bookings handled on Airbnb and VRBO.
           </p>
+        </div>
+        <div>
+          <p class="footer__heading">Cocoa Beach</p>
+          <ul class="footer__links">
+            <li><a href="cocoa-beach.html">All Complexes</a></li>
+            <li><a href="sandcastles.html">Sandcastles</a></li>
+            <li><a href="cocoa-beach-club.html">Cocoa Beach Club</a></li>
+            <li><a href="chateau-by-the-sea.html">Chateau By The Sea</a></li>
+            <li><a href="spanish-main.html">Spanish Main</a></li>
+            <li><a href="twin-towers.html">Twin Towers</a></li>
+            <li><a href="diplomat.html">The Diplomat</a></li>
+          </ul>
         </div>
         <div>
           <p class="footer__heading">Explore</p>
           <ul class="footer__links">
-            <li><a href="sandcastles.html">Browse Units</a></li>
-            <li><a href="cocoa-beach-guide.html">Cocoa Beach Guide</a></li>
+            <li><a href="cocoa-beach-guide.html">Space Coast Guide</a></li>
             <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
+            <li><a href="#">Events</a></li>
           </ul>
         </div>
         <div>
           <p class="footer__heading">Contact</p>
           <ul class="footer__links">
             <li><a href="mailto:hello@spacecoaststays.com">hello@spacecoaststays.com</a></li>
-            <li><a href="sandcastles.html">List Your Unit</a></li>
+            <li><a href="mailto:hello@spacecoaststays.com">List Your Unit</a></li>
           </ul>
         </div>
       </div>
