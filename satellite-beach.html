@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satellite Beach Vacation Rentals — Condos & Complexes | SpaceCoastStays</title>
+  <meta name="description" content="Browse oceanfront vacation rental condos in Satellite Beach, FL — Paradise Beach Club, Sea Breakers, and Sandpiper Towers. Direct beach access south of Cocoa Beach.">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .nav { flex-direction: column; height: auto; padding: 0; }
+    .nav__row { width: 100%; display: flex; align-items: center; }
+    .nav__row--primary { padding: 0 24px; height: 60px; border-bottom: 1px solid rgba(255,255,255,.1); justify-content: space-between; }
+    .nav__row--areas { background: #1D4E66; padding: 0 24px; height: 44px; gap: 0; }
+    .nav__areas { list-style: none; margin: 0; padding: 0; display: flex; height: 100%; }
+    .nav__area-item { position: relative; height: 100%; display: flex; align-items: center; }
+    .nav__area-item > a { display: flex; align-items: center; height: 100%; padding: 0 18px; color: rgba(255,255,255,.85); font-size: .82rem; font-weight: 600; letter-spacing: .04em; text-decoration: none; white-space: nowrap; transition: background .15s, color .15s; gap: 5px; }
+    .nav__area-item > a:hover, .nav__area-item.active > a { background: rgba(255,255,255,.12); color: white; }
+    .nav__area-item.active > a { border-bottom: 2px solid var(--ocean-light); }
+    .nav__dropdown { display: none; position: absolute; top: 100%; left: 0; background: white; border-radius: 0 0 8px 8px; box-shadow: 0 8px 24px rgba(0,0,0,.12); list-style: none; margin: 0; padding: 8px 0; min-width: 200px; z-index: 200; }
+    .nav__area-item:hover .nav__dropdown { display: block; }
+    .nav__dropdown li a { display: block; padding: 9px 20px; color: var(--text); font-size: .83rem; font-weight: 500; text-decoration: none; transition: background .12s; }
+    .nav__dropdown li a:hover { background: var(--foam); color: var(--ocean); }
+    .nav__dropdown li.dropdown__section { padding: 10px 20px 4px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); border-top: 1px solid var(--sand-dark); margin-top: 4px; }
+    .nav__dropdown li.dropdown__section:first-child { border-top: none; margin-top: 0; }
+    .area-hero { position: relative; height: 380px; display: flex; align-items: flex-end; overflow: hidden; }
+    .area-hero__bg { position: absolute; inset: 0; background-size: cover; background-position: center 40%; }
+    .area-hero__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,10,20,.78) 0%, rgba(6,10,20,.2) 60%, transparent 100%); }
+    .area-hero__content { position: relative; z-index: 2; padding: 0 0 48px; width: 100%; }
+    .area-hero__eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ocean-light); margin-bottom: 8px; }
+    .area-hero h1 { color: white; font-size: 2.6rem; margin-bottom: 10px; }
+    .area-hero__sub { color: rgba(255,255,255,.95); font-size: 1rem; font-weight: 600; max-width: 540px; text-shadow: 0 1px 4px rgba(0,0,0,.4); }
+    .area-hero__stats { display: flex; gap: 32px; margin-top: 24px; }
+    .area-hero__stat-num { font-size: 1.5rem; font-weight: 800; color: white; line-height: 1; }
+    .area-hero__stat-label { font-size: .72rem; font-weight: 600; color: rgba(255,255,255,.6); letter-spacing: .06em; text-transform: uppercase; }
+    .complex-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    @media (max-width: 960px) { .complex-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .complex-grid { grid-template-columns: 1fr; } }
+    .complex-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.07); transition: transform .22s, box-shadow .22s; display: flex; flex-direction: column; }
+    .complex-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
+    .complex-card__img { height: 200px; overflow: hidden; background: var(--sand); position: relative; }
+    .complex-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .complex-card:hover .complex-card__img img { transform: scale(1.04); }
+    .complex-card__body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .complex-card__location { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .complex-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text); }
+    .complex-card__desc { font-size: .87rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
+    .complex-card__amenities { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+    .complex-card__tag { background: var(--foam); color: var(--ocean); font-size: .7rem; font-weight: 600; padding: 3px 10px; border-radius: 100px; }
+    .complex-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--sand); margin-top: auto; }
+    .complex-card__count { font-size: .78rem; color: var(--text-muted); }
+    .complex-card__count strong { color: var(--text); font-weight: 700; }
+    .btn--sm { padding: 8px 16px; font-size: .8rem; }
+    .weather-strip { background: var(--ocean); color: white; padding: 16px 0; }
+    .weather-inner { display: flex; align-items: center; gap: 32px; }
+    .weather-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .weather-temp { font-size: 1.8rem; font-weight: 800; line-height: 1; }
+    .weather-desc { font-size: .85rem; opacity: .85; }
+    .weather-details { display: flex; gap: 24px; margin-left: auto; }
+    .weather-detail { text-align: center; }
+    .weather-detail__val { font-size: 1rem; font-weight: 700; }
+    .weather-detail__key { font-size: .68rem; opacity: .65; text-transform: uppercase; letter-spacing: .06em; }
+    .area-strip { background: white; border-bottom: 1px solid var(--sand-dark); position: sticky; top: 0; z-index: 90; }
+    .area-strip__inner { display: flex; gap: 0; overflow-x: auto; }
+    .area-strip__link { padding: 14px 20px; font-size: .82rem; font-weight: 600; color: var(--text-muted); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: all .15s; }
+    .area-strip__link:hover { color: var(--ocean); }
+    .area-strip__link.active { color: var(--ocean); border-bottom-color: var(--ocean); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__row nav__row--primary">
+      <a href="index.html" class="nav__logo">Space<span>Coast</span>Stays</a>
+      <ul class="nav__links">
+        <li><a href="cocoa-beach-guide.html">Things to Do</a></li>
+        <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="mailto:hello@spacecoaststays.com" class="nav__cta">List Your Unit</a></li>
+      </ul>
+    </div>
+    <div class="nav__row nav__row--areas">
+      <ul class="nav__areas">
+        <li class="nav__area-item">
+          <a href="cocoa-beach.html">Cocoa Beach ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Cocoa Beach</li>
+            <li><a href="sandcastles.html">Sandcastles</a></li>
+            <li><a href="cocoa-beach-club.html">Cocoa Beach Club</a></li>
+            <li><a href="chateau-by-the-sea.html">Chateau By The Sea</a></li>
+            <li><a href="spanish-main.html">Spanish Main</a></li>
+            <li><a href="twin-towers.html">Twin Towers</a></li>
+            <li><a href="diplomat.html">Diplomat</a></li>
+          </ul>
+        </li>
+        <li class="nav__area-item">
+          <a href="cape-canaveral.html">Cape Canaveral ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Cape Canaveral</li>
+            <li><a href="canaveral-towers.html">Canaveral Towers</a></li>
+            <li><a href="cape-winds.html">Cape Winds</a></li>
+            <li><a href="canaveral-sands.html">Canaveral Sands</a></li>
+          </ul>
+        </li>
+        <li class="nav__area-item active">
+          <a href="satellite-beach.html">Satellite Beach ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Satellite Beach</li>
+            <li><a href="paradise-beach-club.html">Paradise Beach Club</a></li>
+            <li><a href="sea-breakers.html">Sea Breakers</a></li>
+            <li><a href="sandpiper-towers.html">Sandpiper Towers</a></li>
+          </ul>
+        </li>
+        <li class="nav__area-item">
+          <a href="#">Merritt Island ▾</a>
+          <ul class="nav__dropdown">
+            <li class="dropdown__section">Coming Soon</li>
+            <li><a href="#" style="opacity:.5;pointer-events:none;">Listings coming soon</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="area-hero">
+    <div class="area-hero__bg" style="background-image:url('https://www.happypalmstays.com/wp-content/uploads/2026/02/DJI_20260123175857_0050_D.jpg');"></div>
+    <div class="area-hero__overlay"></div>
+    <div class="area-hero__content container">
+      <p class="area-hero__eyebrow">Florida's Space Coast</p>
+      <h1>Satellite Beach</h1>
+      <p class="area-hero__sub">Laid-back oceanfront condos south of Cocoa Beach with direct beach access, heated pools, and a quieter stretch of the Atlantic coast.</p>
+      <div class="area-hero__stats">
+        <div><div class="area-hero__stat-num">3</div><div class="area-hero__stat-label">Complexes</div></div>
+        <div><div class="area-hero__stat-num">20+</div><div class="area-hero__stat-label">Available Units</div></div>
+        <div><div class="area-hero__stat-num">20 mi</div><div class="area-hero__stat-label">From KSC</div></div>
+        <div><div class="area-hero__stat-num">Steps</div><div class="area-hero__stat-label">To the Beach</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="weather-strip">
+    <div class="container">
+      <div class="weather-inner">
+        <div>
+          <div class="weather-label">Satellite Beach Today</div>
+          <div class="weather-temp">81°F</div>
+          <div class="weather-desc">Mostly Sunny · SE Wind 10 mph</div>
+        </div>
+        <div class="weather-details">
+          <div class="weather-detail"><div class="weather-detail__val">78°F</div><div class="weather-detail__key">Water Temp</div></div>
+          <div class="weather-detail"><div class="weather-detail__val">2–3 ft</div><div class="weather-detail__key">Surf</div></div>
+          <div class="weather-detail"><div class="weather-detail__val">UV 9</div><div class="weather-detail__key">UV Index</div></div>
+          <div class="weather-detail"><div class="weather-detail__val">25%</div><div class="weather-detail__key">Rain</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-strip">
+    <div class="container">
+      <div class="area-strip__inner">
+        <a href="#complexes" class="area-strip__link active">Complexes</a>
+        <a href="watch-a-rocket-launch.html" class="area-strip__link">Rocket Launches</a>
+        <a href="cocoa-beach-guide.html" class="area-strip__link">Things to Do</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="complexes">
+    <div class="container">
+      <h2 style="margin-bottom:8px;">Vacation Rental Complexes</h2>
+      <p style="color:var(--text-muted); margin-bottom:40px;">Every unit books directly on Airbnb or VRBO. Click a complex to browse available units.</p>
+      <div class="complex-grid">
+
+        <div class="complex-card">
+          <div class="complex-card__img">
+            <img src="https://www.happypalmstays.com/wp-content/uploads/2026/02/DJI_20260123175857_0050_D.jpg" alt="Paradise Beach Club Satellite Beach aerial" />
+          </div>
+          <div class="complex-card__body">
+            <p class="complex-card__location">Satellite Beach · Oceanfront</p>
+            <h3>Paradise Beach Club</h3>
+            <p class="complex-card__desc">Oceanfront resort with a central pool, 2 BBQ stations, 2 fenced dog parks, bocce ball, shuffleboard, and a fitness room with ocean views. Pet-friendly complex on the Atlantic.</p>
+            <div class="complex-card__amenities">
+              <span class="complex-card__tag">Oceanfront</span>
+              <span class="complex-card__tag">Pool</span>
+              <span class="complex-card__tag">Pet Friendly</span>
+              <span class="complex-card__tag">BBQ</span>
+            </div>
+            <div class="complex-card__footer">
+              <div class="complex-card__count"><strong>7</strong> units listed</div>
+              <a href="paradise-beach-club.html" class="btn btn--primary btn--sm">View Listings →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="complex-card">
+          <div class="complex-card__img">
+            <img src="https://u.realgeeks.media/terrypalmiter/satbeach/sea_breakers/sea_breakers_01.jpg" alt="Sea Breakers Satellite Beach" />
+          </div>
+          <div class="complex-card__body">
+            <p class="complex-card__location">Satellite Beach · Oceanfront</p>
+            <h3>Sea Breakers</h3>
+            <p class="complex-card__desc">Small 18-unit oceanfront community with the feel of old Florida. Steps from the ocean's edge with refreshed balcony railings, new exterior paint, and a quiet beachfront atmosphere.</p>
+            <div class="complex-card__amenities">
+              <span class="complex-card__tag">Oceanfront</span>
+              <span class="complex-card__tag">18 Units</span>
+              <span class="complex-card__tag">Private Access</span>
+            </div>
+            <div class="complex-card__footer">
+              <div class="complex-card__count"><strong>3</strong> units listed</div>
+              <a href="sea-breakers.html" class="btn btn--primary btn--sm">View Listings →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="complex-card">
+          <div class="complex-card__img">
+            <img src="https://u.realgeeks.media/terrypalmiter/satbeach/sandpiper_towers/sandpiper_towers_01.jpg" alt="Sandpiper Towers Satellite Beach" />
+          </div>
+          <div class="complex-card__body">
+            <p class="complex-card__location">205 Highway A1A · Satellite Beach</p>
+            <h3>Sandpiper Towers</h3>
+            <p class="complex-card__desc">Oceanfront high-rise with a new lobby, swimming pool, game room, media center, and updated fire systems. Wide balconies with unobstructed Atlantic views from upper floors.</p>
+            <div class="complex-card__amenities">
+              <span class="complex-card__tag">Oceanfront</span>
+              <span class="complex-card__tag">High-Rise</span>
+              <span class="complex-card__tag">Pool</span>
+              <span class="complex-card__tag">Game Room</span>
+            </div>
+            <div class="complex-card__footer">
+              <div class="complex-card__count"><strong>10</strong> units listed</div>
+              <a href="sandpiper-towers.html" class="btn btn--primary btn--sm">View Listings →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">SpaceCoastStays.com</p>
+          <p class="footer__desc">A curated directory of vacation rentals across the Space Coast. All bookings handled on Airbnb and VRBO.</p>
+        </div>
+        <div>
+          <p class="footer__heading">Satellite Beach</p>
+          <ul class="footer__links">
+            <li><a href="paradise-beach-club.html">Paradise Beach Club</a></li>
+            <li><a href="sea-breakers.html">Sea Breakers</a></li>
+            <li><a href="sandpiper-towers.html">Sandpiper Towers</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">Other Areas</p>
+          <ul class="footer__links">
+            <li><a href="cocoa-beach.html">Cocoa Beach</a></li>
+            <li><a href="cape-canaveral.html">Cape Canaveral</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">Explore</p>
+          <ul class="footer__links">
+            <li><a href="cocoa-beach-guide.html">Space Coast Guide</a></li>
+            <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
+            <li><a href="mailto:hello@spacecoaststays.com">List Your Unit</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 SpaceCoastStays.com · Not affiliated with Airbnb or VRBO</span>
+        <span>Made with ☀️ in Cocoa Beach</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
