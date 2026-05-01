@@ -4,82 +4,199 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SpaceCoastStays — Sandcastles Condominiums | Cocoa Beach Vacation Rentals</title>
-  <meta name="description" content="Vacation rentals at Sandcastles Condominiums, 1000 N Atlantic Ave, Cocoa Beach FL. Oceanfront condos, heated pool, and front-row seats to Kennedy Space Center rocket launches. Book on Airbnb or VRBO.">
-
+  <meta name="description" content="Vacation rentals at Sandcastles Condominiums, 1000 N Atlantic Ave, Cocoa Beach FL. Oceanfront condos with heated pool and front-row seats to Kennedy Space Center rocket launches.">
   <link rel="canonical" href="https://spacecoaststays.com/" />
-
-  <meta property="og:type"         content="website" />
-  <meta property="og:site_name"    content="SpaceCoastStays" />
-  <meta property="og:url"          content="https://spacecoaststays.com/" />
-  <meta property="og:title"        content="SpaceCoastStays — Sandcastles Condominiums, Cocoa Beach" />
-  <meta property="og:description"  content="Oceanfront vacation rentals at Sandcastles Condominiums. Watch rocket launches from your balcony. Book on Airbnb or VRBO." />
-  <meta property="og:image"        content="https://spacecoaststays.com/images/DJI_0293.jpg" />
-
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="SpaceCoastStays — Sandcastles Condominiums, Cocoa Beach" />
-  <meta name="twitter:description" content="Oceanfront condos at Sandcastles, Cocoa Beach FL. Rocket launches from your balcony. Book on Airbnb or VRBO." />
-  <meta name="twitter:image"       content="https://spacecoaststays.com/images/DJI_0293.jpg" />
-
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* ── AREA CARDS ─────────────────────────────────── */
-    .feature-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    @media (max-width: 800px) { .feature-cards { grid-template-columns: 1fr; } }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-    .feature-card {
-      border-radius: 14px;
-      overflow: hidden;
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── NAV ── */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(11,35,51,.85); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .site-nav__inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-nav__logo {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+      color: white; text-decoration: none; letter-spacing: -.01em;
+    }
+    .site-nav__logo span { color: #A8D4E6; }
+    .site-nav__links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .site-nav__links a { color: rgba(255,255,255,.75); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .2s; }
+    .site-nav__links a:hover { color: white; }
+    .site-nav__cta {
+      background: #C0392B; color: white !important; padding: 9px 22px;
+      border-radius: 100px; font-weight: 600 !important; font-size: .85rem !important;
+      transition: background .2s !important;
+    }
+    .site-nav__cta:hover { background: #a93226 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0B2333 0%, #1D4E66 55%, #2B6B8A 100%);
+      display: flex; align-items: center;
+      padding: 100px 0 60px;
+    }
+    .hero__inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .hero__eyebrow {
+      font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: #A8D4E6; margin-bottom: 20px; display: block;
+    }
+    .hero__title {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 800; color: white; line-height: 1.05; margin-bottom: 24px;
+    }
+    .hero__title em { font-style: italic; color: #A8D4E6; }
+    .hero__sub {
+      font-size: 1.05rem; color: rgba(255,255,255,.72); line-height: 1.7;
+      margin-bottom: 40px; font-weight: 300; max-width: 480px;
+    }
+    .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero__btn {
+      display: inline-block; padding: 14px 28px; border-radius: 100px;
+      font-size: .9rem; font-weight: 600; text-decoration: none; transition: all .2s;
+    }
+    .hero__btn--primary { background: white; color: #0B2333; }
+    .hero__btn--primary:hover { background: #A8D4E6; }
+    .hero__btn--outline { border: 1.5px solid rgba(255,255,255,.4); color: white; }
+    .hero__btn--outline:hover { background: rgba(255,255,255,.1); border-color: white; }
+    .hero__photo {
       position: relative;
-      height: 280px;
-      display: flex;
-      align-items: flex-end;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,.12);
+    }
+    .hero__photo img {
+      width: 100%; height: 520px; object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 40px 100px rgba(0,0,0,.5);
+    }
+    .hero__photo-badge {
+      position: absolute; bottom: -18px; left: 28px;
+      background: white; border-radius: 12px; padding: 14px 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.18);
+      display: flex; gap: 20px;
+    }
+    .hero__photo-stat { text-align: center; }
+    .hero__photo-stat strong { display: block; font-size: 1.2rem; font-weight: 800; color: #0B2333; }
+    .hero__photo-stat span { font-size: .72rem; color: #6b7280; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+
+    /* ── STRIP ── */
+    .strip {
+      background: #0B2333; padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .strip__inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      display: flex; gap: 0; justify-content: space-around; align-items: center;
+    }
+    .strip__item { text-align: center; }
+    .strip__num { font-size: 1.6rem; font-weight: 800; color: white; font-family: 'Playfair Display', serif; }
+    .strip__label { font-size: .75rem; color: rgba(255,255,255,.5); font-weight: 500; text-transform: uppercase; letter-spacing: .08em; margin-top: 3px; }
+    .strip__div { width: 1px; height: 40px; background: rgba(255,255,255,.12); }
+
+    /* ── FEATURES ── */
+    .features { padding: 100px 0; background: #f8f9fb; }
+    .features__inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .features__header { text-align: center; margin-bottom: 60px; }
+    .features__header h2 {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; color: #0B2333; margin-bottom: 12px;
+    }
+    .features__header p { color: #6b7280; font-size: 1rem; font-weight: 400; }
+    .features__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .feat-card {
+      background: white; border-radius: 16px;
+      overflow: hidden; text-decoration: none;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
       transition: transform .22s, box-shadow .22s;
     }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.18); }
-    .feature-card__bg {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      transition: transform .4s;
+    .feat-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,.13); }
+    .feat-card__img { height: 220px; overflow: hidden; }
+    .feat-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .feat-card:hover .feat-card__img img { transform: scale(1.05); }
+    .feat-card__body { padding: 24px 26px 28px; }
+    .feat-card__label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: #2B6B8A; margin-bottom: 8px;
     }
-    .feature-card:hover .feature-card__bg { transform: scale(1.04); }
-    .feature-card__overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(6,10,20,.8) 0%, rgba(6,10,20,.15) 60%, transparent 100%);
+    .feat-card__title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #0B2333; margin-bottom: 10px; line-height: 1.2; }
+    .feat-card__desc { font-size: .9rem; color: #6b7280; line-height: 1.65; }
+    .feat-card__link { display: inline-block; margin-top: 18px; font-size: .85rem; font-weight: 600; color: #1D4E66; }
+
+    /* ── CTA BAND ── */
+    .cta { background: #C0392B; padding: 80px 0; text-align: center; }
+    .cta__inner { max-width: 640px; margin: 0 auto; padding: 0 32px; }
+    .cta h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: white; margin-bottom: 12px; }
+    .cta p { color: rgba(255,255,255,.82); margin-bottom: 28px; font-size: 1rem; }
+    .cta__btn {
+      display: inline-block; background: white; color: #C0392B;
+      padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .95rem;
+      text-decoration: none; transition: background .2s;
     }
-    .feature-card__body { position: relative; z-index: 2; padding: 24px; width: 100%; }
-    .feature-card__label { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ocean-light); margin-bottom: 6px; }
-    .feature-card__name { font-size: 1.4rem; font-weight: 800; color: white; line-height: 1.15; margin-bottom: 6px; }
-    .feature-card__sub { font-size: .82rem; color: rgba(255,255,255,.75); font-weight: 500; }
-    .feature-card__cta { display: inline-block; margin-top: 12px; font-size: .78rem; font-weight: 700; color: white; border: 1px solid rgba(255,255,255,.4); border-radius: 100px; padding: 5px 14px; transition: background .15s, border-color .15s; }
-    .feature-card:hover .feature-card__cta { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.7); }
+    .cta__btn:hover { background: #fff5f5; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: #0B2333; padding: 60px 0 32px; }
+    .site-footer__inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .site-footer__grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px;
+    }
+    .site-footer__brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 10px; }
+    .site-footer__desc { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.65; }
+    .site-footer__heading { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 14px; }
+    .site-footer__links { list-style: none; }
+    .site-footer__links li { margin-bottom: 8px; }
+    .site-footer__links a { color: rgba(255,255,255,.65); font-size: .875rem; text-decoration: none; transition: color .15s; }
+    .site-footer__links a:hover { color: white; }
+    .site-footer__bottom {
+      border-top: 1px solid rgba(255,255,255,.08); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .8rem; color: rgba(255,255,255,.35);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero__inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero__photo { display: none; }
+      .features__grid { grid-template-columns: 1fr; }
+      .site-footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .site-nav__links { gap: 18px; }
+    }
+    @media (max-width: 600px) {
+      .strip__inner { flex-wrap: wrap; gap: 24px; }
+      .strip__div { display: none; }
+      .site-footer__grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-<body>
+<body style="font-family: 'Inter', sans-serif; background: white;">
 
   <!-- NAV -->
-  <nav class="nav">
-    <div class="nav__inner container">
-      <a href="index.html" class="nav__logo">Space<span>Coast</span>Stays</a>
-      <ul class="nav__links">
+  <nav class="site-nav">
+    <div class="site-nav__inner">
+      <a href="index.html" class="site-nav__logo">Space<span>Coast</span>Stays</a>
+      <ul class="site-nav__links">
         <li><a href="sandcastles.html">Browse Units</a></li>
         <li><a href="cocoa-beach-guide.html">Things to Do</a></li>
         <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
-        <li><a href="mailto:hello@spacecoaststays.com" class="nav__cta">List Your Unit</a></li>
+        <li><a href="mailto:hello@spacecoaststays.com" class="site-nav__cta">List Your Unit</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" style="align-items: flex-start; padding-top: 48px;">
-    <div class="hero__bg" style="background-image: url('images/DJI_0280.jpg'); background-size: cover; background-position: center 70%; opacity: .55;" aria-hidden="true"></div>
-    <div class="container">
-      <div class="hero__content">
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__text">
         <span class="hero__eyebrow">1000 N Atlantic Ave · Cocoa Beach, FL</span>
         <h1 class="hero__title">Sandcastles<br><em>Condominiums.</em></h1>
         <p class="hero__sub">
@@ -87,80 +204,76 @@
           Oceanfront condos, heated pool, and front-row seats to Kennedy Space Center rocket launches.
         </p>
         <div class="hero__actions">
-          <a href="sandcastles.html" class="btn btn--primary">Browse Available Units →</a>
-          <a href="cocoa-beach-guide.html" class="btn btn--outline">Explore the Space Coast</a>
+          <a href="sandcastles.html" class="hero__btn hero__btn--primary">Browse Available Units →</a>
+          <a href="cocoa-beach-guide.html" class="hero__btn hero__btn--outline">Explore the Space Coast</a>
         </div>
       </div>
-    </div>
-    <div class="hero__scroll" aria-hidden="true">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M8 3v10M4 9l4 4 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      scroll
+      <div class="hero__photo">
+        <img src="images/DJI_0280.jpg" alt="Aerial view of Sandcastles Condominiums at sunset, Cocoa Beach" />
+        <div class="hero__photo-badge">
+          <div class="hero__photo-stat"><strong>20+</strong><span>Units</span></div>
+          <div class="hero__photo-stat"><strong>Direct</strong><span>Oceanfront</span></div>
+          <div class="hero__photo-stat"><strong>12 mi</strong><span>From KSC</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- STATS STRIP -->
-  <div class="intro-strip">
-    <div class="container">
-      <div class="intro-strip__grid">
-        <div class="intro-strip__item">
-          <div class="intro-strip__num">20+</div>
-          <div class="intro-strip__label">Available Units</div>
-        </div>
-        <div class="intro-strip__item">
-          <div class="intro-strip__num">Direct</div>
-          <div class="intro-strip__label">Oceanfront Building</div>
-        </div>
-        <div class="intro-strip__item">
-          <div class="intro-strip__num">45 mi</div>
-          <div class="intro-strip__label">From Orlando</div>
-        </div>
-        <div class="intro-strip__item">
-          <div class="intro-strip__num">12 mi</div>
-          <div class="intro-strip__label">From Kennedy Space Center</div>
-        </div>
-      </div>
+  <div class="strip">
+    <div class="strip__inner">
+      <div class="strip__item"><div class="strip__num">Airbnb</div><div class="strip__label">& VRBO Listings</div></div>
+      <div class="strip__div"></div>
+      <div class="strip__item"><div class="strip__num">Oceanfront</div><div class="strip__label">Building · Direct Beach Access</div></div>
+      <div class="strip__div"></div>
+      <div class="strip__item"><div class="strip__num">45 min</div><div class="strip__label">From Orlando</div></div>
+      <div class="strip__div"></div>
+      <div class="strip__item"><div class="strip__num">SpaceX</div><div class="strip__label">Launches From Your Balcony</div></div>
     </div>
   </div>
 
-  <!-- EVERYTHING AT SANDCASTLES -->
-  <section class="section">
-    <div class="container">
-      <h2 style="margin-bottom:8px;">Everything at Sandcastles</h2>
-      <p style="color:var(--text-muted); margin-bottom:40px;">All units book directly on Airbnb or VRBO — no middleman, no extra fees.</p>
-      <div class="feature-cards">
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="features__inner">
+      <div class="features__header">
+        <h2>Make the most of your stay</h2>
+        <p>Everything you need before, during, and after your trip to the Space Coast.</p>
+      </div>
+      <div class="features__grid">
 
-        <a href="sandcastles.html" class="feature-card">
-          <div class="feature-card__bg" style="background-image:url('images/DJI_0244.jpg');"></div>
-          <div class="feature-card__overlay"></div>
-          <div class="feature-card__body">
-            <p class="feature-card__label">Vacation Rentals</p>
-            <p class="feature-card__name">Browse All Units</p>
-            <p class="feature-card__sub">Oceanfront · Ocean View · Pool View</p>
-            <span class="feature-card__cta">See Available Units →</span>
+        <a href="sandcastles.html" class="feat-card">
+          <div class="feat-card__img">
+            <img src="images/DJI_0244.jpg" alt="Sandcastles Condominiums from the beach" loading="lazy" />
+          </div>
+          <div class="feat-card__body">
+            <p class="feat-card__label">Vacation Rentals</p>
+            <h3 class="feat-card__title">Browse All Units</h3>
+            <p class="feat-card__desc">Oceanfront, ocean view, and pool view condos. Filter by view, bedrooms, or platform. Every unit books directly on Airbnb or VRBO.</p>
+            <span class="feat-card__link">See available units →</span>
           </div>
         </a>
 
-        <a href="watch-a-rocket-launch.html" class="feature-card">
-          <div class="feature-card__bg" style="background-image:url('images/DJI_0297.jpg');"></div>
-          <div class="feature-card__overlay"></div>
-          <div class="feature-card__body">
-            <p class="feature-card__label">Space Coast</p>
-            <p class="feature-card__name">Watch a Rocket Launch</p>
-            <p class="feature-card__sub">Kennedy Space Center is 12 miles away</p>
-            <span class="feature-card__cta">Launch Guide →</span>
+        <a href="watch-a-rocket-launch.html" class="feat-card">
+          <div class="feat-card__img">
+            <img src="images/DJI_0297.jpg" alt="Aerial view of the Space Coast at sunset" loading="lazy" />
+          </div>
+          <div class="feat-card__body">
+            <p class="feat-card__label">Space Coast</p>
+            <h3 class="feat-card__title">Watch a Rocket Launch</h3>
+            <p class="feat-card__desc">Kennedy Space Center launches SpaceX Falcon 9s, Starships, and NASA missions year-round. Your balcony may be the best seat in the house.</p>
+            <span class="feat-card__link">Launch viewing guide →</span>
           </div>
         </a>
 
-        <a href="cocoa-beach-guide.html" class="feature-card">
-          <div class="feature-card__bg" style="background-image:url('images/024A6050.jpg');"></div>
-          <div class="feature-card__overlay"></div>
-          <div class="feature-card__body">
-            <p class="feature-card__label">Local Guide</p>
-            <p class="feature-card__name">Things to Do</p>
-            <p class="feature-card__sub">Restaurants, surf, parks & hidden gems</p>
-            <span class="feature-card__cta">Explore →</span>
+        <a href="cocoa-beach-guide.html" class="feat-card">
+          <div class="feat-card__img">
+            <img src="images/024A6050.jpg" alt="Cocoa Beach boardwalk and local spots" loading="lazy" />
+          </div>
+          <div class="feat-card__body">
+            <p class="feat-card__label">Local Guide</p>
+            <h3 class="feat-card__title">Things to Do on the Space Coast</h3>
+            <p class="feat-card__desc">Best restaurants, surf shops, state parks, and hidden gems — curated by locals who live and work on the Space Coast.</p>
+            <span class="feat-card__link">Explore the guide →</span>
           </div>
         </a>
 
@@ -168,53 +281,47 @@
     </div>
   </section>
 
-  <!-- CTA BAND -->
-  <section class="cta-band">
-    <div class="container">
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta__inner">
       <h2>Own a unit at Sandcastles?</h2>
-      <p>Get your Airbnb or VRBO listing featured here — free for owners.</p>
-      <a href="mailto:hello@spacecoaststays.com" class="btn btn--primary">
-        Contact Us → hello@spacecoaststays.com
-      </a>
+      <p>Get your Airbnb or VRBO listing featured here — free for owners. We handle the page, you keep the bookings.</p>
+      <a href="mailto:hello@spacecoaststays.com" class="cta__btn">hello@spacecoaststays.com →</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
         <div>
-          <p class="footer__brand">SpaceCoastStays.com</p>
-          <p class="footer__desc">
-            Vacation rentals at Sandcastles Condominiums, 1000 N Atlantic Ave, Cocoa Beach FL.
-            All bookings handled on Airbnb and VRBO.
-          </p>
+          <p class="site-footer__brand">SpaceCoastStays.com</p>
+          <p class="site-footer__desc">Vacation rentals at Sandcastles Condominiums, 1000 N Atlantic Ave, Cocoa Beach FL. All bookings handled directly on Airbnb and VRBO.</p>
         </div>
         <div>
-          <p class="footer__heading">Sandcastles</p>
-          <ul class="footer__links">
-            <li><a href="sandcastles.html">Browse All Units</a></li>
-            <li><a href="sandcastles.html?filter=oceanfront">Oceanfront Units</a></li>
-            <li><a href="sandcastles.html?filter=ocean-view">Ocean View Units</a></li>
-            <li><a href="sandcastles.html?filter=pool-view">Pool View Units</a></li>
+          <p class="site-footer__heading">Browse</p>
+          <ul class="site-footer__links">
+            <li><a href="sandcastles.html">All Units</a></li>
+            <li><a href="sandcastles.html">Oceanfront Units</a></li>
+            <li><a href="sandcastles.html">Ocean View Units</a></li>
           </ul>
         </div>
         <div>
-          <p class="footer__heading">Explore</p>
-          <ul class="footer__links">
+          <p class="site-footer__heading">Explore</p>
+          <ul class="site-footer__links">
             <li><a href="cocoa-beach-guide.html">Space Coast Guide</a></li>
             <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
           </ul>
         </div>
         <div>
-          <p class="footer__heading">Contact</p>
-          <ul class="footer__links">
+          <p class="site-footer__heading">Contact</p>
+          <ul class="site-footer__links">
             <li><a href="mailto:hello@spacecoaststays.com">hello@spacecoaststays.com</a></li>
             <li><a href="mailto:hello@spacecoaststays.com">List Your Unit</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer__bottom">
+      <div class="site-footer__bottom">
         <span>© 2025 SpaceCoastStays.com · Not affiliated with Airbnb or VRBO</span>
         <span>Made with ☀️ in Cocoa Beach</span>
       </div>
