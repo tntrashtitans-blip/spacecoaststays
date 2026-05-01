@@ -55,24 +55,29 @@
     .nav__dropdown li.dropdown__section { padding: 10px 20px 4px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); border-top: 1px solid var(--sand-dark); margin-top: 4px; }
     .nav__dropdown li.dropdown__section:first-child { border-top: none; margin-top: 0; }
 
-    /* ── Date picker bar ── */
-    .date-bar { background: white; border-bottom: 1px solid var(--sand-dark); padding: 14px 0; }
-    .date-bar__inner { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .date-bar__label { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
-    .date-bar__field { display: flex; flex-direction: column; }
-    .date-bar__field input { border: 1.5px solid var(--sand-dark); border-radius: 8px; padding: 8px 12px; font-size: .88rem; color: var(--text); background: var(--foam); cursor: pointer; width: 148px; outline: none; transition: border-color .15s; }
-    .date-bar__field input:focus, .date-bar__field input.active { border-color: var(--ocean); }
-    .date-bar__arrow { color: var(--text-muted); font-size: 1rem; margin-top: 18px; }
-    .date-bar__confirm { margin-top: 18px; background: var(--ocean); color: white; border: none; border-radius: 8px; padding: 9px 20px; font-size: .82rem; font-weight: 700; cursor: pointer; transition: background .15s; white-space: nowrap; }
-    .date-bar__confirm:hover { background: var(--ocean-dark); }
-    .date-bar__clear { margin-top: 18px; background: none; border: 1.5px solid var(--sand-dark); color: var(--text-muted); border-radius: 8px; padding: 8px 14px; font-size: .82rem; cursor: pointer; transition: all .15s; display: none; }
-    .date-bar__clear:hover { border-color: var(--text-muted); color: var(--text); }
-    .date-bar__note { margin-top: 18px; font-size: .78rem; color: var(--ocean); font-weight: 600; display: none; }
-    .date-bar__note.visible { display: flex; align-items: center; gap: 5px; }
+    /* ── Availability search bar ── */
+    .avail-bar { background: white; border-bottom: 1px solid var(--sand-dark); padding: 20px 0; }
+    .avail-bar__heading { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ocean); margin-bottom: 12px; }
+    .avail-bar__row { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+    .avail-bar__field { display: flex; flex-direction: column; gap: 4px; }
+    .avail-bar__field label { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+    .avail-bar__field input { border: 1.5px solid var(--sand-dark); border-radius: 8px; padding: 9px 14px; font-size: .9rem; color: var(--text); background: var(--foam); cursor: pointer; width: 160px; outline: none; transition: border-color .15s; }
+    .avail-bar__field input:focus { border-color: var(--ocean); }
+    .avail-bar__arrow { color: var(--text-muted); font-size: 1.1rem; padding-bottom: 10px; }
+    .avail-bar__btn { background: var(--ocean); color: white; border: none; border-radius: 8px; padding: 10px 22px; font-size: .85rem; font-weight: 700; cursor: pointer; transition: background .15s; white-space: nowrap; }
+    .avail-bar__btn:hover { background: var(--ocean-dark); }
+    .avail-bar__btn:disabled { opacity: .5; cursor: default; }
+    .avail-bar__clear { background: none; border: 1.5px solid var(--sand-dark); color: var(--text-muted); border-radius: 8px; padding: 9px 14px; font-size: .82rem; cursor: pointer; display: none; }
+    .avail-bar__clear:hover { border-color: var(--text-muted); color: var(--text); }
+    .avail-bar__hint { font-size: .8rem; color: var(--text-muted); margin-top: 10px; }
+    /* Availability badges on cards */
+    .card__avail { display: inline-block; font-size: .75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; margin-bottom: 8px; }
+    .card__avail--checking { background: #f0f4f8; color: var(--text-muted); }
+    .card__avail--yes { background: #d1fae5; color: #065f46; }
+    .card__avail--no  { background: #fee2e2; color: #991b1b; }
     @media (max-width: 560px) {
-      .date-bar__inner { gap: 8px; }
-      .date-bar__field input { width: 128px; }
-      .date-bar__arrow { display: none; }
+      .avail-bar__field input { width: 130px; }
+      .avail-bar__arrow { display: none; }
     }
   </style>
 </head>
@@ -145,21 +150,23 @@
         <p>Individually owned vacation rentals — all on the same stretch of beachfront. Book directly on Airbnb or VRBO.</p>
       </div>
 
-      <!-- DATE PICKER -->
-      <div class="date-bar">
-        <div class="date-bar__inner">
-          <div class="date-bar__field">
-            <div class="date-bar__label">Check In</div>
-            <input type="text" id="date-checkin" placeholder="Add date" readonly />
+      <!-- AVAILABILITY SEARCH -->
+      <div class="avail-bar">
+        <p class="avail-bar__heading">Check availability</p>
+        <div class="avail-bar__row">
+          <div class="avail-bar__field">
+            <label for="date-checkin">Check In</label>
+            <input type="text" id="date-checkin" placeholder="Select date" readonly />
           </div>
-          <span class="date-bar__arrow">→</span>
-          <div class="date-bar__field">
-            <div class="date-bar__label">Check Out</div>
-            <input type="text" id="date-checkout" placeholder="Add date" readonly />
+          <span class="avail-bar__arrow">→</span>
+          <div class="avail-bar__field">
+            <label for="date-checkout">Check Out</label>
+            <input type="text" id="date-checkout" placeholder="Select date" readonly />
           </div>
-          <button class="date-bar__clear" id="date-clear">✕ Clear</button>
-          <span class="date-bar__note" id="date-note">✓ Booking links pre-filled with your dates</span>
+          <button class="avail-bar__btn" id="avail-btn" disabled>Check Availability</button>
+          <button class="avail-bar__clear" id="date-clear">✕ Clear</button>
         </div>
+        <p class="avail-bar__hint" id="avail-hint">Select dates to check live availability for Unit 312</p>
       </div>
 
       <!-- FILTER BAR -->
@@ -232,11 +239,10 @@
       dateFormat: "Y-m-d",
       altInput: true,
       altFormat: "M j, Y",
-      disableMobile: false,
       onChange([date]) {
         dates.checkIn = date ? date.toISOString().slice(0, 10) : null;
         if (date) fpOut.set("minDate", date);
-        refresh();
+        updateBtn();
       }
     });
 
@@ -245,28 +251,63 @@
       dateFormat: "Y-m-d",
       altInput: true,
       altFormat: "M j, Y",
-      disableMobile: false,
       onChange([date]) {
         dates.checkOut = date ? date.toISOString().slice(0, 10) : null;
-        refresh();
+        updateBtn();
       }
     });
 
-    function refresh() {
-      const hasdates = dates.checkIn && dates.checkOut;
-      document.getElementById("date-clear").style.display = hasdates ? "block" : "none";
-      const note = document.getElementById("date-note");
-      note.classList.toggle("visible", !!hasdates);
-      renderListings(currentFilter);
+    const btn   = document.getElementById("avail-btn");
+    const hint  = document.getElementById("avail-hint");
+    const clear = document.getElementById("date-clear");
+
+    function updateBtn() {
+      const ready = dates.checkIn && dates.checkOut;
+      btn.disabled = !ready;
+      clear.style.display = ready ? "block" : "none";
+      if (!ready) {
+        unitAvailability = {};
+        hint.textContent = "Select dates to check live availability for Unit 312";
+        renderListings(currentFilter);
+      }
     }
 
-    document.getElementById("date-clear").addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
+      if (!dates.checkIn || !dates.checkOut) return;
+      btn.disabled = true;
+      btn.textContent = "Checking…";
+      hint.textContent = "Fetching live calendar for Unit 312…";
+      unitAvailability["312"] = "checking";
+      renderListings(currentFilter);
+
+      try {
+        const res  = await fetch(`/.netlify/functions/check-availability?checkIn=${dates.checkIn}&checkOut=${dates.checkOut}`);
+        const data = await res.json();
+        unitAvailability["312"] = data.available ? "available" : "unavailable";
+        hint.textContent = data.available
+          ? "✓ Unit 312 is available for your dates — click the card to book."
+          : "✗ Unit 312 is booked for those dates. Try different dates or browse other units.";
+      } catch (e) {
+        unitAvailability["312"] = null;
+        hint.textContent = "Couldn't reach the calendar right now. Try again in a moment.";
+      }
+
+      btn.disabled = false;
+      btn.textContent = "Check Availability";
+      renderListings(currentFilter);
+    });
+
+    clear.addEventListener("click", () => {
       fpIn.clear();
       fpOut.clear();
       fpOut.set("minDate", "today");
       dates.checkIn = null;
       dates.checkOut = null;
-      refresh();
+      unitAvailability = {};
+      hint.textContent = "Select dates to check live availability for Unit 312";
+      btn.disabled = true;
+      clear.style.display = "none";
+      renderListings(currentFilter);
     });
   </script>
 </body>

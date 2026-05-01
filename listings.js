@@ -2,20 +2,11 @@
 // 1000 N Atlantic Ave, Cocoa Beach FL
 // Real listings sourced from Airbnb & VRBO research — April 2025
 
-// ── Date state (set by the date picker in sandcastles.html) ─────────────────
+// ── Date & availability state ────────────────────────────────────────────────
 let dates = { checkIn: null, checkOut: null };
 let currentFilter = "all";
-
-function withDates(platform, url) {
-  if (!dates.checkIn || !dates.checkOut) return url;
-  if (platform === "airbnb") {
-    return `${url}?check_in=${dates.checkIn}&check_out=${dates.checkOut}`;
-  }
-  if (platform === "vrbo") {
-    return `${url}?startDate=${dates.checkIn}&endDate=${dates.checkOut}`;
-  }
-  return url;
-}
+// keyed by unit number string — values: "checking" | "available" | "unavailable" | null
+let unitAvailability = {};
 
 const LISTINGS = [
 
@@ -337,15 +328,26 @@ function buildCard(listing) {
   const platformLabel = isDual ? "Airbnb + VRBO" : (primaryName === "airbnb" ? "Airbnb" : "VRBO");
   const platformClass = isDual ? "card__platform--both" : `card__platform--${primaryName}`;
 
+  // Availability badge for units with live calendar checking
+  const avail = listing.unit ? unitAvailability[listing.unit] : null;
+  let availBadge = "";
+  if (avail === "checking") {
+    availBadge = `<span class="card__avail card__avail--checking">Checking calendar…</span>`;
+  } else if (avail === "available") {
+    availBadge = `<span class="card__avail card__avail--yes">✓ Available for your dates</span>`;
+  } else if (avail === "unavailable") {
+    availBadge = `<span class="card__avail card__avail--no">✗ Not available for these dates</span>`;
+  }
+
   // Booking button(s)
   let buttonsHtml;
   if (isDual) {
     buttonsHtml = `<div class="card__links-split">${listing.platforms.map(p =>
-      `<a href="${withDates(p.name, p.url)}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${p.name}">${p.name === "airbnb" ? "Airbnb ↗" : "VRBO ↗"}</a>`
+      `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${p.name}">${p.name === "airbnb" ? "Airbnb ↗" : "VRBO ↗"}</a>`
     ).join("")}</div>`;
   } else {
     const label = primaryName === "airbnb" ? "Book on Airbnb ↗" : "Book on VRBO ↗";
-    buttonsHtml = `<a href="${withDates(primaryName, listing.platforms[0].url)}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${primaryName}">${label}</a>`;
+    buttonsHtml = `<a href="${listing.platforms[0].url}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${primaryName}">${label}</a>`;
   }
 
   return `
@@ -362,6 +364,7 @@ function buildCard(listing) {
           <span>🚿 ${listing.baths} bath</span>
         </div>
         <span class="card__view-badge ${viewClass}">${viewLabel}</span>
+        ${availBadge}
         <p class="card__desc">${listing.desc}</p>
         ${buttonsHtml}
       </div>
