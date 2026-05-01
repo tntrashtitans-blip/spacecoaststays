@@ -2,6 +2,21 @@
 // 1000 N Atlantic Ave, Cocoa Beach FL
 // Real listings sourced from Airbnb & VRBO research — April 2025
 
+// ── Date state (set by the date picker in sandcastles.html) ─────────────────
+let dates = { checkIn: null, checkOut: null };
+let currentFilter = "all";
+
+function withDates(platform, url) {
+  if (!dates.checkIn || !dates.checkOut) return url;
+  if (platform === "airbnb") {
+    return `${url}?check_in=${dates.checkIn}&check_out=${dates.checkOut}`;
+  }
+  if (platform === "vrbo") {
+    return `${url}?startDate=${dates.checkIn}&endDate=${dates.checkOut}`;
+  }
+  return url;
+}
+
 const LISTINGS = [
 
   // ── FLOOR 1 ────────────────────────────────────────────────────────────────
@@ -326,11 +341,11 @@ function buildCard(listing) {
   let buttonsHtml;
   if (isDual) {
     buttonsHtml = `<div class="card__links-split">${listing.platforms.map(p =>
-      `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${p.name}">${p.name === "airbnb" ? "Airbnb ↗" : "VRBO ↗"}</a>`
+      `<a href="${withDates(p.name, p.url)}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${p.name}">${p.name === "airbnb" ? "Airbnb ↗" : "VRBO ↗"}</a>`
     ).join("")}</div>`;
   } else {
     const label = primaryName === "airbnb" ? "Book on Airbnb ↗" : "Book on VRBO ↗";
-    buttonsHtml = `<a href="${listing.platforms[0].url}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${primaryName}">${label}</a>`;
+    buttonsHtml = `<a href="${withDates(primaryName, listing.platforms[0].url)}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${primaryName}">${label}</a>`;
   }
 
   return `
@@ -356,6 +371,7 @@ function buildCard(listing) {
 
 // ── Filter & render ─────────────────────────────────────────────────────────
 function renderListings(filter) {
+  currentFilter = filter;
   const grid = document.getElementById("listings-grid");
   if (!grid) return;
 

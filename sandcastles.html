@@ -37,6 +37,7 @@
   </script>
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   <style>
     .nav { flex-direction: column; height: auto; padding: 0; }
     .nav__row { width: 100%; display: flex; align-items: center; }
@@ -53,6 +54,26 @@
     .nav__dropdown li a:hover { background: var(--foam); color: var(--ocean); }
     .nav__dropdown li.dropdown__section { padding: 10px 20px 4px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); border-top: 1px solid var(--sand-dark); margin-top: 4px; }
     .nav__dropdown li.dropdown__section:first-child { border-top: none; margin-top: 0; }
+
+    /* ── Date picker bar ── */
+    .date-bar { background: white; border-bottom: 1px solid var(--sand-dark); padding: 14px 0; }
+    .date-bar__inner { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .date-bar__label { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .date-bar__field { display: flex; flex-direction: column; }
+    .date-bar__field input { border: 1.5px solid var(--sand-dark); border-radius: 8px; padding: 8px 12px; font-size: .88rem; color: var(--text); background: var(--foam); cursor: pointer; width: 148px; outline: none; transition: border-color .15s; }
+    .date-bar__field input:focus, .date-bar__field input.active { border-color: var(--ocean); }
+    .date-bar__arrow { color: var(--text-muted); font-size: 1rem; margin-top: 18px; }
+    .date-bar__confirm { margin-top: 18px; background: var(--ocean); color: white; border: none; border-radius: 8px; padding: 9px 20px; font-size: .82rem; font-weight: 700; cursor: pointer; transition: background .15s; white-space: nowrap; }
+    .date-bar__confirm:hover { background: var(--ocean-dark); }
+    .date-bar__clear { margin-top: 18px; background: none; border: 1.5px solid var(--sand-dark); color: var(--text-muted); border-radius: 8px; padding: 8px 14px; font-size: .82rem; cursor: pointer; transition: all .15s; display: none; }
+    .date-bar__clear:hover { border-color: var(--text-muted); color: var(--text); }
+    .date-bar__note { margin-top: 18px; font-size: .78rem; color: var(--ocean); font-weight: 600; display: none; }
+    .date-bar__note.visible { display: flex; align-items: center; gap: 5px; }
+    @media (max-width: 560px) {
+      .date-bar__inner { gap: 8px; }
+      .date-bar__field input { width: 128px; }
+      .date-bar__arrow { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -124,6 +145,23 @@
         <p>Individually owned vacation rentals — all on the same stretch of beachfront. Book directly on Airbnb or VRBO.</p>
       </div>
 
+      <!-- DATE PICKER -->
+      <div class="date-bar">
+        <div class="date-bar__inner">
+          <div class="date-bar__field">
+            <div class="date-bar__label">Check In</div>
+            <input type="text" id="date-checkin" placeholder="Add date" readonly />
+          </div>
+          <span class="date-bar__arrow">→</span>
+          <div class="date-bar__field">
+            <div class="date-bar__label">Check Out</div>
+            <input type="text" id="date-checkout" placeholder="Add date" readonly />
+          </div>
+          <button class="date-bar__clear" id="date-clear">✕ Clear</button>
+          <span class="date-bar__note" id="date-note">✓ Booking links pre-filled with your dates</span>
+        </div>
+      </div>
+
       <!-- FILTER BAR -->
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">All Units</button>
@@ -187,5 +225,49 @@
   </footer>
 
   <script src="listings.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    const fpIn = flatpickr("#date-checkin", {
+      minDate: "today",
+      dateFormat: "Y-m-d",
+      altInput: true,
+      altFormat: "M j, Y",
+      disableMobile: false,
+      onChange([date]) {
+        dates.checkIn = date ? date.toISOString().slice(0, 10) : null;
+        if (date) fpOut.set("minDate", date);
+        refresh();
+      }
+    });
+
+    const fpOut = flatpickr("#date-checkout", {
+      minDate: "today",
+      dateFormat: "Y-m-d",
+      altInput: true,
+      altFormat: "M j, Y",
+      disableMobile: false,
+      onChange([date]) {
+        dates.checkOut = date ? date.toISOString().slice(0, 10) : null;
+        refresh();
+      }
+    });
+
+    function refresh() {
+      const hasdates = dates.checkIn && dates.checkOut;
+      document.getElementById("date-clear").style.display = hasdates ? "block" : "none";
+      const note = document.getElementById("date-note");
+      note.classList.toggle("visible", !!hasdates);
+      renderListings(currentFilter);
+    }
+
+    document.getElementById("date-clear").addEventListener("click", () => {
+      fpIn.clear();
+      fpOut.clear();
+      fpOut.set("minDate", "today");
+      dates.checkIn = null;
+      dates.checkOut = null;
+      refresh();
+    });
+  </script>
 </body>
 </html>
