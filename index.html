@@ -292,6 +292,10 @@
     .section { padding: 72px 0; }
     .section--gray { background: #f8f9fb; }
     .section--dark { background: #0d2233; }
+    /* Sandcastles palette — pulled from the complex photos */
+    .section--sand { background: #F2E9D8; }       /* warm beach sand */
+    .section--ocean-tint { background: #E0F0F8; } /* Atlantic shallow water */
+    .section--pool { background: #D6EEF5; }        /* teal pool deck */
     .inner { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
     .section-head { margin-bottom: 40px; }
     .section-head__label {
@@ -320,10 +324,12 @@
     /* ── FEATURED UNIT CARDS ── */
     .units-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .unit-card {
-      border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb;
+      border-radius: 12px; overflow: hidden; border: 1px solid #d0e8f2;
       background: white; transition: box-shadow .22s, transform .22s;
+      box-shadow: 0 2px 10px rgba(43,107,138,.08);
     }
-    .unit-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.1); transform: translateY(-3px); }
+    .unit-card:hover { box-shadow: 0 12px 40px rgba(43,107,138,.18); transform: translateY(-3px); }
+    .unit-card__body { border-top: 3px solid #2B6B8A; }
     .unit-card__img { height: 200px; overflow: hidden; position: relative; }
     .unit-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
     .unit-card:hover .unit-card__img img { transform: scale(1.05); }
@@ -376,10 +382,11 @@
     .nearby__list { display: flex; flex-direction: column; gap: 10px; }
     .nearby__item {
       display: flex; align-items: center; gap: 14px; padding: 14px 16px;
-      border-radius: 10px; background: #f8f9fb; border: 1px solid #e5e7eb;
-      transition: background .15s; cursor: pointer;
+      border-radius: 10px; background: white; border: 1px solid #c8e4f0;
+      transition: background .15s, box-shadow .15s; cursor: pointer;
+      box-shadow: 0 2px 6px rgba(43,107,138,.08);
     }
-    .nearby__item:hover { background: #eef7fb; }
+    .nearby__item:hover { background: #f0faff; box-shadow: 0 4px 14px rgba(43,107,138,.14); }
     .nearby__icon {
       font-size: 1.3rem; flex-shrink: 0; width: 42px; height: 42px;
       display: flex; align-items: center; justify-content: center;
@@ -397,13 +404,14 @@
     .activities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .activity-card {
       display: block; background: white; border-radius: 12px; overflow: hidden;
-      border: 1px solid #e5e7eb; transition: box-shadow .2s, transform .2s;
+      border: 1px solid #c8e4f0; transition: box-shadow .2s, transform .2s;
+      box-shadow: 0 2px 8px rgba(43,107,138,.07);
     }
-    .activity-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.12); transform: translateY(-3px); }
+    .activity-card:hover { box-shadow: 0 10px 32px rgba(43,107,138,.16); transform: translateY(-3px); }
     .activity-card__photo { height: 190px; overflow: hidden; position: relative; }
     .activity-card__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
     .activity-card:hover .activity-card__photo img { transform: scale(1.06); }
-    .activity-card__body { padding: 18px 20px 22px; }
+    .activity-card__body { padding: 18px 20px 22px; border-top: 3px solid #2B6B8A; }
     .activity-card__title { font-size: .97rem; font-weight: 700; color: #1a2e3b; margin-bottom: 4px; }
     .activity-card__dist { font-size: .7rem; font-weight: 700; color: #2B6B8A; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
     .activity-card__desc { font-size: .82rem; color: #6b7280; line-height: 1.65; }
@@ -412,13 +420,14 @@
     .eats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .eat-card {
       display: block; background: white; border-radius: 12px; overflow: hidden;
-      border: 1px solid #e5e7eb; transition: box-shadow .2s, transform .2s;
+      border: 1px solid #e8d5b8; transition: box-shadow .2s, transform .2s;
+      box-shadow: 0 2px 8px rgba(192,57,43,.06);
     }
-    .eat-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.1); transform: translateY(-2px); }
+    .eat-card:hover { box-shadow: 0 10px 32px rgba(192,57,43,.14); transform: translateY(-2px); }
     .eat-card__photo { height: 190px; overflow: hidden; }
     .eat-card__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
     .eat-card:hover .eat-card__photo img { transform: scale(1.05); }
-    .eat-card__body { padding: 18px 20px 20px; }
+    .eat-card__body { padding: 18px 20px 20px; border-top: 3px solid #C0392B; }
     .eat-card__type { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #C0392B; margin-bottom: 4px; }
     .eat-card__name { font-size: 1rem; font-weight: 700; color: #1a2e3b; margin-bottom: 4px; }
     .eat-card__dist { font-size: .76rem; color: #6b7280; margin-bottom: 8px; }
@@ -428,26 +437,27 @@
     .trips-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .trip-card {
       display: block; background: white; border-radius: 14px; overflow: hidden;
-      border: 1px solid #e5e7eb;
-      transition: box-shadow .2s, transform .2s;
+      border: 1px solid #c8e4f0; transition: box-shadow .2s, transform .2s;
+      box-shadow: 0 2px 8px rgba(43,107,138,.07);
     }
-    .trip-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.1); transform: translateY(-3px); }
+    .trip-card:hover { box-shadow: 0 10px 32px rgba(43,107,138,.16); transform: translateY(-3px); }
     .trip-card__photo { height: 160px; overflow: hidden; }
     .trip-card__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
     .trip-card:hover .trip-card__photo img { transform: scale(1.06); }
-    .trip-card__body { padding: 16px 18px 20px; text-align: center; }
+    .trip-card__body { padding: 16px 18px 20px; text-align: center; border-top: 3px solid #1A8CAB; }
     .trip-card__name { font-size: .97rem; font-weight: 700; color: #1a2e3b; margin-bottom: 6px; }
     .trip-card__time { font-size: .78rem; color: #C0392B; font-weight: 700; margin-bottom: 10px; }
     .trip-card__desc { font-size: .78rem; color: #6b7280; line-height: 1.6; }
 
     /* ── EVENTS ── */
-    .events-list { display: flex; flex-direction: column; gap: 0; border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden; }
+    .events-list { display: flex; flex-direction: column; gap: 0; border: 1px solid #c8e4f0; border-radius: 14px; overflow: hidden; background: white; box-shadow: 0 2px 12px rgba(43,107,138,.07); }
     .event-item {
       display: flex; align-items: center; gap: 20px; padding: 20px 24px;
-      border-bottom: 1px solid #e5e7eb; transition: background .15s;
+      border-bottom: 1px solid #e0eef5; transition: background .15s, border-left-color .15s;
+      border-left: 4px solid transparent;
     }
     .event-item:last-child { border-bottom: none; }
-    .event-item:hover { background: #f8f9fb; }
+    .event-item:hover { background: #EAF5FB; border-left-color: #2B6B8A; }
     .event-date {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       background: #1a2e3b; border-radius: 10px; padding: 8px 14px; min-width: 56px; flex-shrink: 0;
@@ -467,7 +477,8 @@
     /* ── FAQ ── */
     .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .faq-item {
-      background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 22px 24px;
+      background: white; border: 1px solid #c8e4f0; border-radius: 12px; padding: 22px 24px;
+      border-left: 4px solid #2B6B8A; box-shadow: 0 2px 8px rgba(43,107,138,.06);
     }
     .faq-q { font-size: .92rem; font-weight: 700; color: #1a2e3b; margin-bottom: 10px; line-height: 1.4; }
     .faq-a { font-size: .84rem; color: #6b7280; line-height: 1.7; }
@@ -591,7 +602,7 @@
   </div>
 
   <!-- FEATURED UNITS -->
-  <section class="section">
+  <section class="section section--sand">
     <div class="inner">
       <div class="section-head section-head--row">
         <div>
@@ -650,7 +661,7 @@
   </section>
 
   <!-- WHAT'S NEARBY -->
-  <section class="section section--gray">
+  <section class="section section--ocean-tint">
     <div class="inner">
       <div class="section-head" style="margin-bottom: 36px;">
         <p class="section-head__label">Location</p>
@@ -876,7 +887,7 @@
   </section>
 
   <!-- LOCAL EATS -->
-  <section class="section section--gray">
+  <section class="section section--sand">
     <div class="inner">
       <div class="section-head section-head--row">
         <div>
@@ -1019,7 +1030,7 @@
   </section>
 
   <!-- DAY TRIPS -->
-  <section class="section section--gray">
+  <section class="section section--ocean-tint">
     <div class="inner">
       <div class="section-head" style="margin-bottom: 36px;">
         <p class="section-head__label">Explore Beyond the Beach</p>
