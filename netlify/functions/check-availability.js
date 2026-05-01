@@ -1,10 +1,17 @@
 const https = require("https");
+const http  = require("http");
 
-function fetchUrl(url) {
+function fetchUrl(url, redirects = 5) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
+    if (redirects === 0) return reject(new Error("Too many redirects"));
+    const lib  = url.startsWith("https") ? https : http;
+    const opts = { headers: { "User-Agent": "SpaceCoastStays/1.0 CalendarSync" } };
+    lib.get(url, opts, (res) => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        return resolve(fetchUrl(res.headers.location, redirects - 1));
+      }
       let data = "";
-      res.on("data", (chunk) => (data += chunk));
+      res.on("data", (c) => (data += c));
       res.on("end", () => resolve(data));
     }).on("error", reject);
   });
@@ -59,10 +66,21 @@ exports.handler = async ({ queryStringParameters }) => {
     const text = await fetchUrl(icalUrl);
     const events = parseIcal(text);
     const available = isAvailable(events, checkIn, checkOut);
+
+    // Show which events are blocking the requested range (helpful for debugging)
+    const s = new Date(checkIn  + "T00:00:00Z");
+    const e = new Date(checkOut + "T00:00:00Z");
+    const blocking = events
+      .filter((ev) => ev.start < e && ev.end > s)
+      .map((ev) => ({
+        start: ev.start.toISOString().slice(0, 10),
+        end:   ev.end.toISOString().slice(0, 10),
+      }));
+
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ available, listing: "Sandcastles 312", checkIn, checkOut }),
+      body: JSON.stringify({ available, listing: "Sandcastles 312", checkIn, checkOut, blocking }),
     };
   } catch (err) {
     return { statusCode: 500, headers, body: JSON.stringify({ error: err.message }) };
