@@ -6,6 +6,23 @@
   <title>Sandcastles Condominiums Cocoa Beach | Vacation Rentals | SpaceCoastStays</title>
   <meta name="description" content="Vacation rentals at Sandcastles Condominiums, 1000 N Atlantic Ave, Cocoa Beach FL. Oceanfront condos with beach access, 12 miles from Kennedy Space Center. Browse 20+ Airbnb & VRBO listings — no booking fees.">
   <link rel="canonical" href="https://spacecoaststays.com/" />
+
+  <!-- ── Open Graph / Facebook ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://spacecoaststays.com/" />
+  <meta property="og:title" content="Sandcastles Condominiums Cocoa Beach | Vacation Rentals" />
+  <meta property="og:description" content="Oceanfront vacation rentals at Sandcastles Condominiums — direct beach access, heated pool, and front-row seats to Kennedy Space Center rocket launches. Browse 20+ Airbnb & VRBO listings." />
+  <meta property="og:image" content="https://spacecoaststays.com/images/DJI_0244.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="SpaceCoastStays" />
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sandcastles Condominiums Cocoa Beach | Vacation Rentals" />
+  <meta name="twitter:description" content="Oceanfront vacation rentals at Sandcastles Condominiums — direct beach access, heated pool, and front-row seats to Kennedy Space Center rocket launches." />
+  <meta name="twitter:image" content="https://spacecoaststays.com/images/DJI_0244.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
@@ -219,7 +236,7 @@
     }
     .hero__photo {
       position: absolute; inset: 0;
-      background: url('images/DJI_0280.jpg') center top / cover no-repeat;
+      background: url('images/DJI_0244.jpg') center center / cover no-repeat;
     }
     .hero__overlay {
       position: absolute; inset: 0;
@@ -394,12 +411,14 @@
     /* ── LOCAL EATS ── */
     .eats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .eat-card {
-      display: flex; background: white; border-radius: 12px; padding: 22px 22px;
-      border: 1px solid #e5e7eb; transition: box-shadow .2s;
-      gap: 16px; align-items: flex-start;
+      display: block; background: white; border-radius: 12px; overflow: hidden;
+      border: 1px solid #e5e7eb; transition: box-shadow .2s, transform .2s;
     }
-    .eat-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.09); }
-    .eat-card__icon { font-size: 1.8rem; flex-shrink: 0; }
+    .eat-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.1); transform: translateY(-2px); }
+    .eat-card__photo { height: 190px; overflow: hidden; }
+    .eat-card__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .eat-card:hover .eat-card__photo img { transform: scale(1.05); }
+    .eat-card__body { padding: 18px 20px 20px; }
     .eat-card__type { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #C0392B; margin-bottom: 4px; }
     .eat-card__name { font-size: 1rem; font-weight: 700; color: #1a2e3b; margin-bottom: 4px; }
     .eat-card__dist { font-size: .76rem; color: #6b7280; margin-bottom: 8px; }
@@ -408,12 +427,15 @@
     /* ── DAY TRIPS ── */
     .trips-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .trip-card {
-      display: block; background: white; border-radius: 14px; padding: 26px 18px;
-      border: 1px solid #e5e7eb; text-align: center;
+      display: block; background: white; border-radius: 14px; overflow: hidden;
+      border: 1px solid #e5e7eb;
       transition: box-shadow .2s, transform .2s;
     }
     .trip-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.1); transform: translateY(-3px); }
-    .trip-card__icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .trip-card__photo { height: 160px; overflow: hidden; }
+    .trip-card__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .trip-card:hover .trip-card__photo img { transform: scale(1.06); }
+    .trip-card__body { padding: 16px 18px 20px; text-align: center; }
     .trip-card__name { font-size: .97rem; font-weight: 700; color: #1a2e3b; margin-bottom: 6px; }
     .trip-card__time { font-size: .78rem; color: #C0392B; font-weight: 700; margin-bottom: 10px; }
     .trip-card__desc { font-size: .78rem; color: #6b7280; line-height: 1.6; }
@@ -866,8 +888,10 @@
       </div>
       <div class="eats-grid">
         <a href="https://coconutsonthebeach.com/" target="_blank" rel="noopener" class="eat-card">
-          <div class="eat-card__icon">🍹</div>
-          <div>
+          <div class="eat-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Cocoa_Beach_Walk_-_Flickr_-_Rusty_Clark.jpg" alt="Cocoa Beach beachfront bar scene" loading="lazy">
+          </div>
+          <div class="eat-card__body">
             <p class="eat-card__type">Beachfront Bar & Grill</p>
             <p class="eat-card__name">Coconuts on the Beach</p>
             <p class="eat-card__dist">2 Minutemen Causeway · 0.4 mi from Sandcastles</p>
@@ -875,8 +899,10 @@
           </div>
         </a>
         <a href="https://www.grillsseafood.com/" target="_blank" rel="noopener" class="eat-card">
-          <div class="eat-card__icon">🦞</div>
-          <div>
+          <div class="eat-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/The_Mucky_Duck.jpg" alt="Beachfront tiki bar Florida waterfront dining" loading="lazy">
+          </div>
+          <div class="eat-card__body">
             <p class="eat-card__type">Waterfront Seafood</p>
             <p class="eat-card__name">Grills Seafood Deck & Tiki Bar</p>
             <p class="eat-card__dist">Port Canaveral · 5 mi north of Sandcastles</p>
@@ -884,8 +910,10 @@
           </div>
         </a>
         <a href="https://www.rustysseafood.com/" target="_blank" rel="noopener" class="eat-card">
-          <div class="eat-card__icon">🦪</div>
-          <div>
+          <div class="eat-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Pier_Restaurant.jpg" alt="Waterfront pier restaurant Florida" loading="lazy">
+          </div>
+          <div class="eat-card__body">
             <p class="eat-card__type">Oyster Bar & Seafood</p>
             <p class="eat-card__name">Rusty's Seafood & Oyster Bar</p>
             <p class="eat-card__dist">Port Canaveral · 5 mi north of Sandcastles</p>
@@ -893,8 +921,10 @@
           </div>
         </a>
         <a href="https://maps.google.com/?q=Juice+n+Java+Cocoa+Beach+FL" target="_blank" rel="noopener" class="eat-card">
-          <div class="eat-card__icon">☕</div>
-          <div>
+          <div class="eat-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Cocoa_Beach_Walk_-_Flickr_-_Rusty_Clark_%2820%29.jpg" alt="Cocoa Beach boardwalk morning scene" loading="lazy">
+          </div>
+          <div class="eat-card__body">
             <p class="eat-card__type">Café · Breakfast & Lunch</p>
             <p class="eat-card__name">Juice 'n Java</p>
             <p class="eat-card__dist">Cocoa Beach · 1 mi from Sandcastles</p>
@@ -902,8 +932,10 @@
           </div>
         </a>
         <a href="https://www.cocoabeachpier.com/" target="_blank" rel="noopener" class="eat-card">
-          <div class="eat-card__icon">🎸</div>
-          <div>
+          <div class="eat-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/A_restaurant_at_Cocoa_Beach_Pier_%28May_2023%29.jpg" alt="Restaurant at Cocoa Beach Pier" loading="lazy">
+          </div>
+          <div class="eat-card__body">
             <p class="eat-card__type">Pier Dining & Live Music</p>
             <p class="eat-card__name">Cocoa Beach Pier Restaurants</p>
             <p class="eat-card__dist">Cocoa Beach Pier · 0.5 mi · Walk the beach</p>
@@ -911,8 +943,10 @@
           </div>
         </a>
         <a href="https://maps.google.com/?q=restaurants+Cocoa+Beach+FL+A1A" target="_blank" rel="noopener" class="eat-card">
-          <div class="eat-card__icon">🌮</div>
-          <div>
+          <div class="eat-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Fort_Lauderdale_Florida_-_A1A_beachfront%2C_January_2018_-_01.jpg" alt="Florida A1A beachfront dining strip" loading="lazy">
+          </div>
+          <div class="eat-card__body">
             <p class="eat-card__type">Casual · Local Favorites</p>
             <p class="eat-card__name">Cocoa Beach Dining Scene</p>
             <p class="eat-card__dist">A1A Corridor · walkable from Sandcastles</p>
