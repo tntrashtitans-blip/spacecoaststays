@@ -79,7 +79,7 @@ const LISTINGS = [
     platforms: [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/1066137435990680028" }
     ],
-    photo: "https://a0.muscache.com/im/pictures/miso/Hosting-1066137435990680028/original/e5a058d5-79f8-4540-8daf-86ea555803ea.jpeg",
+    photo: "images/Living Room.jpg",
   },
 
   // ── FLOOR 4 ────────────────────────────────────────────────────────────────
