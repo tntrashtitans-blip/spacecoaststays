@@ -56,20 +56,21 @@
     .nav__dropdown li.dropdown__section:first-child { border-top: none; margin-top: 0; }
 
     /* ── Availability search bar ── */
-    .avail-bar { background: white; border-bottom: 1px solid var(--sand-dark); padding: 20px 0; }
-    .avail-bar__heading { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ocean); margin-bottom: 12px; }
-    .avail-bar__row { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
-    .avail-bar__field { display: flex; flex-direction: column; gap: 4px; }
-    .avail-bar__field label { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
-    .avail-bar__field input { border: 1.5px solid var(--sand-dark); border-radius: 8px; padding: 9px 14px; font-size: .9rem; color: var(--text); background: var(--foam); cursor: pointer; width: 160px; outline: none; transition: border-color .15s; }
-    .avail-bar__field input:focus { border-color: var(--ocean); }
-    .avail-bar__arrow { color: var(--text-muted); font-size: 1.1rem; padding-bottom: 10px; }
-    .avail-bar__btn { background: var(--ocean); color: white; border: none; border-radius: 8px; padding: 10px 22px; font-size: .85rem; font-weight: 700; cursor: pointer; transition: background .15s; white-space: nowrap; }
-    .avail-bar__btn:hover { background: var(--ocean-dark); }
-    .avail-bar__btn:disabled { opacity: .5; cursor: default; }
-    .avail-bar__clear { background: none; border: 1.5px solid var(--sand-dark); color: var(--text-muted); border-radius: 8px; padding: 9px 14px; font-size: .82rem; cursor: pointer; display: none; }
-    .avail-bar__clear:hover { border-color: var(--text-muted); color: var(--text); }
-    .avail-bar__hint { font-size: .8rem; color: var(--text-muted); margin-top: 10px; }
+    .avail-bar { background: #1D4E66; padding: 22px 0 18px; }
+    .avail-bar__inner { display: flex; align-items: flex-end; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .avail-bar__field { display: flex; flex-direction: column; gap: 5px; }
+    .avail-bar__field label { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+    .avail-bar__field input,
+    .avail-bar__field .flatpickr-input[readonly] { background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; padding: 10px 16px; font-size: .9rem; color: white; width: 168px; cursor: pointer; outline: none; transition: border-color .15s; }
+    .avail-bar__field input::placeholder { color: rgba(255,255,255,.45); }
+    .avail-bar__field input:focus { border-color: rgba(255,255,255,.6); }
+    .avail-bar__arrow { color: rgba(255,255,255,.45); font-size: 1.1rem; padding-bottom: 10px; }
+    .avail-bar__btn { background: white; color: #1D4E66; border: none; border-radius: 8px; padding: 11px 24px; font-size: .85rem; font-weight: 800; cursor: pointer; transition: background .15s, color .15s; white-space: nowrap; }
+    .avail-bar__btn:hover { background: var(--ocean-light); }
+    .avail-bar__btn:disabled { opacity: .45; cursor: default; }
+    .avail-bar__clear { background: none; border: 1px solid rgba(255,255,255,.25); color: rgba(255,255,255,.6); border-radius: 8px; padding: 10px 14px; font-size: .82rem; cursor: pointer; display: none; }
+    .avail-bar__clear:hover { border-color: rgba(255,255,255,.5); color: white; }
+    .avail-bar__hint { font-size: .78rem; color: rgba(255,255,255,.5); margin-top: 10px; text-align: center; }
     /* Availability badges on cards */
     .card__avail { display: inline-block; font-size: .75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; margin-bottom: 8px; }
     .card__avail--checking { background: #f0f4f8; color: var(--text-muted); }
@@ -149,37 +150,40 @@
         <h1>Sandcastles Condominiums</h1>
         <p>Individually owned vacation rentals — all on the same stretch of beachfront. Book directly on Airbnb or VRBO.</p>
       </div>
-
-      <!-- AVAILABILITY SEARCH -->
-      <div class="avail-bar">
-        <p class="avail-bar__heading">Check availability</p>
-        <div class="avail-bar__row">
-          <div class="avail-bar__field">
-            <label for="date-checkin">Check In</label>
-            <input type="text" id="date-checkin" placeholder="Select date" readonly />
-          </div>
-          <span class="avail-bar__arrow">→</span>
-          <div class="avail-bar__field">
-            <label for="date-checkout">Check Out</label>
-            <input type="text" id="date-checkout" placeholder="Select date" readonly />
-          </div>
-          <button class="avail-bar__btn" id="avail-btn" disabled>Check Availability</button>
-          <button class="avail-bar__clear" id="date-clear">✕ Clear</button>
-        </div>
-        <p class="avail-bar__hint" id="avail-hint">Select dates to check live availability for Unit 312</p>
-      </div>
-
-      <!-- FILTER BAR -->
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All Units</button>
-        <button class="filter-btn" data-filter="oceanfront">🌊 Oceanfront</button>
-        <button class="filter-btn" data-filter="ocean-view">Ocean View</button>
-        <button class="filter-btn" data-filter="pool-view">Pool View</button>
-        <button class="filter-btn" data-filter="airbnb">Airbnb</button>
-        <button class="filter-btn" data-filter="vrbo">VRBO</button>
-      </div>
     </div>
   </div>
+  </div>
+
+  <!-- AVAILABILITY SEARCH -->
+  <div class="avail-bar">
+    <div class="container">
+      <div class="avail-bar__inner">
+        <div class="avail-bar__field">
+          <label for="date-checkin">Check In</label>
+          <input type="text" id="date-checkin" placeholder="Select date" readonly />
+        </div>
+        <span class="avail-bar__arrow">→</span>
+        <div class="avail-bar__field">
+          <label for="date-checkout">Check Out</label>
+          <input type="text" id="date-checkout" placeholder="Select date" readonly />
+        </div>
+        <button class="avail-bar__btn" id="avail-btn" disabled>Check Availability</button>
+        <button class="avail-bar__clear" id="date-clear">✕ Clear</button>
+      </div>
+      <p class="avail-bar__hint" id="avail-hint">Select dates to check live availability for Unit 312</p>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Units</button>
+      <button class="filter-btn" data-filter="oceanfront">🌊 Oceanfront</button>
+      <button class="filter-btn" data-filter="ocean-view">Ocean View</button>
+      <button class="filter-btn" data-filter="pool-view">Pool View</button>
+      <button class="filter-btn" data-filter="airbnb">Airbnb</button>
+      <button class="filter-btn" data-filter="vrbo">VRBO</button>
+    </div>
   </div>
 
   <!-- LISTINGS GRID -->
