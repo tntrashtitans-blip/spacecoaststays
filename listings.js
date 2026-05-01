@@ -8,6 +8,13 @@ let currentFilter = "all";
 // keyed by unit number string — values: "checking" | "available" | "unavailable" | null
 let unitAvailability = {};
 
+// Fallback thumbnails for VRBO listings (can't extract their photos programmatically)
+const VRBO_THUMBS = [
+  "images/DJI_0244.jpg",
+  "images/024A6050.jpg",
+  "images/DJI_0297.jpg",
+];
+
 const LISTINGS = [
 
   // ── FLOOR 1 ────────────────────────────────────────────────────────────────
@@ -23,6 +30,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/659336589864549620" }
     ],
     photo: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-659336589864549620/original/027d2bbc-820f-4e31-95be-3c3d7c513acc.png",
+    photos: [
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-659336589864549620/original/fc64d40a-7f46-47c2-ba12-35cba309d1e5.png",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-659336589864549620/original/2ca1db4a-a416-4bd1-b8d7-233c418c2419.jpeg",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-659336589864549620/original/50c80a41-88e7-4777-95cd-b8314539274e.jpeg",
+    ],
   },
 
   // ── FLOOR 2 ────────────────────────────────────────────────────────────────
@@ -39,6 +51,11 @@ const LISTINGS = [
       { name: "vrbo",   url: "https://www.vrbo.com/622918" }
     ],
     photo: "https://a0.muscache.com/im/pictures/miso/Hosting-30351808/original/2585a64b-84aa-4166-9e05-a3740034ad99.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-30351808/original/2d1a2d60-d911-483f-8351-045846693fea.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-30351808/original/f3809c02-bdd1-424d-b996-a3802790902a.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-30351808/original/af0a63ed-a14c-4fe9-a59d-e2ef22029e1d.jpeg",
+    ],
   },
   {
     unit: null,
@@ -52,6 +69,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/32041458" }
     ],
     photo: "https://a0.muscache.com/im/pictures/7d0031e6-c3ea-4653-b145-09a3d3c466fd.jpg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/a38c90cd-a380-4d6c-90cd-91dc52301c60.jpg",
+      "https://a0.muscache.com/im/pictures/bba89281-c406-4f57-806c-938eac0179fb.jpg",
+      "https://a0.muscache.com/im/pictures/c5233886-f6d7-41c2-9071-887da948a626.jpg",
+    ],
   },
 
   // ── FLOOR 3 ────────────────────────────────────────────────────────────────
@@ -67,6 +89,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/765207674629970988" }
     ],
     photo: "https://a0.muscache.com/im/pictures/miso/Hosting-765207674629970988/original/e426cdb1-e8e7-44bc-b7aa-139c41c285a1.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-765207674629970988/original/82c3cc56-3ca7-4658-ad7d-bd9dcd8f8075.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-765207674629970988/original/7fc36a7f-421d-4ed0-a8f0-fbb6e1802336.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-765207674629970988/original/12725bfc-e592-4d8f-bf2d-ab0368af373f.jpeg",
+    ],
   },
   {
     unit: "312",
@@ -80,6 +107,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/1066137435990680028" }
     ],
     photo: "images/Living Room.jpg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-1066137435990680028/original/8ca21a27-ecc8-4e44-9282-36c418ff9c5b.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-1066137435990680028/original/ba553020-4f51-427a-acfd-ea236b7b108a.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-1066137435990680028/original/00679862-c155-4ac6-9a7c-2f8ade61541f.jpeg",
+    ],
   },
 
   // ── FLOOR 4 ────────────────────────────────────────────────────────────────
@@ -95,6 +127,7 @@ const LISTINGS = [
       { name: "vrbo", url: "https://www.vrbo.com/9714032ha" }
     ],
     photo: "https://media.vrbo.com/lodging/84000000/83410000/83405600/83405508/2deb60a0.jpg",
+    photos: null,
   },
   {
     unit: null,
@@ -108,6 +141,7 @@ const LISTINGS = [
       { name: "vrbo", url: "https://www.vrbo.com/7017430ha" }
     ],
     photo: "https://media.vrbo.com/lodging/34000000/33550000/33545900/33545820/5a359a4f.jpg",
+    photos: null,
   },
 
   // ── FLOOR 5 ────────────────────────────────────────────────────────────────
@@ -123,6 +157,7 @@ const LISTINGS = [
       { name: "vrbo", url: "https://www.vrbo.com/7120752ha" }
     ],
     photo: "https://media.vrbo.com/lodging/35000000/34100000/34097000/34096988/33019497.jpg",
+    photos: null,
   },
   {
     unit: null,
@@ -136,6 +171,7 @@ const LISTINGS = [
       { name: "vrbo", url: "https://www.vrbo.com/1993285" }
     ],
     photo: "https://media.vrbo.com/lodging/54000000/53970000/53961000/53960925/91a0ca75.jpg",
+    photos: null,
   },
 
   // ── FLOOR 6 ────────────────────────────────────────────────────────────────
@@ -151,6 +187,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/1377600827057414395" }
     ],
     photo: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1377600827057414395/original/639f9ca7-ad9e-4ad4-9952-f3ad382cdb61.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1377600827057414395/original/c09b9de7-7387-40f7-bf8c-093a23e0798a.jpeg",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1377600827057414395/original/e0547800-2e93-4555-b5c2-aa4cb26f1732.jpeg",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1377600827057414395/original/6f93784e-7d9d-4146-9d63-7f6a0d3818b5.jpeg",
+    ],
   },
   {
     unit: "614",
@@ -164,6 +205,7 @@ const LISTINGS = [
       { name: "vrbo", url: "https://www.vrbo.com/1167578" }
     ],
     photo: "https://media.vrbo.com/lodging/35000000/34080000/34076200/34076120/3fb05c0a.jpg",
+    photos: null,
   },
 
   // ── FLOOR 7 ────────────────────────────────────────────────────────────────
@@ -179,6 +221,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/44590023" }
     ],
     photo: "https://a0.muscache.com/im/pictures/e710b442-3dc4-48e8-884f-944e2a9226b3.jpg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/303aa15a-e886-4fb8-a0e5-10e4ce83917f.jpg",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NDQ1OTAwMjM%3D/original/7e7de1f3-5d68-4d92-8432-65c27a5aa5f3.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-44590023/original/c7b23ea8-1cbc-4f1c-ba6e-1b3ec612528d.jpeg",
+    ],
   },
 
   // ── OCEANFRONT (floor unlisted) ────────────────────────────────────────────
@@ -194,6 +241,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/587677510430864991" }
     ],
     photo: "https://a0.muscache.com/im/pictures/miso/Hosting-587677510430864991/original/64021ea6-aca6-4571-8057-f9ca8f311bd3.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-587677510430864991/original/735ef4f6-632b-4e29-89c2-c0c875ad1209.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-587677510430864991/original/aee1390e-aeea-413f-854c-34c9bf73c612.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-587677510430864991/original/066a6c4b-5d63-4dee-aa3c-8fd3fe0319b1.jpeg",
+    ],
   },
   {
     unit: null,
@@ -207,6 +259,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/19854968" }
     ],
     photo: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTk4NTQ5Njg%3D/original/347aec30-d479-48c3-a306-a458c21ec568.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/7626a23b-8594-45a7-b818-8ac390f872fa.jpg",
+      "https://a0.muscache.com/im/pictures/d455d0f7-cb4c-48cb-9a01-1ddf81dc1084.jpg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-19854968/original/84e25801-550f-4952-840f-cc7a95d8ab6a.jpeg",
+    ],
   },
   {
     unit: null,
@@ -220,6 +277,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/728944430026918864" }
     ],
     photo: "https://a0.muscache.com/im/pictures/miso/Hosting-728944430026918864/original/61aedd24-6a37-4b48-b7ce-db8a07baf0db.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-728944430026918864/original/e648ea7e-44a8-4c72-bf24-ab813eccc30b.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-728944430026918864/original/9decc7c2-bf6c-4c21-bab2-1ae08b88548e.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-728944430026918864/original/db83e94a-166c-43f8-8dca-aec255d2613d.jpeg",
+    ],
   },
   {
     unit: null,
@@ -233,6 +295,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/937690582144870987" }
     ],
     photo: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-937690582144870987/original/9fac3c67-f2f0-4ab9-a2cb-abf4e1fbda0d.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-937690582144870987/original/c82d1f64-08ca-487f-b31f-a57bbc6db5c3.jpeg",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-937690582144870987/original/a0633563-a828-4d2b-b239-e8c2c7339b7d.jpeg",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-937690582144870987/original/c46c17c0-67b6-485f-b4e3-bc32738a1960.jpeg",
+    ],
   },
   {
     unit: null,
@@ -246,6 +313,7 @@ const LISTINGS = [
       { name: "vrbo", url: "https://www.vrbo.com/296240" }
     ],
     photo: "https://media.vrbo.com/lodging/35000000/34330000/34329700/34329669/bdde75ce.jpg",
+    photos: null,
   },
 
   // ── OCEAN VIEW (floor unlisted) ─────────────────────────────────────────────
@@ -261,6 +329,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/934157971631186406" }
     ],
     photo: "https://a0.muscache.com/im/pictures/miso/Hosting-934157971631186406/original/7e44b1ad-1223-4d82-b71e-550a8a2d38e0.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-934157971631186406/original/a99cefe8-1583-4d4b-b61e-31d4910b0a7b.jpeg",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-934157971631186406/original/a4b20327-6fb8-41a0-8487-c3311a633ee6.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-934157971631186406/original/f9a69789-4675-4795-a32f-428cfc4541b2.jpeg",
+    ],
   },
   {
     unit: null,
@@ -274,6 +347,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/1085025749289849737" }
     ],
     photo: "https://a0.muscache.com/im/pictures/miso/Hosting-1085025749289849737/original/9180251f-f71b-4e9c-b9b6-a583d5d19316.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-1085025749289849737/original/248f9367-7b24-46d2-9346-abc903193c12.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-1085025749289849737/original/5a278ab3-b5dd-4cf9-bae8-35714e7c9243.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-1085025749289849737/original/a210a847-1db0-44c6-9ffc-70a3fb890a63.jpeg",
+    ],
   },
   {
     unit: null,
@@ -287,6 +365,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/1344561008303459786" }
     ],
     photo: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1344561008303459786/original/74030e5d-af93-4852-a32a-a2e3f0a159d4.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1344561008303459786/original/e394ffba-3953-4d35-8295-6277ba470f62.jpeg",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1344561008303459786/original/2d106016-06df-469e-81bc-7eb14d965445.jpeg",
+      "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1344561008303459786/original/2b9962c4-5f6e-41ee-a05f-cd995ae5bc67.jpeg",
+    ],
   },
   {
     unit: null,
@@ -300,6 +383,11 @@ const LISTINGS = [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/1487947670862624545" }
     ],
     photo: "https://a0.muscache.com/im/pictures/hosting/Hosting-1487947670862624545/original/659705c8-f7b8-401a-a9b6-dcf6741399eb.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-1487947670862624545/original/93fa044f-3b08-468e-bff2-d1945ae1bc84.jpeg",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-1487947670862624545/original/b0b02dcc-12cc-4a89-8c94-0c2a8a3c905a.jpeg",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-1487947670862624545/original/cf3c36af-d636-474c-a186-1fb04ed142ae.jpeg",
+    ],
   },
 
 ];
@@ -310,13 +398,6 @@ const VIEW_LABELS = {
   "ocean-view":  "Ocean View",
   "pool-view":   "Pool View",
 };
-
-// Shared thumbnail photos — building exterior context for all cards
-const THUMBS = [
-  "images/DJI_0244.jpg",
-  "images/024A6050.jpg",
-  "images/DJI_0297.jpg",
-];
 
 // ── Build a single listing card ─────────────────────────────────────────────
 function buildCard(listing) {
@@ -334,6 +415,9 @@ function buildCard(listing) {
 
   // View overlay badge color
   const viewOverlayClass = `card__view-overlay--${listing.view}`;
+
+  // Thumbnails: use per-listing photos if available, else building fallbacks
+  const thumbs = listing.photos || VRBO_THUMBS;
 
   // Availability badge for units with live calendar checking
   const avail = listing.unit ? unitAvailability[listing.unit] : null;
@@ -368,9 +452,9 @@ function buildCard(listing) {
           <button class="card__heart" aria-label="Save">♡</button>
         </div>
         <div class="card__photo-thumbs">
-          <img src="${THUMBS[0]}" alt="Sandcastles building exterior" loading="lazy" />
-          <img src="${THUMBS[1]}" alt="Cocoa Beach beachfront" loading="lazy" />
-          <img src="${THUMBS[2]}" alt="Sandcastles aerial view" loading="lazy" />
+          <img src="${thumbs[0]}" alt="${listing.title} photo 2" loading="lazy" />
+          <img src="${thumbs[1]}" alt="${listing.title} photo 3" loading="lazy" />
+          <img src="${thumbs[2]}" alt="${listing.title} photo 4" loading="lazy" />
         </div>
       </div>
       <div class="card__body">
