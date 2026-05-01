@@ -65,6 +65,67 @@
       .avail-bar__field input { width: 130px; }
       .avail-bar__arrow { display: none; }
     }
+
+    /* ── Photo-grid listing cards ── */
+    .listing-card {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid #e5e7eb; background: white;
+      transition: box-shadow .22s, transform .22s;
+    }
+    .listing-card:hover { box-shadow: 0 14px 44px rgba(0,0,0,.12); transform: translateY(-3px); }
+
+    .card__photos { display: flex; flex-direction: column; gap: 3px; background: #d1d5db; }
+
+    .card__photo-hero { position: relative; height: 220px; overflow: hidden; }
+    .card__photo-hero img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .listing-card:hover .card__photo-hero img { transform: scale(1.04); }
+
+    .card__view-overlay {
+      position: absolute; top: 12px; left: 12px;
+      font-size: .68rem; font-weight: 700; padding: 4px 11px;
+      border-radius: 100px; letter-spacing: .04em;
+    }
+    .card__view-overlay--oceanfront { background: #0369a1; color: white; }
+    .card__view-overlay--ocean-view { background: #059669; color: white; }
+    .card__view-overlay--pool-view  { background: #d97706; color: white; }
+
+    .card__heart {
+      position: absolute; top: 10px; right: 12px;
+      background: white; border: none; border-radius: 50%;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; cursor: pointer; color: #6b7280;
+      box-shadow: 0 1px 4px rgba(0,0,0,.18);
+      transition: color .15s;
+    }
+    .card__heart:hover { color: #C0392B; }
+
+    .card__photo-thumbs {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; height: 72px;
+    }
+    .card__photo-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+
+    .card__body { padding: 16px 18px 20px; }
+    .card__unit { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #2B6B8A; margin-bottom: 4px; }
+    .card__title { font-size: .97rem; font-weight: 700; color: #1a2e3b; line-height: 1.3; margin-bottom: 8px; }
+    .card__meta { display: flex; gap: 12px; font-size: .78rem; color: #6b7280; margin-bottom: 10px; }
+    .card__desc {
+      font-size: .8rem; color: #6b7280; line-height: 1.55; margin-bottom: 14px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    .card__book-btn {
+      display: block; text-align: center; padding: 11px 16px;
+      border-radius: 8px; font-size: .85rem; font-weight: 700;
+      transition: background .15s; color: white;
+    }
+    .card__book-btn--airbnb { background: #FF5A5F; }
+    .card__book-btn--airbnb:hover { background: #e0484d; }
+    .card__book-btn--vrbo { background: #1955CC; }
+    .card__book-btn--vrbo:hover { background: #1440a8; }
+
+    .card__links-split { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .card__links-split .card__book-btn { font-size: .78rem; padding: 10px 8px; }
   </style>
 </head>
 <body>

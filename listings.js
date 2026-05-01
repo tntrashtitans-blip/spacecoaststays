@@ -311,9 +311,15 @@ const VIEW_LABELS = {
   "pool-view":   "Pool View",
 };
 
+// Shared thumbnail photos — building exterior context for all cards
+const THUMBS = [
+  "images/DJI_0244.jpg",
+  "images/024A6050.jpg",
+  "images/DJI_0297.jpg",
+];
+
 // ── Build a single listing card ─────────────────────────────────────────────
 function buildCard(listing) {
-  const viewClass = `card__view-badge--${listing.view}`;
   const viewLabel = VIEW_LABELS[listing.view];
 
   // Unit / floor display line
@@ -322,11 +328,12 @@ function buildCard(listing) {
   if (listing.floor) parts.push(`Floor ${listing.floor}`);
   const unitLine = parts.length ? parts.join(" · ") : "Sandcastles";
 
-  // Platform badge
+  // Platform info
   const isDual = listing.platforms.length > 1;
   const primaryName = listing.platforms[0].name;
-  const platformLabel = isDual ? "Airbnb + VRBO" : (primaryName === "airbnb" ? "Airbnb" : "VRBO");
-  const platformClass = isDual ? "card__platform--both" : `card__platform--${primaryName}`;
+
+  // View overlay badge color
+  const viewOverlayClass = `card__view-overlay--${listing.view}`;
 
   // Availability badge for units with live calendar checking
   const avail = listing.unit ? unitAvailability[listing.unit] : null;
@@ -339,22 +346,32 @@ function buildCard(listing) {
     availBadge = `<span class="card__avail card__avail--no">✗ Not available for these dates</span>`;
   }
 
-  // Booking button(s)
+  // Book Now button(s)
   let buttonsHtml;
   if (isDual) {
-    buttonsHtml = `<div class="card__links-split">${listing.platforms.map(p =>
-      `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${p.name}">${p.name === "airbnb" ? "Airbnb ↗" : "VRBO ↗"}</a>`
-    ).join("")}</div>`;
+    buttonsHtml = `<div class="card__links-split">
+      ${listing.platforms.map(p =>
+        `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card__book-btn card__book-btn--${p.name}">Book on ${p.name === "airbnb" ? "Airbnb" : "VRBO"} ↗</a>`
+      ).join("")}
+    </div>`;
   } else {
     const label = primaryName === "airbnb" ? "Book on Airbnb ↗" : "Book on VRBO ↗";
-    buttonsHtml = `<a href="${listing.platforms[0].url}" target="_blank" rel="noopener noreferrer" class="card__link card__link--${primaryName}">${label}</a>`;
+    buttonsHtml = `<a href="${listing.platforms[0].url}" target="_blank" rel="noopener noreferrer" class="card__book-btn card__book-btn--${primaryName}">${label}</a>`;
   }
 
   return `
     <article class="listing-card" data-view="${listing.view}" data-platforms="${listing.platforms.map(p => p.name).join(" ")}">
-      <div class="card__image">
-        <img src="${listing.photo}" alt="${listing.title}" loading="lazy" />
-        <span class="card__platform ${platformClass}">${platformLabel}</span>
+      <div class="card__photos">
+        <div class="card__photo-hero">
+          <img src="${listing.photo}" alt="${listing.title}" loading="lazy" />
+          <span class="card__view-overlay ${viewOverlayClass}">${viewLabel}</span>
+          <button class="card__heart" aria-label="Save">♡</button>
+        </div>
+        <div class="card__photo-thumbs">
+          <img src="${THUMBS[0]}" alt="Sandcastles building exterior" loading="lazy" />
+          <img src="${THUMBS[1]}" alt="Cocoa Beach beachfront" loading="lazy" />
+          <img src="${THUMBS[2]}" alt="Sandcastles aerial view" loading="lazy" />
+        </div>
       </div>
       <div class="card__body">
         <p class="card__unit">${unitLine}</p>
@@ -363,7 +380,6 @@ function buildCard(listing) {
           <span>🛏 ${listing.beds} bed</span>
           <span>🚿 ${listing.baths} bath</span>
         </div>
-        <span class="card__view-badge ${viewClass}">${viewLabel}</span>
         ${availBadge}
         <p class="card__desc">${listing.desc}</p>
         ${buttonsHtml}

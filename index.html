@@ -28,6 +28,11 @@
     .nav__links { display: flex; align-items: center; gap: 30px; list-style: none; }
     .nav__links a { font-size: .88rem; font-weight: 500; color: #4b5563; transition: color .15s; }
     .nav__links a:hover { color: #1a2e3b; }
+    .nav__links .nav__browse {
+      background: #C0392B; color: white !important; padding: 8px 20px;
+      border-radius: 6px; font-weight: 700;
+    }
+    .nav__links .nav__browse:hover { background: #a93226 !important; }
     .nav__links .nav__cta {
       background: #2B6B8A; color: white; padding: 8px 20px;
       border-radius: 6px; font-weight: 600;
@@ -116,6 +121,12 @@
     .view-all { font-size: .85rem; font-weight: 600; color: #2B6B8A; white-space: nowrap; }
     .view-all:hover { text-decoration: underline; }
     .view-all--light { color: #A8D4E6; }
+    .view-all-btn {
+      display: inline-block; background: #1a2e3b; color: white !important;
+      padding: 11px 26px; border-radius: 8px; font-size: .85rem; font-weight: 700;
+      white-space: nowrap; transition: background .15s;
+    }
+    .view-all-btn:hover { background: #2B6B8A !important; text-decoration: none; }
 
     /* ── UNIT CARDS ── */
     .units-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -230,7 +241,7 @@
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">Space<span>Coast</span>Stays</a>
       <ul class="nav__links">
-        <li><a href="sandcastles.html">Browse Units</a></li>
+        <li><a href="sandcastles.html" class="nav__browse">Browse Units →</a></li>
         <li><a href="cocoa-beach-guide.html">Things to Do</a></li>
         <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
         <li><a href="mailto:hello@spacecoaststays.com" class="nav__cta">List Your Unit</a></li>
@@ -291,7 +302,7 @@
           <h2>Featured Units at Sandcastles</h2>
           <p>All units book directly on Airbnb or VRBO — no middleman, no extra fees.</p>
         </div>
-        <a href="sandcastles.html" class="view-all">View all units →</a>
+        <a href="sandcastles.html" class="view-all-btn">View All Units →</a>
       </div>
       <div class="units-grid">
 
