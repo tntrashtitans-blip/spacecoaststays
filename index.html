@@ -379,11 +379,14 @@
     /* ── THINGS TO DO ── */
     .activities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .activity-card {
-      display: block; background: white; border-radius: 12px; padding: 26px 22px;
+      display: block; background: white; border-radius: 12px; overflow: hidden;
       border: 1px solid #e5e7eb; transition: box-shadow .2s, transform .2s;
     }
-    .activity-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.09); transform: translateY(-2px); }
-    .activity-card__icon { font-size: 2rem; margin-bottom: 14px; }
+    .activity-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.12); transform: translateY(-3px); }
+    .activity-card__photo { height: 190px; overflow: hidden; position: relative; }
+    .activity-card__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .activity-card:hover .activity-card__photo img { transform: scale(1.06); }
+    .activity-card__body { padding: 18px 20px 22px; }
     .activity-card__title { font-size: .97rem; font-weight: 700; color: #1a2e3b; margin-bottom: 4px; }
     .activity-card__dist { font-size: .7rem; font-weight: 700; color: #2B6B8A; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
     .activity-card__desc { font-size: .82rem; color: #6b7280; line-height: 1.65; }
@@ -757,58 +760,94 @@
       </div>
       <div class="activities-grid">
         <a href="https://www.cocoabeachsurfingschool.com/" target="_blank" rel="noopener" class="activity-card">
-          <div class="activity-card__icon">🏄</div>
-          <p class="activity-card__title">Surfing Lessons</p>
-          <p class="activity-card__dist">0.4 mi from Sandcastles</p>
-          <p class="activity-card__desc">Ron Jon Surf School and Cocoa Beach Surf School both offer beginner-friendly lessons right on the beach. Cocoa Beach is one of Florida's best surfing spots year-round.</p>
+          <div class="activity-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Surfing_-_Cocoa_Beach_-_Florida.jpg" alt="Surfing at Cocoa Beach Florida" loading="lazy">
+          </div>
+          <div class="activity-card__body">
+            <p class="activity-card__title">Surfing Lessons</p>
+            <p class="activity-card__dist">0.4 mi from Sandcastles</p>
+            <p class="activity-card__desc">Ron Jon Surf School and Cocoa Beach Surf School both offer beginner-friendly lessons right on the beach. Cocoa Beach is one of Florida's best surfing spots year-round.</p>
+          </div>
         </a>
         <a href="https://www.portcanaveral.com/Recreation/Fishing" target="_blank" rel="noopener" class="activity-card">
-          <div class="activity-card__icon">🎣</div>
-          <p class="activity-card__title">Sport Fishing Charters</p>
-          <p class="activity-card__dist">5 mi · Port Canaveral</p>
-          <p class="activity-card__desc">Port Canaveral is home to a fleet of fishing charters targeting mahi-mahi, snapper, grouper, and more. Half-day and full-day offshore trips available year-round.</p>
+          <div class="activity-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Charter_boat_Wild_Bill_tarpon_fishing_in_Key_West_harbor_%288548688954%29.jpg" alt="Sport fishing charter boat Florida" loading="lazy">
+          </div>
+          <div class="activity-card__body">
+            <p class="activity-card__title">Sport Fishing Charters</p>
+            <p class="activity-card__dist">5 mi · Port Canaveral</p>
+            <p class="activity-card__desc">Port Canaveral is home to a fleet of fishing charters targeting mahi-mahi, snapper, grouper, and more. Half-day and full-day offshore trips available year-round.</p>
+          </div>
         </a>
         <a href="https://maps.google.com/?q=Thousand+Islands+Conservation+Area+Cocoa+Beach+FL" target="_blank" rel="noopener" class="activity-card">
-          <div class="activity-card__icon">🚣</div>
-          <p class="activity-card__title">Kayaking — Thousand Islands</p>
-          <p class="activity-card__dist">10 min from Sandcastles</p>
-          <p class="activity-card__desc">Paddle through the Thousand Islands Conservation Area in the Indian River Lagoon — one of the most biodiverse estuaries in the US. Manatees, dolphins, and sea birds along the way.</p>
+          <div class="activity-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Indian_River_Lagoon_National_Scenic_Byway_-_Kayakers_at_Cocoa_Beach_-_NARA_-_7719523.jpg" alt="Kayaking on Indian River Lagoon at Cocoa Beach" loading="lazy">
+          </div>
+          <div class="activity-card__body">
+            <p class="activity-card__title">Kayaking — Thousand Islands</p>
+            <p class="activity-card__dist">10 min from Sandcastles</p>
+            <p class="activity-card__desc">Paddle through the Thousand Islands Conservation Area in the Indian River Lagoon — one of the most biodiverse estuaries in the US. Manatees, dolphins, and sea birds along the way.</p>
+          </div>
         </a>
         <a href="https://www.kennedyspacecenter.com/" target="_blank" rel="noopener" class="activity-card">
-          <div class="activity-card__icon">🚀</div>
-          <p class="activity-card__title">Kennedy Space Center</p>
-          <p class="activity-card__dist">12 mi · 20 min north</p>
-          <p class="activity-card__desc">Walk beneath a Saturn V rocket, see the Space Shuttle Atlantis up close, and catch a live or simulated launch experience. One of Florida's most popular attractions for all ages.</p>
+          <div class="activity-card__photo">
+            <img src="https://res.cloudinary.com/kennedy-space-center/image/upload/ar_9:5,c_fill,g_auto,w_1200/q_auto/f_jpg/Atlantis_featured-attraction_aqawum" alt="Space Shuttle Atlantis at Kennedy Space Center" loading="lazy">
+          </div>
+          <div class="activity-card__body">
+            <p class="activity-card__title">Kennedy Space Center</p>
+            <p class="activity-card__dist">12 mi · 20 min north</p>
+            <p class="activity-card__desc">Walk beneath a Saturn V rocket, see the Space Shuttle Atlantis up close, and catch a live or simulated launch experience. One of Florida's most popular attractions for all ages.</p>
+          </div>
         </a>
         <a href="https://www.ronjons.com/" target="_blank" rel="noopener" class="activity-card">
-          <div class="activity-card__icon">🚲</div>
-          <p class="activity-card__title">Beach Biking on A1A</p>
-          <p class="activity-card__dist">Rentals near Sandcastles</p>
-          <p class="activity-card__desc">Rent cruiser bikes and ride A1A along the ocean — north toward Canaveral National Seashore or south past the Cocoa Beach Pier. Flat terrain, ocean breezes, and no car needed.</p>
+          <div class="activity-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Indian_River_Lagoon_National_Scenic_Byway_-_Biking_on_Cocoa_Beach_-_NARA_-_7719508.jpg" alt="Biking on Cocoa Beach A1A" loading="lazy">
+          </div>
+          <div class="activity-card__body">
+            <p class="activity-card__title">Beach Biking on A1A</p>
+            <p class="activity-card__dist">Rentals near Sandcastles</p>
+            <p class="activity-card__desc">Rent cruiser bikes and ride A1A along the ocean — north toward Canaveral National Seashore or south past the Cocoa Beach Pier. Flat terrain, ocean breezes, and no car needed.</p>
+          </div>
         </a>
         <a href="https://maps.google.com/?q=dolphin+cruise+Port+Canaveral+FL" target="_blank" rel="noopener" class="activity-card">
-          <div class="activity-card__icon">🐬</div>
-          <p class="activity-card__title">Dolphin & Sunset Cruises</p>
-          <p class="activity-card__dist">Port Canaveral · 5 mi</p>
-          <p class="activity-card__desc">Evening dolphin tours and sunset cruises depart from Port Canaveral. Watch bottlenose dolphins play in the wake as the sun drops over the Indian River Lagoon. A Space Coast must-do.</p>
+          <div class="activity-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Lagoon_Pontoons_Dolphin_Tours.jpg" alt="Dolphin tour boat on Florida lagoon" loading="lazy">
+          </div>
+          <div class="activity-card__body">
+            <p class="activity-card__title">Dolphin & Sunset Cruises</p>
+            <p class="activity-card__dist">Port Canaveral · 5 mi</p>
+            <p class="activity-card__desc">Evening dolphin tours and sunset cruises depart from Port Canaveral. Watch bottlenose dolphins play in the wake as the sun drops over the Indian River Lagoon. A Space Coast must-do.</p>
+          </div>
         </a>
         <a href="https://maps.google.com/?q=paddleboard+rentals+Cocoa+Beach+FL" target="_blank" rel="noopener" class="activity-card">
-          <div class="activity-card__icon">🏄</div>
-          <p class="activity-card__title">Paddleboarding</p>
-          <p class="activity-card__dist">Rentals on the beach</p>
-          <p class="activity-card__desc">Stand-up paddleboard rentals are available along A1A. Calm waters on the lagoon side are ideal for beginners, while the Atlantic side offers more of a challenge for advanced paddlers.</p>
+          <div class="activity-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Stand_Up_Paddleboard_%286943612864%29.jpg" alt="Stand-up paddleboarding on Florida water" loading="lazy">
+          </div>
+          <div class="activity-card__body">
+            <p class="activity-card__title">Paddleboarding</p>
+            <p class="activity-card__dist">Rentals on the beach</p>
+            <p class="activity-card__desc">Stand-up paddleboard rentals are available along A1A. Calm waters on the lagoon side are ideal for beginners, while the Atlantic side offers more of a challenge for advanced paddlers.</p>
+          </div>
         </a>
         <a href="https://maps.google.com/?q=Lori+Wilson+Park+Cocoa+Beach+FL" target="_blank" rel="noopener" class="activity-card">
-          <div class="activity-card__icon">🌿</div>
-          <p class="activity-card__title">Lori Wilson Park</p>
-          <p class="activity-card__dist">0.3 mi · Walk</p>
-          <p class="activity-card__desc">A hidden gem just steps from Sandcastles. Winding nature boardwalk through coastal scrub habitat, leading to one of the cleanest stretches of beach in Cocoa Beach. Bring the dog.</p>
+          <div class="activity-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cocoa_Beach_at_Lori_Wilson_Park_-_Flickr_-_Rusty_Clark_%2875%29.jpg" alt="Lori Wilson Park beach Cocoa Beach Florida" loading="lazy">
+          </div>
+          <div class="activity-card__body">
+            <p class="activity-card__title">Lori Wilson Park</p>
+            <p class="activity-card__dist">0.3 mi · Walk</p>
+            <p class="activity-card__desc">A hidden gem just steps from Sandcastles. Winding nature boardwalk through coastal scrub habitat, leading to one of the cleanest stretches of beach in Cocoa Beach. Bring the dog.</p>
+          </div>
         </a>
         <a href="https://maps.google.com/?q=jet+ski+rentals+Port+Canaveral+FL" target="_blank" rel="noopener" class="activity-card">
-          <div class="activity-card__icon">🛥️</div>
-          <p class="activity-card__title">Jet Ski & Boat Rentals</p>
-          <p class="activity-card__dist">Port Canaveral · 5 mi</p>
-          <p class="activity-card__desc">Rent a jet ski, pontoon boat, or wave runner from Port Canaveral marinas and explore the open waters of Banana River, Indian River, or the Atlantic inlet. No boating license required for rentals.</p>
+          <div class="activity-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Group_of_Jet_Ski_Riders%2C_Key_West%2C_Florida%2C_2025.jpg" alt="Jet ski riders in Florida waters" loading="lazy">
+          </div>
+          <div class="activity-card__body">
+            <p class="activity-card__title">Jet Ski & Boat Rentals</p>
+            <p class="activity-card__dist">Port Canaveral · 5 mi</p>
+            <p class="activity-card__desc">Rent a jet ski, pontoon boat, or wave runner from Port Canaveral marinas and explore the open waters of Banana River, Indian River, or the Atlantic inlet. No boating license required for rentals.</p>
+          </div>
         </a>
       </div>
     </div>
