@@ -61,13 +61,13 @@
     .avail-bar__field { display: flex; flex-direction: column; gap: 5px; }
     .avail-bar__field label { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); }
     .avail-bar__field input,
-    .avail-bar__field .flatpickr-input[readonly] { background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; padding: 10px 16px; font-size: .9rem; color: white; width: 168px; cursor: pointer; outline: none; transition: border-color .15s; }
-    .avail-bar__field input::placeholder { color: rgba(255,255,255,.45); }
-    .avail-bar__field input:focus { border-color: rgba(255,255,255,.6); }
+    .avail-bar__field .flatpickr-input[readonly] { background: white; border: 1.5px solid rgba(255,255,255,.5); border-radius: 8px; padding: 10px 16px; font-size: .9rem; color: #222; width: 168px; cursor: pointer; outline: none; transition: border-color .15s; }
+    .avail-bar__field input::placeholder { color: #999; }
+    .avail-bar__field input:focus { border-color: white; }
     .avail-bar__arrow { color: rgba(255,255,255,.45); font-size: 1.1rem; padding-bottom: 10px; }
-    .avail-bar__btn { background: white; color: #1D4E66; border: none; border-radius: 8px; padding: 11px 24px; font-size: .85rem; font-weight: 800; cursor: pointer; transition: background .15s, color .15s; white-space: nowrap; }
-    .avail-bar__btn:hover { background: var(--ocean-light); }
-    .avail-bar__btn:disabled { opacity: .45; cursor: default; }
+    .avail-bar__btn { background: #C0392B; color: white; border: none; border-radius: 8px; padding: 11px 24px; font-size: .85rem; font-weight: 800; cursor: pointer; transition: background .15s; white-space: nowrap; }
+    .avail-bar__btn:hover { background: #a93226; }
+    .avail-bar__btn:disabled { opacity: 1; cursor: default; }
     .avail-bar__clear { background: none; border: 1px solid rgba(255,255,255,.25); color: rgba(255,255,255,.6); border-radius: 8px; padding: 10px 14px; font-size: .82rem; cursor: pointer; display: none; }
     .avail-bar__clear:hover { border-color: rgba(255,255,255,.5); color: white; }
     .avail-bar__hint { font-size: .78rem; color: rgba(255,255,255,.5); margin-top: 10px; text-align: center; }
@@ -175,7 +175,7 @@
   </div>
 
   <!-- FILTER BAR -->
-  <div class="container">
+  <div class="container" style="padding-top: 24px;">
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">All Units</button>
       <button class="filter-btn" data-filter="oceanfront">🌊 Oceanfront</button>
