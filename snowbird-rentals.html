@@ -524,6 +524,21 @@
       color: white;
     }
 
+    /* ── Snowbird trip grid ── */
+    .snowbird-trip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media (max-width: 900px) { .snowbird-trip-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .snowbird-trip-grid { grid-template-columns: 1fr; } }
+    .bike-layout { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
+    .bike-layout__photo { flex: 1; min-width: 260px; }
+    .bike-layout__text { flex: 1; min-width: 260px; }
+    .bike-layout__text ul { list-style: disc; padding-left: 20px; }
+    .bike-layout__text li { margin-bottom: 12px; color: var(--text-muted, #6b7280); line-height: 1.7; font-size: .95rem; }
+
     /* ── Breadcrumb ── */
     .breadcrumb {
       font-size: .78rem;
@@ -590,43 +605,67 @@
       <h2 class="section-h2">Why Sandcastles for the Season</h2>
       <p class="section-intro">Everything you need to actually live here — not just visit.</p>
 
-      <div class="feature-grid">
+      <div class="snowbird-trip-grid">
 
-        <div class="feature-card">
-          <div class="feature-card__icon">🌊</div>
-          <h3>Directly on the Atlantic</h3>
-          <p>Wake up to the ocean every morning. Not a view of a parking lot, not a pool deck — the actual Atlantic Ocean, steps from your door. Sandcastles sits right on N Atlantic Ave at the water's edge.</p>
-        </div>
+        <a href="sandcastles.html" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="images/DJI_0244.jpg" alt="Sandcastles Condominiums on Cocoa Beach FL from the air" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Directly on the Atlantic</p>
+            <p class="trip-card__desc">Wake up to the ocean every morning. Not a view of a parking lot, not a pool deck — the actual Atlantic Ocean, steps from your door. Sandcastles sits right on N Atlantic Ave at the water's edge.</p>
+          </div>
+        </a>
 
-        <div class="feature-card">
-          <div class="feature-card__icon">🏠</div>
-          <h3>Full 2BR/2BA Condos</h3>
-          <p>A real home, not a hotel room. Full kitchen so you can cook your own meals, in-unit washer and dryer, a living room to actually unwind in, and two full bedrooms — room for a guest, a home office, or both.</p>
-        </div>
+        <a href="sandcastles.html" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="images/Living Room.jpg" alt="Sandcastles condo interior living room" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Full 2BR/2BA Condo</p>
+            <p class="trip-card__desc">A real home, not a hotel room. Full kitchen so you can cook your own meals, in-unit washer and dryer, a living room to actually unwind in, and two full bedrooms — room for a guest, a home office, or both.</p>
+          </div>
+        </a>
 
-        <div class="feature-card">
-          <div class="feature-card__icon">♨️</div>
-          <h3>Heated Pool &amp; Hot Tub</h3>
-          <p>The pool and hot tub are heated year-round. On cooler January mornings when the ocean is brisk, the pool deck is where you'll start your day — coffee in hand, watching the sunrise over the water.</p>
-        </div>
+        <a href="sandcastles.html" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="images/DJI_0293.jpg" alt="Sandcastles Condominiums aerial view with pool" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Heated Pool &amp; Hot Tub</p>
+            <p class="trip-card__desc">The pool and hot tub are heated year-round. On cooler January mornings when the ocean is brisk, the pool deck is where you'll start your day — coffee in hand, watching the sunrise over the water.</p>
+          </div>
+        </a>
 
-        <div class="feature-card">
-          <div class="feature-card__icon">📅</div>
-          <h3>Monthly &amp; Extended Stays Welcome</h3>
-          <p>Sandcastles owners genuinely welcome long-term guests. Contact owners directly through their Airbnb or VRBO listing to discuss monthly rates — most are happy to negotiate for 30+ day bookings. Book early, especially for January through March.</p>
-        </div>
+        <a href="sandcastles.html" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="images/DJI_0280.jpg" alt="Cocoa Beach coastline aerial view" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Monthly Stays Welcome</p>
+            <p class="trip-card__desc">Sandcastles owners genuinely welcome long-term guests. Contact owners directly through their Airbnb or VRBO listing to discuss monthly rates — most are happy to negotiate for 30+ day bookings. Book early, especially for January through March.</p>
+          </div>
+        </a>
 
-        <div class="feature-card">
-          <div class="feature-card__icon">👋</div>
-          <h3>Small, Friendly Building</h3>
-          <p>This isn't a massive resort complex with hundreds of strangers cycling through. Sandcastles is a small, tight-knit building — you'll know your neighbors by name within a week, and that community is one of the things seasonal guests return for year after year.</p>
-        </div>
+        <a href="sandcastles.html" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cocoa_Beach_at_Lori_Wilson_Park_-_Flickr_-_Rusty_Clark_%2875%29.jpg" alt="Cocoa Beach at Lori Wilson Park" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Small, Friendly Building</p>
+            <p class="trip-card__desc">This isn't a massive resort complex with hundreds of strangers cycling through. Sandcastles is a small, tight-knit building — you'll know your neighbors by name within a week, and that community is one of the things seasonal guests return for year after year.</p>
+          </div>
+        </a>
 
-        <div class="feature-card">
-          <div class="feature-card__icon">🚀</div>
-          <h3>Front-Row to the Space Coast</h3>
-          <p>Rocket launches from Kennedy Space Center and Cape Canaveral SFS light up the sky from your balcony multiple times per month. Winter months offer some of the clearest viewing conditions of the year.</p>
-        </div>
+        <a href="sandcastles.html" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="images/DJI_0244.jpg" alt="Cocoa Beach aerial view toward Kennedy Space Center" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Front-Row Rocket Launches</p>
+            <p class="trip-card__desc">Rocket launches from Kennedy Space Center and Cape Canaveral SFS light up the sky from your balcony multiple times per month. Winter months offer some of the clearest viewing conditions of the year.</p>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -638,88 +677,37 @@
       <h2 class="section-h2">Practical Living Near Sandcastles</h2>
       <p class="section-intro">Everything you need for daily life is close. Here's what's nearby and how far.</p>
 
-      <div class="practical-grid">
+      <div class="snowbird-trip-grid">
 
-        <div class="practical-block">
-          <h3>Groceries &amp; Food</h3>
-          <ul>
-            <li>
-              <span class="pi">🛒</span>
-              <span class="pd">
-                <strong>Publix (N Orlando Ave)</strong>
-                <span>Approximately 2–3 miles — weekly shopping fully covered. Good deli, pharmacy, and prepared foods.</span>
-              </span>
-            </li>
-            <li>
-              <span class="pi">🛒</span>
-              <span class="pd">
-                <strong>Winn-Dixie</strong>
-                <span>Approximately 5 miles, Merritt Island — larger footprint, good produce and meat department.</span>
-              </span>
-            </li>
-            <li>
-              <span class="pi">🎣</span>
-              <span class="pd">
-                <strong>Port Canaveral Fish Markets</strong>
-                <span>6 miles north — buy fresh catch straight off the boat. Grouper, shrimp, stone crab in season. One of the real pleasures of living on the Space Coast.</span>
-              </span>
-            </li>
-          </ul>
-        </div>
+        <a href="https://maps.google.com/?q=Publix+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="images/DJI_0280.jpg" alt="Cocoa Beach coastline aerial view" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Groceries &amp; Daily Shopping</p>
+            <p class="trip-card__desc">Publix on N Orlando Ave ~2-3 miles. Winn-Dixie ~5 miles on Merritt Island. Port Canaveral fish markets 6 miles north — buy fresh grouper and shrimp straight off the boat. Everything you need for a full season is covered.</p>
+          </div>
+        </a>
 
-        <div class="practical-block">
-          <h3>Healthcare</h3>
-          <ul>
-            <li>
-              <span class="pi">🏥</span>
-              <span class="pd">
-                <strong>Health First Cape Canaveral Hospital</strong>
-                <span>Approximately 3 miles (701 W Cocoa Beach Cswy, Cape Canaveral) — full emergency department, inpatient services, and specialists on staff.</span>
-              </span>
-            </li>
-            <li>
-              <span class="pi">🩺</span>
-              <span class="pd">
-                <strong>Health First Medical Group</strong>
-                <span>Urgent care and primary care clinics throughout Brevard County — short wait times, most accept major insurance.</span>
-              </span>
-            </li>
-            <li>
-              <span class="pi">💊</span>
-              <span class="pd">
-                <strong>Pharmacy</strong>
-                <span>Multiple CVS and Walgreens locations within 5 miles — prescription transfers are straightforward for seasonal residents.</span>
-              </span>
-            </li>
-          </ul>
-        </div>
+        <a href="https://maps.google.com/?q=Health+First+Cape+Canaveral+Hospital+Cape+Canaveral+FL" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Port_Canaveral_Florida.jpg/1280px-Port_Canaveral_Florida.jpg" alt="Port Canaveral waterfront" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Healthcare &amp; Emergency Services</p>
+            <p class="trip-card__desc">Health First Cape Canaveral Hospital ~3 miles (701 W Cocoa Beach Cswy). Urgent care clinics throughout Brevard County. CVS and Walgreens within 5 miles for prescriptions — transfers are easy for seasonal residents.</p>
+          </div>
+        </a>
 
-        <div class="practical-block">
-          <h3>Safety &amp; Services</h3>
-          <ul>
-            <li>
-              <span class="pi">👮</span>
-              <span class="pd">
-                <strong>Cocoa Beach Police Department</strong>
-                <span>Approximately 1 mile from Sandcastles — Cocoa Beach runs its own city police force, not just county coverage.</span>
-              </span>
-            </li>
-            <li>
-              <span class="pi">🚒</span>
-              <span class="pd">
-                <strong>Cocoa Beach Fire Station 61</strong>
-                <span>Within 1 mile — fast response times are one of the advantages of a small, compact city with a dedicated fire department.</span>
-              </span>
-            </li>
-            <li>
-              <span class="pi">🏘️</span>
-              <span class="pd">
-                <strong>Small, Safe City</strong>
-                <span>Cocoa Beach is a locals-first community of about 11,000 residents. Walkable, low crime, and well-maintained — a genuinely comfortable place to spend a season.</span>
-              </span>
-            </li>
-          </ul>
-        </div>
+        <a href="https://maps.google.com/?q=Cocoa+Beach+Police+Department+FL" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://portcanaveral.com/images/default-source/heros/jettyparkhero.jpg" alt="Jetty Park Port Canaveral" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Safety &amp; City Services</p>
+            <p class="trip-card__desc">Cocoa Beach runs its own city police force — not just county coverage. Fire Station 61 is within 1 mile. A tight-knit city of ~11,000 residents: walkable, low crime, well-maintained.</p>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -731,30 +719,23 @@
       <h2 class="section-h2">Getting Around — Bike-Friendly by Design</h2>
       <p class="section-intro">You don't need a car for daily life in Cocoa Beach. Most seasonal residents rely on bikes for everything except day trips.</p>
 
-      <div class="bike-points">
+      <div class="bike-layout">
 
-        <div class="bike-point">
-          <p><strong>Dedicated multi-use path on A1A</strong> — a wide sidewalk and shared-use trail runs the full length of A1A through Cocoa Beach, completely separated from traffic. It connects parks, restaurants, shops, and the beach without touching a road lane.</p>
+        <div class="bike-layout__photo">
+          <a href="https://maps.google.com/?q=A1A+bike+path+Cocoa+Beach+FL" target="_blank" rel="noopener" style="display:block">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Indian_River_Lagoon_National_Scenic_Byway_-_Biking_on_Cocoa_Beach_-_NARA_-_7719508.jpg" alt="Biking on Cocoa Beach A1A" style="width:100%;border-radius:16px;aspect-ratio:4/3;object-fit:cover;" loading="lazy">
+          </a>
         </div>
 
-        <div class="bike-point">
-          <p><strong>Beach riding at low tide</strong> — cycling on the hard-packed sand at low tide is permitted on Cocoa Beach. It's a distinctly Florida experience and one of the best ways to cover a few miles of coastline before breakfast.</p>
-        </div>
-
-        <div class="bike-point">
-          <p><strong>Flat and compact</strong> — Cocoa Beach has essentially no elevation change. A bike handles grocery runs, restaurant trips, beach access, and most errands without breaking a sweat. The entire main commercial strip is within easy cycling range of Sandcastles.</p>
-        </div>
-
-        <div class="bike-point">
-          <p><strong>Bike rentals available locally</strong> — if you don't want to ship your own, local rental options are available in town. Many seasonal residents bring their own bike; others pick one up locally for the season.</p>
-        </div>
-
-        <div class="bike-point">
-          <p><strong>A car helps for day trips</strong> — Kennedy Space Center, Port Canaveral, Orlando, and the rest of Brevard County are worth exploring by car. But for the daily rhythm of life during your stay, two wheels are plenty.</p>
-        </div>
-
-        <div class="bike-point">
-          <p><strong>Ron Jon rents bikes too</strong> — the iconic surf shop just down A1A offers beach cruiser rentals by the hour or day. Worth knowing if you have a guest visiting and need a second set of wheels.</p>
+        <div class="bike-layout__text">
+          <ul>
+            <li><strong>Dedicated multi-use path on A1A</strong> — a wide sidewalk and shared-use trail runs the full length of A1A through Cocoa Beach, completely separated from traffic. It connects parks, restaurants, shops, and the beach without touching a road lane.</li>
+            <li><strong>Beach riding at low tide</strong> — cycling on the hard-packed sand at low tide is permitted on Cocoa Beach. It's a distinctly Florida experience and one of the best ways to cover a few miles of coastline before breakfast.</li>
+            <li><strong>Flat and compact</strong> — Cocoa Beach has essentially no elevation change. A bike handles grocery runs, restaurant trips, beach access, and most errands without breaking a sweat. The entire main commercial strip is within easy cycling range of Sandcastles.</li>
+            <li><strong>Bike rentals available locally</strong> — if you don't want to ship your own, local rental options are available in town. Many seasonal residents bring their own bike; others pick one up locally for the season.</li>
+            <li><strong>A car helps for day trips</strong> — Kennedy Space Center, Port Canaveral, Orlando, and the rest of Brevard County are worth exploring by car. But for the daily rhythm of life during your stay, two wheels are plenty.</li>
+            <li><a href="https://www.ronjonsurfshop.com/store/cocoa-beach" target="_blank" rel="noopener">Ron Jon Surf Shop</a> rents beach cruisers by the hour or day — pick one up if guests need a second set of wheels.</li>
+          </ul>
         </div>
 
       </div>
@@ -767,47 +748,62 @@
       <h2 class="section-h2">Parks &amp; Outdoor Life</h2>
       <p class="section-intro">Cocoa Beach punches well above its size when it comes to parks. The entire shoreline is public — a daily sunrise walk is part of the snowbird lifestyle here.</p>
 
-      <div class="parks-list">
+      <div class="snowbird-trip-grid">
 
-        <div class="park-item">
-          <div>
-            <div class="park-item__name">Sidney Fischer Park</div>
-            <div class="park-item__dist">0.3 miles from Sandcastles</div>
+        <a href="https://maps.google.com/?q=Sidney+Fischer+Park+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cocoa_Beach_at_Lori_Wilson_Park_-_Flickr_-_Rusty_Clark_%2875%29.jpg" alt="Cocoa Beach at Lori Wilson Park" loading="lazy">
           </div>
-          <p class="park-item__desc">Your closest public beach access point. Picnic areas, restrooms, outdoor showers, and ample parking. Free to use. Great for morning walks or afternoon sessions on the sand — close enough that you won't need to drive.</p>
-        </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Sidney Fischer Park</p>
+            <p class="trip-card__time">0.3 mi from Sandcastles</p>
+            <p class="trip-card__desc">Your closest public beach access point. Picnic areas, restrooms, outdoor showers, and ample parking. Free to use. Great for morning walks or afternoon sessions on the sand — close enough that you won't need to drive.</p>
+          </div>
+        </a>
 
-        <div class="park-item">
-          <div>
-            <div class="park-item__name">Lori Wilson Park</div>
-            <div class="park-item__dist">1.3 miles from Sandcastles</div>
+        <a href="https://maps.google.com/?q=Lori+Wilson+Park+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cocoa_Beach_at_Lori_Wilson_Park_-_Flickr_-_Rusty_Clark_%2875%29.jpg" alt="Cocoa Beach at Lori Wilson Park" loading="lazy">
           </div>
-          <p class="park-item__desc">One of the finest parks on the entire Space Coast. A nature boardwalk winds through coastal scrub habitat — a rare and protected ecosystem — before opening onto a gorgeous stretch of beach. Perfect for birding, quiet walks, and watching the shore birds work the surf. Dogs welcome on leash.</p>
-        </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Lori Wilson Park</p>
+            <p class="trip-card__time">1.3 mi from Sandcastles</p>
+            <p class="trip-card__desc">One of the finest parks on the entire Space Coast. A nature boardwalk winds through coastal scrub habitat — a rare and protected ecosystem — before opening onto a gorgeous stretch of beach. Perfect for birding, quiet walks, and watching the shore birds work the surf. Dogs welcome on leash.</p>
+          </div>
+        </a>
 
-        <div class="park-item">
-          <div>
-            <div class="park-item__name">Alan Shepard Park</div>
-            <div class="park-item__dist">Near the Cocoa Beach Pier</div>
+        <a href="https://maps.google.com/?q=Alan+Shepard+Park+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/A_restaurant_at_Cocoa_Beach_Pier_%28May_2023%29.jpg" alt="Cocoa Beach Pier restaurant" loading="lazy">
           </div>
-          <p class="park-item__desc">Named after Alan Shepard, the first American in space — who was a Cocoa Beach resident. Beach access, parking, and restrooms near the iconic Cocoa Beach Pier. A good starting point for a pier walk or a sunset stroll down the beach.</p>
-        </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Alan Shepard Park</p>
+            <p class="trip-card__time">Near the Cocoa Beach Pier</p>
+            <p class="trip-card__desc">Named after Alan Shepard, the first American in space — who was a Cocoa Beach resident. Beach access, parking, and restrooms near the iconic Cocoa Beach Pier. A good starting point for a pier walk or a sunset stroll down the beach.</p>
+          </div>
+        </a>
 
-        <div class="park-item">
-          <div>
-            <div class="park-item__name">Jetty Park</div>
-            <div class="park-item__dist">Port Canaveral · 6 miles north</div>
+        <a href="https://maps.google.com/?q=Jetty+Park+Port+Canaveral+FL" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://portcanaveral.com/images/default-source/heros/jettyparkhero.jpg" alt="Jetty Park Port Canaveral" loading="lazy">
           </div>
-          <p class="park-item__desc">A gem worth the short drive. Walking trails, a long fishing pier, beach access, and picnic areas — plus a front-row view of cruise ships departing Port Canaveral and an unobstructed line of sight to the launch pads. Pack lunch and spend a morning here.</p>
-        </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Jetty Park</p>
+            <p class="trip-card__time">Port Canaveral · 6 mi</p>
+            <p class="trip-card__desc">A gem worth the short drive. Walking trails, a long fishing pier, beach access, and picnic areas — plus a front-row view of cruise ships departing Port Canaveral and an unobstructed line of sight to the launch pads. Pack lunch and spend a morning here.</p>
+          </div>
+        </a>
 
-        <div class="park-item">
-          <div>
-            <div class="park-item__name">The Entire Cocoa Beach Shoreline</div>
-            <div class="park-item__dist">From your front door</div>
+        <a href="https://maps.google.com/?q=Cocoa+Beach+FL+public+beach" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="images/DJI_0280.jpg" alt="Cocoa Beach coastline aerial view" loading="lazy">
           </div>
-          <p class="park-item__desc">Every inch of Cocoa Beach's Atlantic shoreline is public. There are no private beach segments, no hotel-only sections. Walk as far north or south as you like. A daily sunrise walk — coffee optional but recommended — becomes the anchor of the snowbird morning routine within the first week.</p>
-        </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">The Entire Shoreline</p>
+            <p class="trip-card__time">From your front door</p>
+            <p class="trip-card__desc">Every inch of Cocoa Beach's Atlantic shoreline is public. There are no private beach segments, no hotel-only sections. Walk as far north or south as you like. A daily sunrise walk — coffee optional but recommended — becomes the anchor of the snowbird morning routine within the first week.</p>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -819,31 +815,51 @@
       <h2 class="section-h2">Golf on the Space Coast</h2>
       <p class="section-intro">Brevard County has more than a dozen courses within 30 minutes. If golf is part of your winter routine, you won't run out of options.</p>
 
-      <div class="golf-grid">
+      <div class="snowbird-trip-grid">
 
-        <div class="golf-card">
-          <h4>Cocoa Beach Country Club</h4>
-          <div class="golf-dist">5000 Tom Warriner Blvd, Cocoa Beach · ~1 mile</div>
-          <p>An 18-hole municipal course that sits practically in Sandcastles' backyard — motivated golfers can bike there. One of the most affordable oceanside courses in Florida, with a genuine local atmosphere. No tee-time drama, no resort pricing. This is where Cocoa Beach residents actually play.</p>
-        </div>
+        <a href="https://www.cocoabeachcountryclub.com/" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Golfers_and_caddies_at_Miami_Country_Club_(9016125266).jpg?width=800" alt="Golfers on a Florida golf course" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Cocoa Beach Country Club</p>
+            <p class="trip-card__time">~1 mile</p>
+            <p class="trip-card__desc">An 18-hole municipal course that sits practically in Sandcastles' backyard — motivated golfers can bike there. One of the most affordable oceanside courses in Florida, with a genuine local atmosphere. No tee-time drama, no resort pricing. This is where Cocoa Beach residents actually play.</p>
+          </div>
+        </a>
 
-        <div class="golf-card">
-          <h4>Duran Golf Club</h4>
-          <div class="golf-dist">Viera · ~20 miles</div>
-          <p>A well-regarded public course in the fast-growing Viera community. Good conditioning, fair pricing, and a more formal course experience. A solid choice when you want something a step up from the municipal layout.</p>
-        </div>
+        <a href="https://www.durangolfclub.com/" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Golfers_and_caddies_at_Miami_Country_Club_(9016125266).jpg?width=800" alt="Golfers on a Florida golf course" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Duran Golf Club</p>
+            <p class="trip-card__time">~20 miles · Viera</p>
+            <p class="trip-card__desc">A well-regarded public course in the fast-growing Viera community. Good conditioning, fair pricing, and a more formal course experience. A solid choice when you want something a step up from the municipal layout.</p>
+          </div>
+        </a>
 
-        <div class="golf-card">
-          <h4>Viera East Golf Club</h4>
-          <div class="golf-dist">Viera · ~25 miles</div>
-          <p>A championship-level public course with excellent practice facilities. Popular with serious golfers making the trip from the beach for a full round. Worth combining with errands in Viera or a visit to the Brevard Zoo nearby.</p>
-        </div>
+        <a href="https://www.vieraeast.com/" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Golfers_and_caddies_at_Miami_Country_Club_(9016125266).jpg?width=800" alt="Golfers on a Florida golf course" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Viera East Golf Club</p>
+            <p class="trip-card__time">~25 miles · Viera</p>
+            <p class="trip-card__desc">A championship-level public course with excellent practice facilities. Popular with serious golfers making the trip from the beach for a full round. Worth combining with errands in Viera or a visit to the Brevard Zoo nearby.</p>
+          </div>
+        </a>
 
-        <div class="golf-card">
-          <h4>More Within 30 Minutes</h4>
-          <div class="golf-dist">Brevard County</div>
-          <p>Brevard County has a dozen courses within a 30-minute drive of Cocoa Beach — from casual nine-hole layouts to championship tracks. Many are municipal or semi-private with reasonable green fees. Ask locals at the Cocoa Beach Country Club for current recommendations.</p>
-        </div>
+        <a href="https://maps.google.com/?q=golf+courses+Brevard+County+FL" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Golfers_and_caddies_at_Miami_Country_Club_(9016125266).jpg?width=800" alt="Golfers on a Florida golf course" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">More Brevard Courses</p>
+            <p class="trip-card__time">Within 30 min</p>
+            <p class="trip-card__desc">Brevard County has a dozen courses within a 30-minute drive of Cocoa Beach — from casual nine-hole layouts to championship tracks. Many are municipal or semi-private with reasonable green fees. Ask locals at the Cocoa Beach Country Club for current recommendations.</p>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -855,43 +871,73 @@
       <h2 class="section-h2">Things to Do All Winter Long</h2>
       <p class="section-intro">A season on the Space Coast means more than beach days. Winter is actually the best time to be here for many of the region's signature experiences.</p>
 
-      <div class="seasonal-grid">
+      <div class="snowbird-trip-grid">
 
-        <div class="seasonal-card">
-          <div class="seasonal-card__icon">🚀</div>
-          <h4>Rocket Launches</h4>
-          <p>SpaceX launches from Cape Canaveral year-round, with November through March delivering some of the clearest viewing conditions of the year — low humidity and cool, transparent air. Launch events draw locals and visitors to the beach and Jetty Park for what amounts to a spontaneous block party. Watch from your balcony or walk to the shoreline.</p>
-        </div>
+        <a href="watch-a-rocket-launch.html" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="images/DJI_0244.jpg" alt="Cocoa Beach aerial view toward Kennedy Space Center" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Rocket Launches</p>
+            <p class="trip-card__time">Multiple times/month · Watch from balcony</p>
+            <p class="trip-card__desc">SpaceX launches from Cape Canaveral year-round, with November through March delivering some of the clearest viewing conditions of the year — low humidity and cool, transparent air. Launch events draw locals and visitors to the beach and Jetty Park for what amounts to a spontaneous block party. Watch from your balcony or walk to the shoreline.</p>
+          </div>
+        </a>
 
-        <div class="seasonal-card">
-          <div class="seasonal-card__icon">🛸</div>
-          <h4>Kennedy Space Center</h4>
-          <p>Many snowbirds who visit KSC once end up going back two or three more times during the season. The exhibits change, the live programs vary, and the experience of standing under a Saturn V rocket never really gets old. Buy an annual pass and treat it like a local.</p>
-        </div>
+        <a href="https://www.kennedyspacecenter.com/" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://res.cloudinary.com/kennedy-space-center/image/upload/ar_9:5,c_fill,g_auto,w_1200/q_auto/f_jpg/Atlantis_featured-attraction_aqawum" alt="Kennedy Space Center Atlantis exhibit" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Kennedy Space Center</p>
+            <p class="trip-card__time">12 miles · 20 min north</p>
+            <p class="trip-card__desc">Many snowbirds who visit KSC once end up going back two or three more times during the season. The exhibits change, the live programs vary, and the experience of standing under a Saturn V rocket never really gets old. Buy an annual pass and treat it like a local.</p>
+          </div>
+        </a>
 
-        <div class="seasonal-card">
-          <div class="seasonal-card__icon">🦋</div>
-          <h4>Manatee Season</h4>
-          <p>November through March is peak manatee season in Florida. Blue Spring State Park (90 minutes from Cocoa Beach) is one of the best places in the world to see manatees up close. On cool mornings, hundreds gather in the warm spring water. An easy day trip and a genuinely unforgettable experience.</p>
-        </div>
+        <a href="https://www.spacecoastbirding.com/" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Loggerhead_Sea_Turtle_%28Caretta_caretta%29_%286161220705%29.jpg" alt="Sea turtle wildlife on the Space Coast" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Manatee &amp; Wildlife Season</p>
+            <p class="trip-card__time">Oct–Mar · Indian River Lagoon</p>
+            <p class="trip-card__desc">November through March is peak manatee season in Florida. Blue Spring State Park (90 minutes from Cocoa Beach) is one of the best places in the world to see manatees up close. On cool mornings, hundreds gather in the warm spring water. An easy day trip and a genuinely unforgettable experience.</p>
+          </div>
+        </a>
 
-        <div class="seasonal-card">
-          <div class="seasonal-card__icon">🦅</div>
-          <h4>Birding at Merritt Island NWR</h4>
-          <p>Winter is prime migratory season at Merritt Island National Wildlife Refuge — one of the most biodiverse refuges in the United States, just 15 minutes from Sandcastles. Roseate spoonbills, bald eagles, herons, sandpipers, and hundreds of migratory species crowd the impoundments and shorelines. Birders from around the country make special trips here in January and February.</p>
-        </div>
+        <a href="https://www.spacecoastbirding.com/" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Indian_River_Lagoon_National_Scenic_Byway_-_Kayakers_at_Cocoa_Beach_-_NARA_-_7719523.jpg" alt="Kayaking on the Indian River Lagoon" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Space Coast Birding Festival</p>
+            <p class="trip-card__time">January · Titusville</p>
+            <p class="trip-card__desc">Winter is prime migratory season at Merritt Island National Wildlife Refuge — one of the most biodiverse refuges in the United States, just 15 minutes from Sandcastles. Roseate spoonbills, bald eagles, herons, sandpipers, and hundreds of migratory species crowd the impoundments and shorelines. Birders from around the country make special trips here in January and February.</p>
+          </div>
+        </a>
 
-        <div class="seasonal-card">
-          <div class="seasonal-card__icon">🦞</div>
-          <h4>Fresh Seafood at Port Canaveral</h4>
-          <p>The waterfront at Port Canaveral has a cluster of seafood restaurants — Grills, Rusty's, and others — where the catch comes straight off the boats docked nearby. Grouper, shrimp, oysters, stone crab when in season. Make it a weekly ritual; the sunsets from the marina are worth the trip on their own.</p>
-        </div>
+        <a href="https://www.grillsseafood.com/" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="images/GrillsSeafood.png" alt="Grills Seafood at Port Canaveral" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Port Canaveral Seafood</p>
+            <p class="trip-card__time">5 miles · Grills &amp; Rusty's</p>
+            <p class="trip-card__desc">The waterfront at Port Canaveral has a cluster of seafood restaurants — Grills, Rusty's, and others — where the catch comes straight off the boats docked nearby. Grouper, shrimp, oysters, stone crab when in season. Make it a weekly ritual; the sunsets from the marina are worth the trip on their own.</p>
+          </div>
+        </a>
 
-        <div class="seasonal-card">
-          <div class="seasonal-card__icon">🗺️</div>
-          <h4>Day Trips from Cocoa Beach</h4>
-          <p>Orlando is an hour away — theme parks, outlet shopping, major airports. St. Augustine (2 hours north) is the oldest city in the US and worth a two-day trip. Tampa (2 hours west) offers Busch Gardens, the Riverwalk, and Ybor City. Cocoa Beach sits in one of Florida's most central locations for exploring the state.</p>
-        </div>
+        <a href="https://www.brevardzoo.org/" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Brevard_Zoo_-_Flickr_-_Rusty_Clark_%28282%29.jpg" alt="Brevard Zoo" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Day Trips from the Beach</p>
+            <p class="trip-card__time">KSC · Orlando · St. Augustine</p>
+            <p class="trip-card__desc">Orlando is an hour away — theme parks, outlet shopping, major airports. St. Augustine (2 hours north) is the oldest city in the US and worth a two-day trip. Tampa (2 hours west) offers Busch Gardens, the Riverwalk, and Ybor City. Cocoa Beach sits in one of Florida's most central locations for exploring the state.</p>
+          </div>
+        </a>
 
       </div>
     </div>
