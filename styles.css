@@ -66,14 +66,14 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  height: 72px;
 }
 .nav__logo {
   font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--ocean-dark);
-  letter-spacing: -.01em;
+  letter-spacing: -.02em;
 }
 .nav__logo span { color: var(--ocean); }
 .nav__links {
