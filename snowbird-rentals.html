@@ -578,7 +578,7 @@
         <li><a href="sandcastles.html" class="active">Browse Units</a></li>
         <li class="nav__area-item" style="position:relative; list-style:none;">
           <a href="cocoa-beach-guide.html">Explore &#9660;</a>
-          <ul class="nav__dropdown" style="display:none; position:absolute; top:calc(100% + 2px); left:0; background:#ffffff; border-radius:0 0 8px 8px; box-shadow:0 8px 24px rgba(0,0,0,.18); list-style:none; margin:0; padding:8px 0; min-width:210px; z-index:1000;">
+          <ul class="nav__dropdown" style="display:none; position:absolute; top:100%; left:0; background:#ffffff; border-radius:0 0 8px 8px; box-shadow:0 8px 24px rgba(0,0,0,.18); list-style:none; margin:0; padding:8px 0; min-width:210px; z-index:1000;">
             <li><a href="cocoa-beach-guide.html">Things to Do</a></li>
             <li><a href="watch-a-rocket-launch.html">Rocket Launches</a></li>
             <li><a href="cocoa-beach-airshow.html">Air Show</a></li>
@@ -1119,8 +1119,9 @@
         a.addEventListener('mouseleave', function() { this.style.background=''; this.style.color='#1a2e3b'; });
       });
       dd.querySelectorAll('li').forEach(function(li) { li.style.listStyle='none'; });
-      item.addEventListener('mouseenter', function() { dd.style.display = 'block'; });
-      item.addEventListener('mouseleave', function() { dd.style.display = 'none'; });
+      var timer;
+      item.addEventListener('mouseenter', function() { clearTimeout(timer); dd.style.display = 'block'; });
+      item.addEventListener('mouseleave', function() { timer = setTimeout(function(){ dd.style.display = 'none'; }, 120); });
     });
   </script>
 </body>
