@@ -539,6 +539,21 @@
     .bike-layout__text ul { list-style: disc; padding-left: 20px; }
     .bike-layout__text li { margin-bottom: 12px; color: var(--text-muted, #6b7280); line-height: 1.7; font-size: .95rem; }
 
+    /* ── Trip cards (shared pattern from index.html) ── */
+    .trip-card {
+      display: block; background: white; border-radius: 14px; overflow: hidden;
+      border: 1px solid #c8e4f0; transition: box-shadow .2s, transform .2s;
+      box-shadow: 0 2px 8px rgba(43,107,138,.07); text-decoration: none;
+    }
+    .trip-card:hover { box-shadow: 0 10px 32px rgba(43,107,138,.16); transform: translateY(-3px); }
+    .trip-card__photo { height: 200px; overflow: hidden; }
+    .trip-card__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .trip-card:hover .trip-card__photo img { transform: scale(1.06); }
+    .trip-card__body { padding: 16px 18px 20px; border-top: 3px solid #1A8CAB; }
+    .trip-card__name { font-size: .97rem; font-weight: 700; color: #1a2e3b; margin-bottom: 6px; }
+    .trip-card__time { font-size: .78rem; color: #C0392B; font-weight: 700; margin-bottom: 8px; }
+    .trip-card__desc { font-size: .78rem; color: #6b7280; line-height: 1.6; margin: 0; }
+
     /* ── Breadcrumb ── */
     .breadcrumb {
       font-size: .78rem;
@@ -659,7 +674,7 @@
 
         <a href="sandcastles.html" class="trip-card">
           <div class="trip-card__photo">
-            <img src="images/DJI_0244.jpg" alt="Cocoa Beach aerial view toward Kennedy Space Center" loading="lazy">
+            <img src="images/DJI_0297.jpg" alt="Cocoa Beach coastline from above" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Front-Row Rocket Launches</p>
@@ -701,7 +716,7 @@
 
         <a href="https://maps.google.com/?q=Cocoa+Beach+Police+Department+FL" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://portcanaveral.com/images/default-source/heros/jettyparkhero.jpg" alt="Jetty Park Port Canaveral" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/US-port-canav-jetty-park-1.jpg?width=800" alt="Jetty Park Port Canaveral" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Safety &amp; City Services</p>
@@ -723,7 +738,7 @@
 
         <div class="bike-layout__photo">
           <a href="https://maps.google.com/?q=A1A+bike+path+Cocoa+Beach+FL" target="_blank" rel="noopener" style="display:block">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Indian_River_Lagoon_National_Scenic_Byway_-_Biking_on_Cocoa_Beach_-_NARA_-_7719508.jpg" alt="Biking on Cocoa Beach A1A" style="width:100%;border-radius:16px;aspect-ratio:4/3;object-fit:cover;" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/A_cyclist_at_Cocoa_Beach_(May_2023).JPG?width=800" alt="Cyclist on Cocoa Beach A1A path" style="width:100%;border-radius:16px;aspect-ratio:4/3;object-fit:cover;" loading="lazy">
           </a>
         </div>
 
@@ -774,7 +789,7 @@
 
         <a href="https://maps.google.com/?q=Alan+Shepard+Park+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/A_restaurant_at_Cocoa_Beach_Pier_%28May_2023%29.jpg" alt="Cocoa Beach Pier restaurant" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cocoa_Beach_Pier_(Cocoa_Beach,_Florida)_001.jpg?width=800" alt="Cocoa Beach Pier extending over the Atlantic Ocean" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Alan Shepard Park</p>
@@ -785,7 +800,7 @@
 
         <a href="https://maps.google.com/?q=Jetty+Park+Port+Canaveral+FL" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://portcanaveral.com/images/default-source/heros/jettyparkhero.jpg" alt="Jetty Park Port Canaveral" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/US-port-canav-jetty-park-1.jpg?width=800" alt="Jetty Park Port Canaveral" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Jetty Park</p>
@@ -819,7 +834,7 @@
 
         <a href="https://www.cocoabeachcountryclub.com/" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Golfers_and_caddies_at_Miami_Country_Club_(9016125266).jpg?width=800" alt="Golfers on a Florida golf course" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Slammer_and_Squire_golf_course,_St._Augustine,_Florida.jpg?width=800" alt="Slammer and Squire golf course in St. Augustine, Florida — similar open Florida links-style layout" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Cocoa Beach Country Club</p>
@@ -830,7 +845,7 @@
 
         <a href="https://www.durangolfclub.com/" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Golfers_and_caddies_at_Miami_Country_Club_(9016125266).jpg?width=800" alt="Golfers on a Florida golf course" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Falcons_Fire_Golf_Course_in_Orlando.jpg?width=800" alt="Falcons Fire Golf Course, Orlando Florida — lush Florida course fairways" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Duran Golf Club</p>
@@ -841,7 +856,7 @@
 
         <a href="https://www.vieraeast.com/" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Golfers_and_caddies_at_Miami_Country_Club_(9016125266).jpg?width=800" alt="Golfers on a Florida golf course" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/University_of_Florida_Golf_Course.jpg?width=800" alt="University of Florida Golf Course — championship Florida course with mature trees" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Viera East Golf Club</p>
