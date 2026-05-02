@@ -376,9 +376,9 @@
     .launch-card__spots { font-size: .78rem; color: #A8D4E6; font-weight: 600; }
 
     /* ── WHAT'S NEARBY ── */
-    .nearby__layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .nearby__map { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.12); }
-    .nearby__map iframe { display: block; width: 100%; height: 440px; border: 0; }
+    .nearby__layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
+    .nearby__map { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.12); min-height: 440px; }
+    .nearby__map iframe { display: block; width: 100%; height: 100%; min-height: 440px; border: 0; }
     .nearby__list { display: flex; flex-direction: column; gap: 10px; }
     .nearby__item {
       display: flex; align-items: center; gap: 14px; padding: 14px 16px;
@@ -576,31 +576,6 @@
     </div>
   </section>
 
-  <!-- CATEGORY QUICK-LINKS -->
-  <div class="categories">
-    <div class="categories__inner">
-      <a href="sandcastles.html?filter=oceanfront" class="cat-item">
-        <span class="cat-item__icon">🌊</span>
-        <span class="cat-item__label">Oceanfront Units</span>
-        <span class="cat-item__sub">Direct Atlantic views</span>
-      </a>
-      <a href="sandcastles.html?filter=ocean-view" class="cat-item">
-        <span class="cat-item__icon">🏖️</span>
-        <span class="cat-item__label">Ocean View Units</span>
-        <span class="cat-item__sub">Steps from the beach</span>
-      </a>
-      <a href="watch-a-rocket-launch.html" class="cat-item">
-        <span class="cat-item__icon">🚀</span>
-        <span class="cat-item__label">Rocket Launches</span>
-        <span class="cat-item__sub">KSC is 12 miles away</span>
-      </a>
-      <a href="cocoa-beach-guide.html" class="cat-item">
-        <span class="cat-item__icon">📍</span>
-        <span class="cat-item__label">Things to Do</span>
-        <span class="cat-item__sub">Local guide & dining</span>
-      </a>
-    </div>
-  </div>
 
   <!-- FEATURED UNITS -->
   <section class="section section--sand">
@@ -996,7 +971,7 @@
           </div>
           <span class="event-tag event-tag--music">Monthly</span>
         </a>
-        <a href="https://www.cocoabeachpier.com/events" target="_blank" rel="noopener" class="event-item">
+        <a href="https://www.ronjonsurfshop.com/store/cocoa-beach" target="_blank" rel="noopener" class="event-item">
           <div class="event-date"><span class="event-date__month">Apr</span><span class="event-date__day">~</span></div>
           <div class="event-info">
             <p class="event-name">Ron Jon Easter Surfing Festival</p>
@@ -1012,7 +987,7 @@
           </div>
           <span class="event-tag event-tag--air">Air Show</span>
         </a>
-        <a href="https://maps.google.com/?q=Space+Coast+Offshore+Grand+Prix+Cocoa+Beach+FL" target="_blank" rel="noopener" class="event-item">
+        <a href="https://www.thunderoncocoabeach.com" target="_blank" rel="noopener" class="event-item">
           <div class="event-date"><span class="event-date__month">May</span><span class="event-date__day">~</span></div>
           <div class="event-info">
             <p class="event-name">Space Coast Offshore Grand Prix</p>
@@ -1020,7 +995,7 @@
           </div>
           <span class="event-tag event-tag--surf">Boat Racing</span>
         </a>
-        <a href="https://www.cocoabeachpier.com/events" target="_blank" rel="noopener" class="event-item">
+        <a href="https://www.cocoabeachpier.com/" target="_blank" rel="noopener" class="event-item">
           <div class="event-date"><span class="event-date__month">Jul</span><span class="event-date__day">4</span></div>
           <div class="event-info">
             <p class="event-name">Fourth of July at the Pier</p>
@@ -1044,7 +1019,7 @@
           </div>
           <span class="event-tag event-tag--food">Art</span>
         </a>
-        <a href="https://maps.google.com/?q=Cocoa+Beach+Holiday+Boat+Parade+FL" target="_blank" rel="noopener" class="event-item">
+        <a href="https://www.visitspacecoast.com/events" target="_blank" rel="noopener" class="event-item">
           <div class="event-date"><span class="event-date__month">Dec</span><span class="event-date__day">~</span></div>
           <div class="event-info">
             <p class="event-name">Cocoa Beach Holiday Boat Parade</p>
@@ -1134,7 +1109,7 @@
 
   <!-- SPORTS / TOURNAMENT TEASER -->
   <section style="position:relative; overflow:hidden; padding:88px 0; background:#0d2233;">
-    <div style="position:absolute; inset:0; background-image:url('images/DJI_0293.jpg'); background-size:cover; background-position:center 40%; opacity:.28;"></div>
+    <div style="position:absolute; inset:0; background-image:url('https://cdn.tournamentsites.com/uploads/sites/212/2025/10/DJI_0172-1-2480x1150.jpg'); background-size:cover; background-position:center 40%; opacity:.28;"></div>
     <div class="inner" style="position:relative; z-index:2; display:flex; gap:60px; align-items:center; flex-wrap:wrap;">
       <div style="display:flex; flex-direction:column; gap:14px; min-width:220px;">
         <a href="sports-tournaments.html" style="display:block; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:18px 22px; text-decoration:none;">
@@ -1275,7 +1250,7 @@
         </div>
         <div class="faq-item">
           <p class="faq-q">Are there dog-friendly units at Sandcastles?</p>
-          <p class="faq-a">Unit 312 (listed on Airbnb) welcomes dogs under 30 lbs. Some other owners may also allow pets — always check the individual listing policy before booking. Lori Wilson Park, 0.3 miles away, has dog-friendly beach access.</p>
+          <p class="faq-a">Dogs under 30 lbs are welcome at Sandcastles — but pet policies vary by unit and are set by each individual owner. Always confirm with the specific listing before booking. Lori Wilson Park, 0.3 miles away, has dog-friendly beach access.</p>
         </div>
         <div class="faq-item">
           <p class="faq-q">How far is Sandcastles from Disney World?</p>
@@ -1283,11 +1258,11 @@
         </div>
         <div class="faq-item">
           <p class="faq-q">What restaurants are walkable from Sandcastles?</p>
-          <p class="faq-a">Coconuts on the Beach is a 0.4-mile walk — a classic Cocoa Beach beachfront bar with food and live music. The Cocoa Beach Pier restaurants are 0.5 miles south. For fresh seafood, Port Canaveral is a 10-minute drive and worth every minute.</p>
+          <p class="faq-a">Quite a few. Cocoa Beach is unusually pedestrian-friendly for a Florida beach town — wide sidewalks along A1A and well-marked crossings make it easy to get around on foot. Several bars, restaurants, and casual spots are within a 10-minute walk in either direction. The Cocoa Beach Pier, 0.5 miles south, has multiple restaurants and bars right over the water.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q">What is there to do in Cocoa Beach on a rainy day?</p>
-          <p class="faq-a">Kennedy Space Center is fully indoors and could easily fill a whole day. Ron Jon Surf Shop is a 24-hour shopping experience. The Orlando outlets are 55 miles away. Brevard Zoo works in light rain. And Port Canaveral's seafood restaurants are always open.</p>
+          <p class="faq-q">Is there good surfing at Cocoa Beach?</p>
+          <p class="faq-a">Yes — Cocoa Beach is the surf capital of the East Coast. The break right in front of Sandcastles is beginner-to-intermediate friendly, and the Cocoa Beach Pier area produces some of the best consistent waves on the Florida Atlantic coast. Cocoa Beach Surf School offers lessons steps from the building, and Ron Jon Surf Shop (open 24 hours) has boards and gear for rent or purchase.</p>
         </div>
         <div class="faq-item">
           <p class="faq-q">Is Cocoa Beach good for families with kids?</p>
