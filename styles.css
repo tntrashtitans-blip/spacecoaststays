@@ -95,7 +95,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
   box-shadow: 0 8px 24px rgba(0,0,0,.12);
   list-style: none; margin: 0; padding: 8px 0; min-width: 210px; z-index: 200;
 }
-.nav__area-item:hover .nav__dropdown { display: block; }
+.nav__area-item:hover .nav__dropdown { display: block; } /* JS also controls this */
 .nav__dropdown li a {
   display: block; padding: 9px 20px;
   color: var(--text); font-size: .83rem; font-weight: 500;
