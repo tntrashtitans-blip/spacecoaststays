@@ -10,9 +10,9 @@ let unitAvailability = {};
 
 // Fallback thumbnails for VRBO listings (can't extract their photos programmatically)
 const VRBO_THUMBS = [
-  "images/DJI_0244.jpg",
-  "images/024A6050.jpg",
-  "images/DJI_0297.jpg",
+  "images/DJI_0244.webp",
+  "images/024A6050.webp",
+  "images/DJI_0297.webp",
 ];
 
 const LISTINGS = [
@@ -106,7 +106,7 @@ const LISTINGS = [
     platforms: [
       { name: "airbnb", url: "https://www.airbnb.com/rooms/1066137435990680028" }
     ],
-    photo: "images/Living Room.jpg",
+    photo: "images/Living Room.webp",
     photos: [
       "https://a0.muscache.com/im/pictures/miso/Hosting-1066137435990680028/original/8ca21a27-ecc8-4e44-9282-36c418ff9c5b.jpeg",
       "https://a0.muscache.com/im/pictures/miso/Hosting-1066137435990680028/original/ba553020-4f51-427a-acfd-ea236b7b108a.jpeg",
