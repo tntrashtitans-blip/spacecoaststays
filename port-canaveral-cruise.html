@@ -244,11 +244,14 @@
       margin-bottom: 40px;
     }
     .cruise-lines-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 24px;
     }
     .cruise-line-card {
+      flex: 0 0 calc(33.33% - 16px);
+      min-width: 260px;
       display: block;
       background: var(--white);
       border-radius: 14px;
@@ -575,7 +578,7 @@
 
         <a href="https://www.portcanaveral.com/" target="_blank" rel="noopener" class="guide-card">
           <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Port_Canaveral_Florida.jpg/1280px-Port_Canaveral_Florida.jpg" alt="Port Canaveral waterfront panorama" loading="lazy" />
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Port_Canaveral_Panorama_10-2019.jpg" alt="Port Canaveral waterfront panorama" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category">The Port · 5 Miles from Sandcastles</p>
