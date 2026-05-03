@@ -227,11 +227,34 @@
       border-radius: 6px; font-weight: 600;
     }
     .nav__links .nav__cta:hover { background: #1D4E66 !important; }
-    .nav__mobile-browse { display: none; }
-    @media (max-width: 640px) {
-      .nav__links { display: none !important; }
-      .nav__mobile-browse { display: inline-block; background: #C0392B; color: white; padding: 8px 16px; border-radius: 6px; font-size: .85rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+
+    /* ── Hamburger / mobile nav drawer ── */
+    .nav__hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: 8px; flex-direction: column; gap: 5px;
+      align-items: center; justify-content: center;
     }
+    .nav__hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: #1a2e3b; border-radius: 2px;
+      transition: transform .2s, opacity .2s;
+    }
+    .nav__hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.is-open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav__mobile-menu {
+      display: none; flex-direction: column;
+      background: white; border-top: 1px solid #E8D5B0;
+      box-shadow: 0 8px 24px rgba(0,0,0,.1);
+    }
+    .nav__mobile-menu.is-open { display: flex; }
+    .nav__mobile-menu a {
+      display: block; padding: 14px 24px;
+      font-size: .95rem; font-weight: 600; color: #1a2e3b;
+      border-bottom: 1px solid #F5ECD7;
+    }
+    .nav__mobile-menu a:last-child { border-bottom: none; }
+    .nav__mobile-menu a.nav__mobile-cta { color: #2B6B8A; }
 
     /* ── HERO ── */
     .hero {
@@ -539,11 +562,19 @@
     }
     @media (max-width: 640px) {
       .units-grid, .launches-grid, .guides-grid { grid-template-columns: 1fr; }
-      .activities-grid, .trips-grid { grid-template-columns: 1fr; }
+      .activities-grid { grid-template-columns: 1fr; }
       .categories__inner { grid-template-columns: repeat(2, 1fr); }
       .hero__title { font-size: 2rem; }
-      .nav__links { gap: 14px; }
       .footer__grid { grid-template-columns: 1fr; }
+      /* Hamburger */
+      .nav__hamburger { display: flex; }
+      .nav__links { display: none !important; }
+      /* 2-col compact grids */
+      .eats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .eat-card__desc { display: none; }
+      .faq-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .trips-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .trip-card__desc { display: none; }
     }
   </style>
 </head>
@@ -553,7 +584,9 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" style="font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; letter-spacing:-.02em; color:#1a2e3b; text-decoration:none;">Space<span style="color:#2B6B8A;">Coast</span>Stays</a>
-      <a href="sandcastles.html" class="nav__mobile-browse">Browse Units →</a>
+      <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav__links">
         <li><a href="sandcastles.html" class="nav__browse">Browse Units →</a></li>
         <li class="nav__area-item" style="position:relative; list-style:none;">
@@ -569,6 +602,16 @@
         <li><a href="snowbird-rentals.html">Snowbird Rentals</a></li>
         <li><a href="mailto:hello@spacecoaststays.com" class="nav__cta">List Your Unit</a></li>
       </ul>
+    </div>
+    <div class="nav__mobile-menu" id="mobileMenu">
+      <a href="sandcastles.html">Browse Units →</a>
+      <a href="cocoa-beach-guide.html">Things to Do</a>
+      <a href="watch-a-rocket-launch.html">Rocket Launches</a>
+      <a href="cocoa-beach-airshow.html">Air Show</a>
+      <a href="port-canaveral-cruise.html">Port Canaveral Cruises</a>
+      <a href="sports-tournaments.html">Sports Tournaments</a>
+      <a href="snowbird-rentals.html">Snowbird Rentals</a>
+      <a href="mailto:hello@spacecoaststays.com" class="nav__mobile-cta">List Your Unit</a>
     </div>
   </nav>
 
@@ -938,7 +981,7 @@
         </a>
         <a href="https://www.cocoabeachpier.com/" target="_blank" rel="noopener" class="eat-card">
           <div class="eat-card__photo" style="position:relative; overflow:hidden; height:190px;">
-            <iframe src="https://player.vimeo.com/video/1091226497?background=1&autoplay=1&muted=1&loop=1&controls=0" style="position:absolute;top:50%;left:50%;width:200%;height:200%;transform:translate(-50%,-50%);border:0;pointer-events:none;" allow="autoplay" loading="lazy"></iframe>
+            <iframe src="https://player.vimeo.com/video/1091226497?background=1&autoplay=1&muted=1&loop=1&controls=0&playsinline=1" style="position:absolute;top:50%;left:50%;width:200%;height:200%;transform:translate(-50%,-50%);border:0;pointer-events:none;" allow="autoplay; fullscreen; picture-in-picture; playsinline" loading="lazy"></iframe>
           </div>
           <div class="eat-card__body">
             <p class="eat-card__type">Pier Dining & Live Music</p>
@@ -1349,6 +1392,17 @@
 
 
   <script>
+    (function() {
+      var btn = document.getElementById('hamburgerBtn');
+      var menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', function() {
+          btn.classList.toggle('is-open');
+          menu.classList.toggle('is-open');
+        });
+      }
+    })();
+
     document.querySelectorAll('.nav__area-item').forEach(function(item) {
       var dd = item.querySelector('.nav__dropdown');
       if (!dd) return;

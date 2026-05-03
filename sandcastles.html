@@ -134,6 +134,9 @@
   <nav class="nav">
     <div class="nav__inner container">
       <a href="index.html" class="nav__logo" style="font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; letter-spacing:-.02em; color:#1a2e3b; text-decoration:none;">Space<span style="color:#2B6B8A;">Coast</span>Stays</a>
+      <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav__links">
         <li><a href="sandcastles.html" class="active">Browse Units</a></li>
         <li class="nav__area-item" style="position:relative; list-style:none;">
@@ -149,6 +152,16 @@
         <li><a href="snowbird-rentals.html">Snowbird Rentals</a></li>
         <li><a href="mailto:hello@spacecoaststays.com" class="nav__cta">List Your Unit</a></li>
       </ul>
+    </div>
+    <div class="nav__mobile-menu" id="mobileMenu">
+      <a href="sandcastles.html">Browse Units &rarr;</a>
+      <a href="cocoa-beach-guide.html">Things to Do</a>
+      <a href="watch-a-rocket-launch.html">Rocket Launches</a>
+      <a href="cocoa-beach-airshow.html">Air Show</a>
+      <a href="port-canaveral-cruise.html">Port Canaveral Cruises</a>
+      <a href="sports-tournaments.html">Sports Tournaments</a>
+      <a href="snowbird-rentals.html">Snowbird Rentals</a>
+      <a href="mailto:hello@spacecoaststays.com" class="nav__mobile-cta">List Your Unit</a>
     </div>
   </nav>
 
@@ -337,6 +350,17 @@
   </script>
 
   <script>
+    (function() {
+      var btn = document.getElementById('hamburgerBtn');
+      var menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', function() {
+          btn.classList.toggle('is-open');
+          menu.classList.toggle('is-open');
+        });
+      }
+    })();
+
     document.querySelectorAll('.nav__area-item').forEach(function(item) {
       var dd = item.querySelector('.nav__dropdown');
       if (!dd) return;

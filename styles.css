@@ -113,6 +113,49 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
 }
 .nav__cta:hover { background: var(--ocean-dark); transform: translateY(-1px); }
 
+/* ── Hamburger / mobile nav drawer ── */
+.nav__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform .2s, opacity .2s;
+}
+.nav__hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__hamburger.is-open span:nth-child(2) { opacity: 0; }
+.nav__hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav__mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--white);
+  border-top: 1px solid var(--sand-dark);
+  box-shadow: 0 8px 24px rgba(0,0,0,.1);
+}
+.nav__mobile-menu.is-open { display: flex; }
+.nav__mobile-menu a {
+  display: block;
+  padding: 14px 24px;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--sand);
+}
+.nav__mobile-menu a:last-child { border-bottom: none; }
+.nav__mobile-menu a.nav__mobile-cta { color: var(--ocean); }
+
 /* ── HERO ── */
 .hero {
   position: relative;
@@ -1077,14 +1120,21 @@ a.guide-card--linked:hover { transform: translateY(-4px); box-shadow: var(--shad
   /* Events */
   .events-grid { grid-template-columns: 1fr !important; }
 
-  /* Eat cards */
-  .eats-grid { grid-template-columns: 1fr !important; }
+  /* Hamburger: show on mobile, hide desktop links */
+  .nav__hamburger { display: flex; }
+  .nav__links { display: none !important; }
+  .nav__mobile-browse { display: none !important; }
 
-  /* FAQ */
-  .faq-grid { grid-template-columns: 1fr !important; }
+  /* Eat cards: 2-col compact grid */
+  .eats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .eat-card__desc { display: none; }
 
-  /* Trip cards */
-  .trips-grid { grid-template-columns: 1fr !important; }
+  /* FAQ: 2-col */
+  .faq-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Trip cards: 2-col compact grid */
+  .trips-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .trip-card__desc { display: none; }
 
   /* Units grid on homepage */
   .units-grid { grid-template-columns: 1fr !important; }

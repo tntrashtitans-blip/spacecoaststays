@@ -164,6 +164,9 @@
   <nav class="nav">
     <div class="nav__inner container">
       <a href="index.html" class="nav__logo" style="font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; letter-spacing:-.02em; color:#1a2e3b; text-decoration:none;">Space<span style="color:#2B6B8A;">Coast</span>Stays</a>
+      <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav__links">
         <li><a href="sandcastles.html" class="active">Browse Units</a></li>
         <li class="nav__area-item" style="position:relative; list-style:none;">
@@ -179,6 +182,16 @@
         <li><a href="snowbird-rentals.html">Snowbird Rentals</a></li>
         <li><a href="mailto:hello@spacecoaststays.com" class="nav__cta">List Your Unit</a></li>
       </ul>
+    </div>
+    <div class="nav__mobile-menu" id="mobileMenu">
+      <a href="sandcastles.html">Browse Units &rarr;</a>
+      <a href="cocoa-beach-guide.html">Things to Do</a>
+      <a href="watch-a-rocket-launch.html">Rocket Launches</a>
+      <a href="cocoa-beach-airshow.html">Air Show</a>
+      <a href="port-canaveral-cruise.html">Port Canaveral Cruises</a>
+      <a href="sports-tournaments.html">Sports Tournaments</a>
+      <a href="snowbird-rentals.html">Snowbird Rentals</a>
+      <a href="mailto:hello@spacecoaststays.com" class="nav__mobile-cta">List Your Unit</a>
     </div>
   </nav>
 
@@ -246,7 +259,7 @@
 
         <a href="https://www.cocoabeachpier.com/" target="_blank" rel="noopener" class="guide-card" data-category="shopping">
           <div class="guide-card__img" style="position:relative;overflow:hidden;">
-            <iframe src="https://player.vimeo.com/video/1091226497?background=1&autoplay=1&muted=1&loop=1&controls=0" style="position:absolute;top:50%;left:50%;width:200%;height:200%;transform:translate(-50%,-50%);border:0;pointer-events:none;" allow="autoplay" loading="lazy"></iframe>
+            <iframe src="https://player.vimeo.com/video/1091226497?background=1&autoplay=1&muted=1&loop=1&controls=0&playsinline=1" style="position:absolute;top:50%;left:50%;width:200%;height:200%;transform:translate(-50%,-50%);border:0;pointer-events:none;" allow="autoplay; fullscreen; picture-in-picture; playsinline" loading="lazy"></iframe>
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--shopping">Shopping & Culture</p>
@@ -726,6 +739,17 @@
 
 
   <script>
+    (function() {
+      var btn = document.getElementById('hamburgerBtn');
+      var menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', function() {
+          btn.classList.toggle('is-open');
+          menu.classList.toggle('is-open');
+        });
+      }
+    })();
+
     document.querySelectorAll('.nav__area-item').forEach(function(item) {
       var dd = item.querySelector('.nav__dropdown');
       if (!dd) return;
