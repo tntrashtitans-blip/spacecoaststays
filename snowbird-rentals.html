@@ -568,6 +568,20 @@
     }
     .breadcrumb a:hover { text-decoration: underline; }
     .breadcrumb span { margin: 0 6px; color: #c5ced4; }
+
+    /* ── Mobile nav: hide drawer on desktop, show hamburger on mobile ── */
+    .nav__mobile-menu { display: none !important; }
+    .nav__hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; align-items: center; justify-content: center; }
+    .nav__hamburger span { display: block; width: 22px; height: 2px; background: #1a2e3b; border-radius: 2px; transition: transform .2s, opacity .2s; }
+    .nav__hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.is-open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav__mobile-menu.is-open { display: flex !important; flex-direction: column; background: white; border-top: 1px solid #E8D5B0; box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+    .nav__mobile-menu.is-open a { display: block; padding: 14px 24px; font-size: .95rem; font-weight: 600; color: #1a2e3b; border-bottom: 1px solid #F5ECD7; }
+    @media (max-width: 640px) {
+      .nav__hamburger { display: flex; }
+      .nav__links { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -677,7 +691,7 @@
 
         <a href="sandcastles.html" class="trip-card">
           <div class="trip-card__photo">
-            <img src="images/DJI_0280.webp" alt="Cocoa Beach coastline aerial view" loading="lazy">
+            <img src="images/024A6050.webp" alt="Sandcastles condo unit interior — your home for the season" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Monthly Stays Welcome</p>
@@ -687,7 +701,7 @@
 
         <a href="sandcastles.html" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cocoa_Beach_at_Lori_Wilson_Park_-_Flickr_-_Rusty_Clark_%2875%29.jpg" alt="Cocoa Beach at Lori Wilson Park" loading="lazy">
+            <img src="images/DJI_0280.webp" alt="Sandcastles Condominiums aerial view Cocoa Beach" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Small, Friendly Building</p>
@@ -697,7 +711,7 @@
 
         <a href="sandcastles.html" class="trip-card">
           <div class="trip-card__photo">
-            <img src="images/DJI_0297.webp" alt="Cocoa Beach coastline from above" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Crew_Dragon_Demo-2_launch_(NHQ202005300035).jpg" alt="SpaceX Crew Dragon launch from Kennedy Space Center visible from Cocoa Beach" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Front-Row Rocket Launches</p>
@@ -719,7 +733,7 @@
 
         <a href="https://maps.google.com/?q=Publix+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="images/DJI_0280.webp" alt="Cocoa Beach coastline aerial view" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Publix_in_Venice_Florida.jpg" alt="Publix supermarket in Florida — grocery shopping near Sandcastles Cocoa Beach" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Groceries &amp; Daily Shopping</p>
@@ -729,7 +743,7 @@
 
         <a href="https://maps.google.com/?q=Health+First+Cape+Canaveral+Hospital+Cape+Canaveral+FL" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Port_Canaveral_Florida.jpg/1280px-Port_Canaveral_Florida.jpg" alt="Port Canaveral waterfront" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Hospital_emergency_entrance_photo_D_Ramey_Logan.jpg" alt="Hospital emergency entrance — Health First Cape Canaveral Hospital near Cocoa Beach" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Healthcare &amp; Emergency Services</p>
@@ -739,7 +753,7 @@
 
         <a href="https://maps.google.com/?q=Cocoa+Beach+Police+Department+FL" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/US-port-canav-jetty-park-1.jpg?width=800" alt="Jetty Park Port Canaveral" loading="lazy">
+            <img src="images/DJI_0297.webp" alt="Cocoa Beach aerial view — safe, walkable oceanfront city" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Safety &amp; City Services</p>
@@ -790,7 +804,7 @@
 
         <a href="https://maps.google.com/?q=Sidney+Fischer+Park+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cocoa_Beach_at_Lori_Wilson_Park_-_Flickr_-_Rusty_Clark_%2875%29.jpg" alt="Cocoa Beach at Lori Wilson Park" loading="lazy">
+            <img src="images/DJI_0244.webp" alt="Sidney Fischer Park beach access Cocoa Beach" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Sidney Fischer Park</p>
@@ -801,45 +815,89 @@
 
         <a href="https://maps.google.com/?q=Lori+Wilson+Park+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cocoa_Beach_at_Lori_Wilson_Park_-_Flickr_-_Rusty_Clark_%2875%29.jpg" alt="Cocoa Beach at Lori Wilson Park" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cocoa_Beach_at_Lori_Wilson_Park_-_Flickr_-_Rusty_Clark_%2875%29.jpg" alt="Lori Wilson Park nature boardwalk Cocoa Beach" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Lori Wilson Park</p>
             <p class="trip-card__time">1.3 mi from Sandcastles</p>
-            <p class="trip-card__desc">One of the finest parks on the entire Space Coast. A nature boardwalk winds through coastal scrub habitat — a rare and protected ecosystem — before opening onto a gorgeous stretch of beach. Perfect for birding, quiet walks, and watching the shore birds work the surf. Dogs welcome on leash.</p>
+            <p class="trip-card__desc">One of the finest parks on the entire Space Coast. A nature boardwalk winds through coastal scrub habitat before opening onto a gorgeous stretch of beach. Perfect for birding, quiet walks, and watching shore birds. Dogs welcome on leash.</p>
           </div>
         </a>
 
         <a href="https://maps.google.com/?q=Alan+Shepard+Park+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
-          <div class="trip-card__photo" style="position:relative; overflow:hidden;">
-            <iframe src="https://player.vimeo.com/video/1091226497?background=1&autoplay=1&muted=1&loop=1&controls=0&playsinline=1" style="position:absolute;top:50%;left:50%;width:200%;height:200%;transform:translate(-50%,-50%);border:0;pointer-events:none;" allow="autoplay; fullscreen; picture-in-picture; playsinline"></iframe>
+          <div class="trip-card__photo">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cocoa_Beach_Pier.jpg?width=800" alt="Cocoa Beach Pier at Alan Shepard Park" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Alan Shepard Park</p>
             <p class="trip-card__time">Near the Cocoa Beach Pier</p>
-            <p class="trip-card__desc">Named after Alan Shepard, the first American in space — who was a Cocoa Beach resident. Beach access, parking, and restrooms near the iconic Cocoa Beach Pier. A good starting point for a pier walk or a sunset stroll down the beach.</p>
+            <p class="trip-card__desc">Named after the first American in space — who was a Cocoa Beach resident. Beach access, parking, and restrooms right by the iconic Cocoa Beach Pier. A perfect spot for a pier stroll or a sunset walk down the beach.</p>
           </div>
         </a>
 
         <a href="https://maps.google.com/?q=Jetty+Park+Port+Canaveral+FL" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/US-port-canav-jetty-park-1.jpg?width=800" alt="Jetty Park Port Canaveral" loading="lazy">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/US-port-canav-jetty-park-1.jpg?width=800" alt="Jetty Park Port Canaveral walking trails and beach" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">Jetty Park</p>
             <p class="trip-card__time">Port Canaveral · 6 mi</p>
-            <p class="trip-card__desc">A gem worth the short drive. Walking trails, a long fishing pier, beach access, and picnic areas — plus a front-row view of cruise ships departing Port Canaveral and an unobstructed line of sight to the launch pads. Pack lunch and spend a morning here.</p>
+            <p class="trip-card__desc">A gem worth the short drive. Walking trails, a fishing pier, beach access, and picnic areas — plus front-row views of cruise ships departing Port Canaveral and an unobstructed line of sight to the launch pads.</p>
           </div>
         </a>
 
         <a href="https://maps.google.com/?q=Cocoa+Beach+FL+public+beach" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
-            <img src="images/DJI_0280.webp" alt="Cocoa Beach coastline aerial view" loading="lazy">
+            <img src="images/DJI_0280.webp" alt="Cocoa Beach public shoreline aerial view" loading="lazy">
           </div>
           <div class="trip-card__body">
             <p class="trip-card__name">The Entire Shoreline</p>
             <p class="trip-card__time">From your front door</p>
-            <p class="trip-card__desc">Every inch of Cocoa Beach's Atlantic shoreline is public. There are no private beach segments, no hotel-only sections. Walk as far north or south as you like. A daily sunrise walk — coffee optional but recommended — becomes the anchor of the snowbird morning routine within the first week.</p>
+            <p class="trip-card__desc">Every inch of Cocoa Beach's Atlantic shoreline is public — no private segments, no hotel-only sections. Walk as far north or south as you like. A daily sunrise walk becomes the anchor of the snowbird morning routine within the first week.</p>
+          </div>
+        </a>
+
+        <a href="https://www.nps.gov/cana/index.htm" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Canaveral_National_Seashore.jpg" alt="Canaveral National Seashore undeveloped Atlantic beach" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Canaveral National Seashore</p>
+            <p class="trip-card__time">20 min north · Day trip</p>
+            <p class="trip-card__desc">24 miles of undeveloped Atlantic beach — no condos, no hotels, no cars on the sand. Playalinda Beach on the south end is the closest entry point. Sea turtles nest here from May through September. A true wild Florida beach.</p>
+          </div>
+        </a>
+
+        <a href="https://www.fws.gov/refuge/merritt-island" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Merritt_Island_National_Wildlife_Refuge%2C_Florida.jpg" alt="Merritt Island National Wildlife Refuge birding Florida" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Merritt Island Wildlife Refuge</p>
+            <p class="trip-card__time">15 min north · Free</p>
+            <p class="trip-card__desc">One of the most biodiverse refuges in the US — 330+ bird species, alligators, manatees, and bald eagles, all adjacent to Kennedy Space Center. The Black Point Wildlife Drive is especially popular with winter birders.</p>
+          </div>
+        </a>
+
+        <a href="https://maps.google.com/?q=Indian+River+Lagoon+Manatee+Watching+Cocoa+Beach+FL" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/West_Indian_Manatee_2.jpg" alt="West Indian Manatee in Florida Indian River Lagoon" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Indian River Lagoon Manatees</p>
+            <p class="trip-card__time">Minutes from Sandcastles</p>
+            <p class="trip-card__desc">January through March is peak manatee season in the Indian River Lagoon — right outside your door. Kayak tours and guided boat trips depart regularly from Port Canaveral. Seeing a manatee up close never gets old.</p>
+          </div>
+        </a>
+
+        <a href="https://www.brevardzoo.org/" target="_blank" rel="noopener" class="trip-card">
+          <div class="trip-card__photo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Brevard_Zoo_4.jpg" alt="Brevard Zoo Melbourne Florida" loading="lazy">
+          </div>
+          <div class="trip-card__body">
+            <p class="trip-card__name">Brevard Zoo</p>
+            <p class="trip-card__time">Melbourne · 30 min south</p>
+            <p class="trip-card__desc">An award-winning zoo with a walk-through aviary, free-roaming kangaroos, and a kayak-through animal exhibit. Consistently ranked one of the best small zoos in the US. A full half-day outing for any age.</p>
           </div>
         </a>
 
@@ -853,7 +911,7 @@
       <h2 class="section-h2">Golf on the Space Coast</h2>
       <p class="section-intro">Brevard County has more than a dozen courses within 30 minutes. If golf is part of your winter routine, you won't run out of options.</p>
 
-      <div class="snowbird-trip-grid">
+      <div class="golf-grid">
 
         <a href="https://www.cocoabeachcountryclub.com/" target="_blank" rel="noopener" class="trip-card">
           <div class="trip-card__photo">
