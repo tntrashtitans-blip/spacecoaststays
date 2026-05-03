@@ -1031,10 +1031,67 @@ a.guide-card--linked:hover { transform: translateY(-4px); box-shadow: var(--shad
   .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
   .hero { min-height: 70vh; }
 
+  /* Subpage two-row nav: hide the areas bar */
+  .nav__row--areas { display: none; }
+
   /* Rocket page mobile */
   .launch-timeline::before { left: 17px; }
   .section .container > div[style*="grid-template-columns:1fr 1fr"] {
     display: block !important;
   }
   .drone-info-box { margin-bottom: 20px; }
+}
+
+/* ── Mobile (≤640px) ── */
+@media (max-width: 640px) {
+  /* Reduce section padding site-wide */
+  .section { padding: 48px 0; }
+  .container { padding: 0 18px; }
+
+  /* Dark event sections have inline padding:88px 0 */
+  section[style*="padding:88px"] {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* Reduce the 60px gap in inline flex sections */
+  .inner[style*="gap:60px"] { gap: 24px !important; }
+
+  /* Stat card rows in dark sections: don't squish them */
+  div[style*="display:flex"][style*="justify-content:center"][style*="gap:48px"] {
+    gap: 24px !important;
+    flex-wrap: wrap;
+  }
+
+  /* Hero */
+  .hero { min-height: 82vh; }
+  .hero__content { padding-bottom: 40px !important; }
+
+  /* Section headings */
+  h2 { font-size: 1.6rem; }
+
+  /* Nearby map: hide iframe on mobile, show list only */
+  .nearby__map { display: none !important; }
+  .nearby__layout { grid-template-columns: 1fr !important; }
+
+  /* Events */
+  .events-grid { grid-template-columns: 1fr !important; }
+
+  /* Eat cards */
+  .eats-grid { grid-template-columns: 1fr !important; }
+
+  /* FAQ */
+  .faq-grid { grid-template-columns: 1fr !important; }
+
+  /* Trip cards */
+  .trips-grid { grid-template-columns: 1fr !important; }
+
+  /* Units grid on homepage */
+  .units-grid { grid-template-columns: 1fr !important; }
+
+  /* Inner padding in dark sections */
+  .inner { padding-left: 20px !important; padding-right: 20px !important; }
+
+  /* Footer */
+  .footer { padding: 36px 0 24px; }
 }
