@@ -8,6 +8,7 @@
 - [Browse Vacation Rentals](https://spacecoaststays.com/sandcastles.html): Full directory of available units at Sandcastles — filterable by view type (oceanfront, ocean view, pool view) and platform (Airbnb, VRBO). Includes unit number, floor, bedroom count, description, and direct booking links.
 - [Watch a Rocket Launch](https://spacecoaststays.com/watch-a-rocket-launch.html): Live countdown to the next Cape Canaveral launch (via Launch Library 2 API), upcoming missions grid, post-launch T+ timeline, best free viewing spots near Cocoa Beach, SpaceX drone ship return tracking guide, and jetty viewing locations for when the drone ship transits Port Canaveral.
 - [Cocoa Beach Guide](https://spacecoaststays.com/cocoa-beach-guide.html): Local travel guide covering restaurants, beaches, surf spots, things to do, and insider tips for Cocoa Beach, FL.
+- [Cocoa Beach Stay Guide](https://spacecoaststays.com/cocoa-beach-stay-guide.html): Planning hub for Cocoa Beach stays near Sandcastles, Port Canaveral, Kennedy Space Center, and the Space Coast. Includes supporting guides for snowbird rentals, rocket launch stays, Sandcastles booking research, Cocoa Beach vs Cape Canaveral, golf/tennis/pickleball activities, Port Canaveral cruise stays, and seasonal travel timing.
 
 ## Key Facts
 
