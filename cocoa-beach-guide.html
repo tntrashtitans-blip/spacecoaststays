@@ -48,6 +48,30 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Places to Eat Near Sandcastles Condominiums in Cocoa Beach",
+    "description": "Local Cocoa Beach restaurants, cafes, dessert spots, and casual dining options recommended for guests staying near Sandcastles Condominiums.",
+    "url": "https://spacecoaststays.com/cocoa-beach-guide.html#where-to-eat-near-sandcastles",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "item": { "@type": "Restaurant", "name": "The Fat Donkey", "url": "https://www.thefatdonkey.com" } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "Restaurant", "name": "Brano's Italian Grill", "url": "https://branositaliangrill.com" } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "Restaurant", "name": "Long Doggers Cocoa Beach", "url": "https://www.longdoggers.com/location/cocoa-beach/" } },
+      { "@type": "ListItem", "position": 4, "item": { "@type": "Restaurant", "name": "Rock the Guac", "url": "https://rocktheguac.com" } },
+      { "@type": "ListItem", "position": 5, "item": { "@type": "CafeOrCoffeeShop", "name": "Simply Delicious Cafe & Bakery", "url": "https://simplydeliciouscafecocoabeach.com" } },
+      { "@type": "ListItem", "position": 6, "item": { "@type": "Restaurant", "name": "4th Street Fillin Station", "url": "https://www.4thstreetfillinstation.com" } },
+      { "@type": "ListItem", "position": 7, "item": { "@type": "Restaurant", "name": "Gregory's on the Beach", "url": "https://www.gregorysonthebeach.com" } },
+      { "@type": "ListItem", "position": 8, "item": { "@type": "Restaurant", "name": "JT's Social Bar", "url": "https://jtssocialbar.com/" } },
+      { "@type": "ListItem", "position": 9, "item": { "@type": "Restaurant", "name": "Florida's Fresh Grill", "url": "https://floridasfreshgrill.com" } },
+      { "@type": "ListItem", "position": 10, "item": { "@type": "CafeOrCoffeeShop", "name": "Whisk & Grind", "url": "http://whiskandgrind.com" } },
+      { "@type": "ListItem", "position": 11, "item": { "@type": "CafeOrCoffeeShop", "name": "The Surfinista", "url": "https://thesurfinista.com" } },
+      { "@type": "ListItem", "position": 12, "item": { "@type": "Restaurant", "name": "Dirty Birds Tiki Bar", "url": "https://www.dirtybirdstikibar.com" } }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
@@ -156,6 +180,49 @@
       color: var(--text-muted);
       margin-bottom: 20px;
     }
+
+    .local-eats-panel {
+      background: var(--foam);
+      border: 1px solid var(--ocean-light);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin: 0 0 36px;
+    }
+    .local-eats-panel h2 { margin-bottom: 8px; }
+    .local-eats-panel > p {
+      color: var(--text-muted);
+      max-width: 780px;
+      margin-bottom: 22px;
+    }
+    .local-eats-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .local-eats-list a {
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 11px 14px;
+      background: var(--white);
+      border: 1px solid rgba(43,107,138,.22);
+      border-radius: 8px;
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.25;
+      transition: border-color .18s, transform .18s, box-shadow .18s;
+    }
+    .local-eats-list a:hover {
+      border-color: var(--ocean);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    @media (max-width: 900px) {
+      .local-eats-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .local-eats-list { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -231,6 +298,26 @@
       </div>
 
       <p class="guide-count" id="guide-count"></p>
+
+      <div class="local-eats-panel" id="where-to-eat-near-sandcastles">
+        <p class="guide-card__category cat--food">Food & Drink</p>
+        <h2>Where We Like to Eat Near Sandcastles</h2>
+        <p>These are the Cocoa Beach and nearby Space Coast spots we point guests toward when they want breakfast, seafood, tacos, Italian, dessert, coffee, or an easy casual night out close to the beach.</p>
+        <div class="local-eats-list">
+          <a href="https://www.thefatdonkey.com" target="_blank" rel="noopener">The Fat Donkey</a>
+          <a href="https://branositaliangrill.com" target="_blank" rel="noopener">Brano's Italian Grill</a>
+          <a href="https://www.longdoggers.com/location/cocoa-beach/" target="_blank" rel="noopener">Long Doggers Cocoa Beach</a>
+          <a href="https://rocktheguac.com" target="_blank" rel="noopener">Rock the Guac</a>
+          <a href="https://simplydeliciouscafecocoabeach.com" target="_blank" rel="noopener">Simply Delicious Cafe & Bakery</a>
+          <a href="https://www.4thstreetfillinstation.com" target="_blank" rel="noopener">4th Street Fillin Station</a>
+          <a href="https://www.gregorysonthebeach.com" target="_blank" rel="noopener">Gregory's on the Beach</a>
+          <a href="https://jtssocialbar.com/" target="_blank" rel="noopener">JT's Social Bar</a>
+          <a href="https://floridasfreshgrill.com" target="_blank" rel="noopener">Florida's Fresh Grill</a>
+          <a href="http://whiskandgrind.com" target="_blank" rel="noopener">Whisk & Grind</a>
+          <a href="https://thesurfinista.com" target="_blank" rel="noopener">The Surfinista</a>
+          <a href="https://www.dirtybirdstikibar.com" target="_blank" rel="noopener">Dirty Birds Tiki Bar</a>
+        </div>
+      </div>
 
       <div class="guide-grid--3" id="guide-grid">
 
