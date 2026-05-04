@@ -55,6 +55,10 @@ const CALENDARS = {
     env: "ICAL_AIRBNB_19854968",
     label: "Corner Direct Oceanfront — Wrap-Around Balcony",
   },
+  "934157971631186406": {
+    env: "ICAL_AIRBNB_934157971631186406",
+    label: "Oceanfront Complex — Pool, Hot Tub & Views",
+  },
 };
 
 exports.handler = async ({ queryStringParameters }) => {

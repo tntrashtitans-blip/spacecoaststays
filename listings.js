@@ -320,6 +320,7 @@ const LISTINGS = [
   // ── OCEAN VIEW (floor unlisted) ─────────────────────────────────────────────
   {
     unit: null,
+    availabilityKey: "934157971631186406",
     floor: null,
     view: "ocean-view",
     beds: 2,
