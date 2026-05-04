@@ -231,7 +231,6 @@ const LISTINGS = [
   // ── OCEANFRONT (floor unlisted) ────────────────────────────────────────────
   {
     unit: null,
-    availabilityKey: "19854968",
     floor: null,
     view: "oceanfront",
     beds: 2,
@@ -250,6 +249,7 @@ const LISTINGS = [
   },
   {
     unit: null,
+    availabilityKey: "19854968",
     floor: null,
     view: "oceanfront",
     beds: 2,
