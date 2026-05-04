@@ -46,18 +46,34 @@ function isAvailable(events, checkIn, checkOut) {
   return !events.some((ev) => ev.start < end && ev.end > start);
 }
 
+const CALENDARS = {
+  "312": {
+    env: "ICAL_SANDCASTLES_312",
+    label: "Sandcastles 312",
+  },
+  "19854968": {
+    env: "ICAL_AIRBNB_19854968",
+    label: "Corner Direct Oceanfront — Wrap-Around Balcony",
+  },
+};
+
 exports.handler = async ({ queryStringParameters }) => {
   const headers = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
   };
 
-  const { checkIn, checkOut } = queryStringParameters || {};
+  const { checkIn, checkOut, listing = "312" } = queryStringParameters || {};
   if (!checkIn || !checkOut) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: "Missing checkIn or checkOut" }) };
   }
 
-  const icalUrl = process.env.ICAL_SANDCASTLES_312;
+  const calendar = CALENDARS[listing];
+  if (!calendar) {
+    return { statusCode: 400, headers, body: JSON.stringify({ error: "Unknown listing" }) };
+  }
+
+  const icalUrl = process.env[calendar.env];
   if (!icalUrl) {
     return { statusCode: 500, headers, body: JSON.stringify({ error: "iCal URL not configured" }) };
   }
@@ -80,7 +96,7 @@ exports.handler = async ({ queryStringParameters }) => {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ available, listing: "Sandcastles 312", checkIn, checkOut, blocking }),
+      body: JSON.stringify({ available, listing: calendar.label, key: listing, checkIn, checkOut, blocking }),
     };
   } catch (err) {
     return { statusCode: 500, headers, body: JSON.stringify({ error: err.message }) };

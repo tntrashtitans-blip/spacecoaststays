@@ -197,7 +197,7 @@
         <button class="avail-bar__btn" id="avail-btn" disabled>Check Availability</button>
         <button class="avail-bar__clear" id="date-clear">✕ Clear</button>
       </div>
-      <p class="avail-bar__hint" id="avail-hint">Select dates to check live availability for Unit 312</p>
+      <p class="avail-bar__hint" id="avail-hint">Select dates to check live availability for featured listings</p>
     </div>
   </div>
 
@@ -298,6 +298,7 @@
     const btn   = document.getElementById("avail-btn");
     const hint  = document.getElementById("avail-hint");
     const clear = document.getElementById("date-clear");
+    const liveAvailabilityListings = ["312", "19854968"];
 
     function updateBtn() {
       const ready = dates.checkIn && dates.checkOut;
@@ -305,7 +306,7 @@
       clear.style.display = ready ? "block" : "none";
       if (!ready) {
         unitAvailability = {};
-        hint.textContent = "Select dates to check live availability for Unit 312";
+        hint.textContent = "Select dates to check live availability for featured listings";
         renderListings(currentFilter);
       }
     }
@@ -314,19 +315,34 @@
       if (!dates.checkIn || !dates.checkOut) return;
       btn.disabled = true;
       btn.textContent = "Checking…";
-      hint.textContent = "Fetching live calendar for Unit 312…";
-      unitAvailability["312"] = "checking";
+      hint.textContent = "Fetching live calendars for featured listings…";
+      liveAvailabilityListings.forEach((listing) => {
+        unitAvailability[listing] = "checking";
+      });
       renderListings(currentFilter);
 
       try {
-        const res  = await fetch(`/.netlify/functions/check-availability?checkIn=${dates.checkIn}&checkOut=${dates.checkOut}`);
-        const data = await res.json();
-        unitAvailability["312"] = data.available ? "available" : "unavailable";
-        hint.textContent = data.available
-          ? "✓ Unit 312 is available for your dates — click the card to book."
-          : "✗ Unit 312 is booked for those dates. Try different dates or browse other units.";
+        const results = await Promise.all(liveAvailabilityListings.map(async (listing) => {
+          const res = await fetch(`/.netlify/functions/check-availability?listing=${encodeURIComponent(listing)}&checkIn=${dates.checkIn}&checkOut=${dates.checkOut}`);
+          const data = await res.json();
+          if (!res.ok) {
+            unitAvailability[listing] = null;
+            return { listing, available: false, error: data.error || "Availability check failed" };
+          }
+          unitAvailability[listing] = data.available ? "available" : "unavailable";
+          return data;
+        }));
+        const availableCount = results.filter((data) => data.available).length;
+        const checkedCount = results.filter((data) => !data.error).length;
+        hint.textContent = availableCount
+          ? `✓ ${availableCount} featured listing${availableCount === 1 ? "" : "s"} available for your dates.`
+          : checkedCount
+          ? "✗ Featured listings are booked for those dates. Try different dates or browse other units."
+          : "Couldn't reach the calendars right now. Try again in a moment.";
       } catch (e) {
-        unitAvailability["312"] = null;
+        liveAvailabilityListings.forEach((listing) => {
+          unitAvailability[listing] = null;
+        });
         hint.textContent = "Couldn't reach the calendar right now. Try again in a moment.";
       }
 
@@ -342,7 +358,7 @@
       dates.checkIn = null;
       dates.checkOut = null;
       unitAvailability = {};
-      hint.textContent = "Select dates to check live availability for Unit 312";
+      hint.textContent = "Select dates to check live availability for featured listings";
       btn.disabled = true;
       clear.style.display = "none";
       renderListings(currentFilter);

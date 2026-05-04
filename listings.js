@@ -231,6 +231,7 @@ const LISTINGS = [
   // ── OCEANFRONT (floor unlisted) ────────────────────────────────────────────
   {
     unit: null,
+    availabilityKey: "19854968",
     floor: null,
     view: "oceanfront",
     beds: 2,
@@ -419,8 +420,9 @@ function buildCard(listing) {
   // Thumbnails: use per-listing photos if available, else building fallbacks
   const thumbs = listing.photos || VRBO_THUMBS;
 
-  // Availability badge for units with live calendar checking
-  const avail = listing.unit ? unitAvailability[listing.unit] : null;
+  // Availability badge for listings with live calendar checking
+  const availabilityKey = listing.availabilityKey || listing.unit;
+  const avail = availabilityKey ? unitAvailability[availabilityKey] : null;
   let availBadge = "";
   if (avail === "checking") {
     availBadge = `<span class="card__avail card__avail--checking">Checking calendar…</span>`;
@@ -473,6 +475,25 @@ function buildCard(listing) {
 }
 
 // ── Filter & render ─────────────────────────────────────────────────────────
+function getAvailabilityKey(listing) {
+  return listing.availabilityKey || listing.unit || null;
+}
+
+function sortAvailableFirst(listings) {
+  return listings
+    .map((listing, index) => ({ listing, index }))
+    .sort((a, b) => {
+      const aKey = getAvailabilityKey(a.listing);
+      const bKey = getAvailabilityKey(b.listing);
+      const aAvailable = aKey && unitAvailability[aKey] === "available";
+      const bAvailable = bKey && unitAvailability[bKey] === "available";
+
+      if (aAvailable !== bAvailable) return aAvailable ? -1 : 1;
+      return a.index - b.index;
+    })
+    .map(({ listing }) => listing);
+}
+
 function renderListings(filter) {
   currentFilter = filter;
   const grid = document.getElementById("listings-grid");
@@ -488,7 +509,7 @@ function renderListings(filter) {
         return false;
       });
 
-  grid.innerHTML = filtered.map(buildCard).join("");
+  grid.innerHTML = sortAvailableFirst(filtered).map(buildCard).join("");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
