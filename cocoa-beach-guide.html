@@ -54,7 +54,7 @@
     "@type": "ItemList",
     "name": "Places to Eat Near Sandcastles Condominiums in Cocoa Beach",
     "description": "Local Cocoa Beach restaurants, cafes, dessert spots, and casual dining options recommended for guests staying near Sandcastles Condominiums.",
-    "url": "https://spacecoaststays.com/cocoa-beach-guide.html#where-to-eat-near-sandcastles",
+    "url": "https://spacecoaststays.com/cocoa-beach-guide.html#places-to-eat",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "item": { "@type": "Restaurant", "name": "The Fat Donkey", "url": "https://www.thefatdonkey.com" } },
       { "@type": "ListItem", "position": 2, "item": { "@type": "Restaurant", "name": "Brano's Italian Grill", "url": "https://branositaliangrill.com" } },
@@ -181,47 +181,48 @@
       margin-bottom: 20px;
     }
 
-    .local-eats-panel {
-      background: var(--foam);
-      border: 1px solid var(--ocean-light);
-      border-radius: var(--radius);
-      padding: 28px;
-      margin: 0 0 36px;
+
+    .guide-section { margin-bottom: 64px; }
+    .guide-section:last-child { margin-bottom: 0; }
+    .guide-section__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+      border-bottom: 1px solid var(--sand-dark);
+      padding-bottom: 18px;
     }
-    .local-eats-panel h2 { margin-bottom: 8px; }
-    .local-eats-panel > p {
+    .guide-section__label {
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ocean);
+      margin-bottom: 8px;
+    }
+    .guide-section__head h2 { margin-bottom: 6px; }
+    .guide-section__head p {
       color: var(--text-muted);
-      max-width: 780px;
-      margin-bottom: 22px;
+      max-width: 760px;
+      line-height: 1.65;
     }
-    .local-eats-list {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
+    .guide-card__img--photo {
+      background-size: cover;
+      background-position: center;
     }
-    .local-eats-list a {
+    .guide-card__img--logo {
       display: flex;
       align-items: center;
-      min-height: 48px;
-      padding: 11px 14px;
-      background: var(--white);
-      border: 1px solid rgba(43,107,138,.22);
-      border-radius: 8px;
-      color: var(--text);
-      font-weight: 700;
-      line-height: 1.25;
-      transition: border-color .18s, transform .18s, box-shadow .18s;
+      justify-content: center;
+      background: #fff;
     }
-    .local-eats-list a:hover {
-      border-color: var(--ocean);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+    .guide-card__img--logo img {
+      object-fit: contain;
+      padding: 32px;
     }
-    @media (max-width: 900px) {
-      .local-eats-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 560px) {
-      .local-eats-list { grid-template-columns: 1fr; }
+    @media (max-width: 700px) {
+      .guide-section__head { display: block; }
     }
   </style>
 </head>
@@ -299,50 +300,179 @@
 
       <p class="guide-count" id="guide-count"></p>
 
-      <div class="local-eats-panel" id="where-to-eat-near-sandcastles">
-        <p class="guide-card__category cat--food">Food & Drink</p>
-        <h2>Where We Like to Eat Near Sandcastles</h2>
-        <p>These are the Cocoa Beach and nearby Space Coast spots we point guests toward when they want breakfast, seafood, tacos, Italian, dessert, coffee, or an easy casual night out close to the beach.</p>
-        <div class="local-eats-list">
-          <a href="https://www.thefatdonkey.com" target="_blank" rel="noopener">The Fat Donkey</a>
-          <a href="https://branositaliangrill.com" target="_blank" rel="noopener">Brano's Italian Grill</a>
-          <a href="https://www.longdoggers.com/location/cocoa-beach/" target="_blank" rel="noopener">Long Doggers Cocoa Beach</a>
-          <a href="https://rocktheguac.com" target="_blank" rel="noopener">Rock the Guac</a>
-          <a href="https://simplydeliciouscafecocoabeach.com" target="_blank" rel="noopener">Simply Delicious Cafe & Bakery</a>
-          <a href="https://www.4thstreetfillinstation.com" target="_blank" rel="noopener">4th Street Fillin Station</a>
-          <a href="https://www.gregorysonthebeach.com" target="_blank" rel="noopener">Gregory's on the Beach</a>
-          <a href="https://jtssocialbar.com/" target="_blank" rel="noopener">JT's Social Bar</a>
-          <a href="https://floridasfreshgrill.com" target="_blank" rel="noopener">Florida's Fresh Grill</a>
-          <a href="http://whiskandgrind.com" target="_blank" rel="noopener">Whisk & Grind</a>
-          <a href="https://thesurfinista.com" target="_blank" rel="noopener">The Surfinista</a>
-          <a href="https://www.dirtybirdstikibar.com" target="_blank" rel="noopener">Dirty Birds Tiki Bar</a>
+      <section class="guide-section" id="places-to-eat">
+        <div class="guide-section__head">
+          <div>
+            <p class="guide-section__label">Food & Drink</p>
+            <h2>Places to Eat</h2>
+            <p>Cocoa Beach restaurants, cafes, dessert spots, and casual bars we point guests toward when they want an easy meal near Sandcastles or a better dinner out.</p>
+          </div>
         </div>
-      </div>
-
-      <div class="guide-grid--3" id="guide-grid">
-
-        <!-- COCOA BEACH — on your doorstep -->
-        <a href="https://friendwitha.com/rentals/onewheel/cocoa-beach-fl/one-wheel-gt-cocoa-beach/" target="_blank" rel="noopener" class="guide-card" data-category="water">
+        <div class="guide-grid--3">
+        <a href="https://www.thefatdonkey.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
           <div class="guide-card__img">
-            <img src="images/OneWheel.webp" alt="Rider on a OneWheel electric board at Cocoa Beach" loading="lazy" />
+            <img src="https://images.squarespace-cdn.com/content/v1/5e0fa4c172bcbf00639c0acc/1711382178637-9O500QY0MVQW2OWQQ1UF/421568261_122103480338194240_6488829690268346841_n.jpg" alt="The Fat Donkey Cocoa Beach dessert shop" loading="lazy" />
           </div>
           <div class="guide-card__body">
-            <p class="guide-card__category cat--water">Water Sports</p>
+            <p class="guide-card__category cat--food">Food & Drink</p>
             <p class="guide-card__area">Cocoa Beach</p>
-            <h3>OneWheel Rental</h3>
-            <p>The best way to explore Cocoa Beach. Cruise the hard-packed sand at low tide, carve through town, or roll down A1A. Rent a OneWheel GT by the hour or the day — no experience needed, you'll be riding in minutes.</p>
+            <h3>The Fat Donkey</h3>
+            <p>A Cocoa Beach favorite for ice cream, coffee, desserts, and an easy after-beach treat. Good for families, late cravings, and a casual walk-up stop.</p>
           </div>
         </a>
 
-        <a href="https://maps.google.com/?q=Sidney+Fischer+Park+Cocoa+Beach+FL" target="_blank" rel="noopener" class="guide-card" data-category="beaches">
+        <a href="https://branositaliangrill.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
           <div class="guide-card__img">
-            <img src="images/DJI_0244.webp" alt="Cocoa Beach aerial view" loading="lazy" style="object-position: center bottom;" />
+            <img src="https://static.spotapps.co/website_images/ab_websites/68654_website_v1/share_photo.jpg" alt="Brano's Italian Grill Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>Brano's Italian Grill</h3>
+            <p>A comfortable Italian dinner option for pasta, seafood, wine, and a sit-down meal after a beach day.</p>
+          </div>
+        </a>
+
+        <a href="https://www.longdoggers.com/location/cocoa-beach/" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img">
+            <img src="https://images.getbento.com/89EFCmg4RzKiD999fAZB_CocoaBeachLocationHero.jpg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600" alt="Long Doggers Cocoa Beach location" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>Long Doggers Cocoa Beach</h3>
+            <p>Casual, beach-town food with sandwiches, seafood, bowls, and a relaxed local feel. Easy for families and groups.</p>
+          </div>
+        </a>
+
+        <a href="https://rocktheguac.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img">
+            <img src="https://rocktheguac.com/wp-content/uploads/2026/02/Rock-the-Guac_HeroText-copy.png" alt="Rock the Guac Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>Rock the Guac</h3>
+            <p>A quick, casual pick for tacos, bowls, guacamole, and an easy meal when you do not want a long dinner production.</p>
+          </div>
+        </a>
+
+        <a href="https://simplydeliciouscafecocoabeach.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img">
+            <img src="https://static.spotapps.co/website_images/ab_websites/644919_website_v1/custom_html2.jpg" alt="Simply Delicious Cafe Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach · breakfast & lunch</p>
+            <h3>Simply Delicious Cafe & Bakery</h3>
+            <p>A beloved breakfast and lunch spot with generous portions, fresh bakery items, and the kind of local feel guests remember.</p>
+          </div>
+        </a>
+
+        <a href="https://www.4thstreetfillinstation.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img">
+            <img src="https://images.getbento.com/accounts/0c7e7404c8f4ed5710d6971a322639e3/media/BQP6C3MThEWAd4knkmJA_Server_With_Burger.jpg?w=1200&fit=max&auto=compress,format&cs=origin" alt="4th Street Fillin Station Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>4th Street Fillin Station</h3>
+            <p>A lively restaurant and bar with a big menu, craft drinks, brunch, and a fun setting for a casual night out.</p>
+          </div>
+        </a>
+
+        <a href="https://www.gregorysonthebeach.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img guide-card__img--logo">
+            <img src="images/guide-gregory-logo.png" alt="Gregory's on the Beach Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>Gregory's on the Beach</h3>
+            <p>A classic Cocoa Beach dinner spot for seafood, steak, and a more traditional sit-down night near the ocean.</p>
+          </div>
+        </a>
+
+        <a href="https://jtssocialbar.com/" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img">
+            <img src="https://img1.wsimg.com/isteam/ip/4aae479e-fee6-4711-9618-8723a75ce97b/251929363_268594521945496_7508084649113366809_.jpg" alt="JT's Social Bar Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>JT's Social Bar</h3>
+            <p>A casual local bar option for drinks, bites, sports, and an easygoing Cocoa Beach night out.</p>
+          </div>
+        </a>
+
+        <a href="https://floridasfreshgrill.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img">
+            <img src="https://floridasfreshgrill.com/wp-content/uploads/2021/03/floridas-fresh-grill-restaurant.jpg" alt="Florida's Fresh Grill Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>Florida's Fresh Grill</h3>
+            <p>A polished dinner choice for fresh seafood, steaks, and a date-night or special-occasion meal during a beach stay.</p>
+          </div>
+        </a>
+
+        <a href="http://whiskandgrind.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img guide-card__img--logo">
+            <img src="images/guide-whisk-grind.png" alt="Whisk & Grind Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>Whisk & Grind</h3>
+            <p>A breakfast and brunch option for coffee, eggs, sweet plates, and a slower morning before the beach.</p>
+          </div>
+        </a>
+
+        <a href="https://thesurfinista.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img">
+            <img src="https://images.squarespace-cdn.com/content/v1/655cc6ca89d88721e573cb0f/a768756d-10c6-44b8-93d7-0594c5e54588/The-Surfinista.png?format=1500w" alt="The Surfinista Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>The Surfinista</h3>
+            <p>Coffee, smoothies, acai, light bites, and a surf-inspired stop that fits the Cocoa Beach morning routine.</p>
+          </div>
+        </a>
+
+        <a href="https://www.dirtybirdstikibar.com" target="_blank" rel="noopener" class="guide-card" data-category="food">
+          <div class="guide-card__img">
+            <img src="https://images.getbento.com/accounts/8aed2b617a8e389c3dfc0d137b1f99d2/media/images/53831IMG_6723.jpeg?w=1200&fit=crop&auto=compress,format&cs=origin&crop=focalpoint&fp-x=0.5&fp-y=0.5" alt="Dirty Birds Tiki Bar Cocoa Beach" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__area">Cocoa Beach</p>
+            <h3>Dirty Birds Tiki Bar</h3>
+            <p>A casual tiki-bar stop for drinks, bar food, and a laid-back night when the plan is simple.</p>
+          </div>
+        </a>
+        </div>
+      </section>
+
+      <section class="guide-section" id="places-to-visit">
+        <div class="guide-section__head">
+          <div>
+            <p class="guide-section__label">Close By</p>
+            <h2>Places to Visit</h2>
+            <p>Beach, surf, port, nature, and space attractions that fit naturally into a Cocoa Beach stay without turning the day into a long road trip.</p>
+          </div>
+        </div>
+        <div class="guide-grid--3">
+        <a href="https://www.cityofcocoabeach.com/facilities/facility/details/sidneyfischerpark-67" target="_blank" rel="noopener" class="guide-card" data-category="beaches">
+          <div class="guide-card__img">
+            <img src="images/DJI_0244.webp" alt="Cocoa Beach aerial view" loading="lazy" style="object-position:center bottom;" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--beaches">Beaches</p>
             <p class="guide-card__area">Cocoa Beach</p>
-            <h3>Cocoa Beach</h3>
-            <p>The heart of it all. Sidney Fischer Park and Lori Wilson Park offer free public access with parking, restrooms, and lifeguards. N Atlantic Ave is lined with beach access points all the way up.</p>
+            <h3>Sidney Fischer Park</h3>
+            <p>Sidney Fischer Park and Lori Wilson Park offer public access with parking, restrooms, and lifeguards. N Atlantic Ave has beach access points all the way up.</p>
           </div>
         </a>
 
@@ -354,7 +484,7 @@
             <p class="guide-card__category cat--shopping">Shopping & Culture</p>
             <p class="guide-card__area">Cocoa Beach · 1 mile from Sandcastles</p>
             <h3>Cocoa Beach Pier</h3>
-            <p>800 feet over the Atlantic Ocean. Shops, bars, and restaurants line the pier, plus live music on weekends. One of the best rocket launch viewing spots — you can see the pad clearly to the north.</p>
+            <p>Shops, bars, restaurants, live music, and one of the easiest Cocoa Beach landmarks to visit without overplanning.</p>
           </div>
         </a>
 
@@ -366,64 +496,35 @@
             <p class="guide-card__category cat--shopping">Shopping & Culture</p>
             <p class="guide-card__area">Cocoa Beach</p>
             <h3>Ron Jon Surf Shop</h3>
-            <p>Open 24 hours, 365 days a year — the largest surf shop in the world. Even if you don't buy anything, walking through is part of the Cocoa Beach experience. Boards, apparel, gear, and souvenirs.</p>
+            <p>Open 24 hours, 365 days a year. Even if you do not buy anything, walking through is part of the Cocoa Beach experience.</p>
           </div>
         </a>
 
         <a href="https://cocoabeachsurfschool.com/" target="_blank" rel="noopener" class="guide-card" data-category="water">
           <div class="guide-card__img">
-            <img src="images/RonJonSchool.webp" alt="Cocoa Beach Surf School surfing lessons on the beach" loading="lazy" />
+            <img src="images/RonJonSchool.webp" alt="Cocoa Beach Surf School" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--water">Water Sports</p>
             <p class="guide-card__area">Cocoa Beach</p>
             <h3>Cocoa Beach Surf School</h3>
-            <p>Cocoa Beach is the birthplace of East Coast surfing. Cocoa Beach Surf School offers lessons for all levels — most first-timers are standing up within two hours. Board rentals available too.</p>
+            <p>Lessons for all levels in the birthplace of East Coast surfing. Good for first-timers, families, and guests who want to do more than sit on the sand.</p>
           </div>
         </a>
 
-        <a href="https://coconutsonthebeach.com/" target="_blank" rel="noopener" class="guide-card" data-category="food">
-          <div class="guide-card__img" style="position:relative; overflow:hidden;">
-            <video autoplay muted loop playsinline style="position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%);object-fit:cover;pointer-events:none;">
-              <source src="images/Coconuts.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="guide-card__body">
-            <p class="guide-card__category cat--food">Food & Drink</p>
-            <p class="guide-card__area">Cocoa Beach</p>
-            <h3>Coconuts on the Beach</h3>
-            <p>Literally on the sand. Live music every weekend, frozen drinks, and a laid-back vibe that captures everything right about Cocoa Beach. Go barefoot.</p>
-          </div>
-        </a>
-
-        <a href="https://www.thefatsnook.com/" target="_blank" rel="noopener" class="guide-card" data-category="food">
+        <a href="https://friendwitha.com/rentals/onewheel/cocoa-beach-fl/one-wheel-gt-cocoa-beach/" target="_blank" rel="noopener" class="guide-card" data-category="water">
           <div class="guide-card__img">
-            <img src="https://images.squarespace-cdn.com/content/v1/67be1d5bfcc14a65d508a3cb/153be417-170d-4e46-91e8-8223a157c1b9/Harmonyn+Lynn+Photography_0112.jpg" alt="The Fat Snook restaurant Cocoa Beach" loading="lazy" />
+            <img src="images/OneWheel.webp" alt="OneWheel rental Cocoa Beach" loading="lazy" />
           </div>
           <div class="guide-card__body">
-            <p class="guide-card__category cat--food">Food & Drink</p>
+            <p class="guide-card__category cat--water">Water Sports</p>
             <p class="guide-card__area">Cocoa Beach</p>
-            <h3>The Fat Snook</h3>
-            <p>One of the best restaurants on the Space Coast, full stop. Local ingredients, seasonal menu, creative execution. Make a reservation — it fills up fast every night.</p>
+            <h3>OneWheel Rental</h3>
+            <p>A fun way to cruise the hard-packed beach at low tide or roll through town when you want a different way to explore Cocoa Beach.</p>
           </div>
         </a>
 
-        <a href="https://maps.google.com/?q=Juice+N+Java+Cocoa+Beach+FL" target="_blank" rel="noopener" class="guide-card" data-category="food">
-          <div class="guide-card__img" style="position:relative; overflow:hidden;">
-            <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-              <source src="https://static.spotapps.co/website_videos/Juice%20N%20Java%20Edited%20Video_Vimeo720p30.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div class="guide-card__body">
-            <p class="guide-card__category cat--food">Food & Drink</p>
-            <p class="guide-card__area">Cocoa Beach</p>
-            <h3>Juice 'N Java</h3>
-            <p>The breakfast spot locals love. Good coffee, fresh juice, and a laid-back beach atmosphere. Great fuel before a surf session or a day at KSC.</p>
-          </div>
-        </a>
-
-        <!-- ~5 MILES — Indian River / Port Canaveral -->
-        <a href="https://maps.google.com/?q=Thousand+Islands+Conservation+Area+Cocoa+Beach+FL" target="_blank" rel="noopener" class="guide-card" data-category="water">
+        <a href="https://www.brevardfl.gov/EELProgram/Sanctuaries/ThousandIslandsConservationArea" target="_blank" rel="noopener" class="guide-card" data-category="water">
           <div class="guide-card__img">
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Indian_River_Lagoon_National_Scenic_Byway_-_Kayakers_at_Cocoa_Beach_-_NARA_-_7719523.jpg" alt="Kayaking Indian River Lagoon Cocoa Beach" loading="lazy" />
           </div>
@@ -431,23 +532,23 @@
             <p class="guide-card__category cat--water">Water Sports</p>
             <p class="guide-card__area">Indian River Lagoon</p>
             <h3>Kayaking the Thousand Islands</h3>
-            <p>Paddle through the mangrove tunnels of the Indian River Lagoon — one of the most biodiverse estuaries in North America. Manatees, dolphins, and sea turtles share the water. Guided tours available.</p>
+            <p>Paddle mangrove tunnels on the Banana River side of Cocoa Beach. Manatees, dolphins, birds, and calm-water tours are part of the appeal.</p>
           </div>
         </a>
 
         <a href="https://www.portcanaveral.com/Recreation/Jetty-Park" target="_blank" rel="noopener" class="guide-card" data-category="beaches">
           <div class="guide-card__img">
-            <img src="https://portcanaveral.com/images/default-source/image-ctas/jettyparkcta.jpg" alt="Jetty Park Beach at Port Canaveral" loading="lazy" />
+            <img src="images/snowbird-jetty-park.jpg" alt="Jetty Park Beach Port Canaveral" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--beaches">Beaches</p>
             <p class="guide-card__area">Port Canaveral · 6 miles north</p>
             <h3>Jetty Park Beach</h3>
-            <p>Family-friendly beach right at the entrance to Port Canaveral. Watch cruise ships and cargo vessels pass a few hundred feet away. One of the best rocket viewing spots on the coast.</p>
+            <p>A family-friendly beach at the entrance to Port Canaveral. Watch ships pass, fish the pier, or use it as a launch-viewing plan.</p>
           </div>
         </a>
 
-        <a href="https://www.portcanaveral.com/Recreation" target="_blank" rel="noopener" class="guide-card" data-category="water">
+        <a href="https://www.visitspacecoast.com/things-to-do/fishing/" target="_blank" rel="noopener" class="guide-card" data-category="water">
           <div class="guide-card__img">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Charter_boat_Wild_Bill_tarpon_fishing_in_Key_West_harbor_%288548688954%29.jpg" alt="Fishing charter boat Florida" loading="lazy" />
           </div>
@@ -455,47 +556,35 @@
             <p class="guide-card__category cat--water">Water Sports</p>
             <p class="guide-card__area">Port Canaveral · 6 miles north</p>
             <h3>Fishing Charters</h3>
-            <p>Port Canaveral is one of Florida's top offshore fishing departures. Snapper, mahi-mahi, grouper, and sailfish are all in season at different times. Half-day and full-day trips available year-round.</p>
+            <p>Port Canaveral is a strong offshore fishing departure point for half-day and full-day trips across different seasons.</p>
           </div>
         </a>
 
-        <a href="https://maps.google.com/?q=dolphin+watching+tours+Port+Canaveral+FL" target="_blank" rel="noopener" class="guide-card" data-category="water">
+        <a href="https://www.visitspacecoast.com/things-to-do/water-sports/" target="_blank" rel="noopener" class="guide-card" data-category="water">
           <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Lagoon_Pontoons_Dolphin_Tours.jpg" alt="Dolphin watching boat tour Florida" loading="lazy" />
+            <img src="images/snowbird-manatee.jpg" alt="Indian River Lagoon wildlife near Cocoa Beach" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--water">Water Sports</p>
             <p class="guide-card__area">Port Canaveral · 6 miles north</p>
-            <h3>Dolphin & Whale Watching Tours</h3>
-            <p>Bottlenose dolphins are year-round residents of the Space Coast. North Atlantic right whales occasionally appear offshore in winter. Several tour operators depart from Port Canaveral daily.</p>
-          </div>
-        </a>
-
-        <a href="https://www.google.com/maps/search/Simply+Delicious+Cafe+Cocoa+Beach+FL" target="_blank" rel="noopener" class="guide-card" data-category="food">
-          <div class="guide-card__img">
-            <img src="images/Simply.webp" alt="Simply Delicious Cafe Cocoa Beach FL" loading="lazy" />
-          </div>
-          <div class="guide-card__body">
-            <p class="guide-card__category cat--food">Café · Breakfast & Lunch</p>
-            <p class="guide-card__area">Cocoa Beach · walkable from Sandcastles</p>
-            <h3>Simply Delicious</h3>
-            <p>A beloved Cocoa Beach breakfast and lunch spot. Fresh ingredients, generous portions, and the kind of laid-back vibe that makes you want to linger over a second cup of coffee.</p>
+            <h3>Dolphin & Wildlife Tours</h3>
+            <p>Boat tours around the port and lagoon are an easy way to see dolphins, birds, and the working waterfront from the water.</p>
           </div>
         </a>
 
         <a href="https://www.grillsseafood.com/" target="_blank" rel="noopener" class="guide-card" data-category="food">
           <div class="guide-card__img">
-            <img src="images/GrillsSeafood.webp" alt="Grills Seafood Deck & Tiki Bar Port Canaveral" loading="lazy" />
+            <img src="images/GrillsSeafood.webp" alt="Grills Seafood Port Canaveral" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--food">Food & Drink</p>
             <p class="guide-card__area">Port Canaveral · 6 miles north</p>
             <h3>Grills Seafood Deck & Tiki Bar</h3>
-            <p>Right on the water at Port Canaveral. Enormous outdoor deck, live music on weekends, and some of the freshest fish on the coast. The grouper sandwich is legendary.</p>
+            <p>A waterfront Port Canaveral stop with an outdoor deck, live music, fresh fish, and a good view of the port channel.</p>
           </div>
         </a>
 
-        <a href="https://maps.google.com/?q=Fishlips+Waterfront+Bar+Port+Canaveral+FL" target="_blank" rel="noopener" class="guide-card" data-category="food">
+        <a href="https://www.fishlipswaterfront.com/" target="_blank" rel="noopener" class="guide-card" data-category="food">
           <div class="guide-card__img">
             <img src="https://media-cdn.tripadvisor.com/media/photo-f/05/86/17/04/fishlips-waterfront-bar.jpg" alt="Fishlips Waterfront Bar Port Canaveral" loading="lazy" />
           </div>
@@ -503,56 +592,42 @@
             <p class="guide-card__category cat--food">Food & Drink</p>
             <p class="guide-card__area">Port Canaveral · 6 miles north</p>
             <h3>Fishlips Waterfront Bar & Grill</h3>
-            <p>Three-story waterfront restaurant at Port Canaveral. Great spot to watch the SpaceX drone ship come in after a landing. Rooftop bar has the best views of the channel.</p>
-          </div>
-        </a>
-
-        <!-- ~8-15 MILES — Greater Space Coast -->
-        <a href="https://maps.google.com/?q=Satellite+Beach+Florida" target="_blank" rel="noopener" class="guide-card" data-category="beaches">
-          <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Canova_Beach_-_panoramio_%282%29.jpg" alt="Satellite Beach Florida Atlantic coastline" loading="lazy" />
-          </div>
-          <div class="guide-card__body">
-            <p class="guide-card__category cat--beaches">Beaches</p>
-            <p class="guide-card__area">Satellite Beach · 8 miles south</p>
-            <h3>Satellite Beach</h3>
-            <p>A quiet, locals-first beach town just south of Cocoa Beach. Less touristy, more residential. Great for a low-key beach day away from the crowds on A1A.</p>
-          </div>
-        </a>
-
-        <a href="https://www.ccspacemuseum.org/" target="_blank" rel="noopener" class="guide-card" data-category="space">
-          <div class="guide-card__img">
-            <img src="https://ccspacemuseum.org/wp-content/uploads/USAF-Space-and-Missile-Museum-Upcoming-Launches-03-scaled.jpg" alt="Cape Canaveral Space Force Museum rocket garden" loading="lazy" />
-          </div>
-          <div class="guide-card__body">
-            <p class="guide-card__category cat--space">Space</p>
-            <p class="guide-card__area">Cape Canaveral · 8 miles north</p>
-            <h3>Air Force Space & Missile Museum</h3>
-            <p>Outdoor rocket garden with historic missiles and launch equipment from the early space age. Free and underrated. Tour launches from the very pads where history was made.</p>
-          </div>
-        </a>
-
-        <a href="https://www.nps.gov/cana/" target="_blank" rel="noopener" class="guide-card" data-category="beaches">
-          <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Canaveral_National_Seashore.jpg" alt="Canaveral National Seashore undeveloped beach" loading="lazy" />
-          </div>
-          <div class="guide-card__body">
-            <p class="guide-card__category cat--beaches">Beaches</p>
-            <p class="guide-card__area">North of Cocoa Beach · 12 miles</p>
-            <h3>Canaveral National Seashore</h3>
-            <p>24 miles of completely undeveloped Atlantic beach — one of the longest stretches on the entire East Coast. Loggerhead turtles nest here in summer. No concessions, no crowds.</p>
+            <p>A three-story waterfront restaurant where guests can watch ships, port traffic, and sometimes SpaceX recovery activity.</p>
           </div>
         </a>
 
         <a href="https://www.kennedyspacecenter.com/" target="_blank" rel="noopener" class="guide-card" data-category="space">
           <div class="guide-card__img">
-            <img src="https://res.cloudinary.com/kennedy-space-center/image/upload/ar_9:5%2Cc_fill%2Cg_auto%2Cw_800/q_auto/f_auto/Atlantis_featured-attraction_aqawum?_a=DATAdtXwZAA0" alt="Space Shuttle Atlantis at Kennedy Space Center" loading="lazy" />
+            <img src="https://res.cloudinary.com/kennedy-space-center/image/upload/ar_9:5%2Cc_fill%2Cg_auto%2Cw_800/q_auto/f_auto/Atlantis_featured-attraction_aqawum?_a=DATAdtXwZAA0" alt="Space Shuttle Atlantis Kennedy Space Center" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--space">Space</p>
             <p class="guide-card__area">Merritt Island · 12 miles north</p>
             <h3>Kennedy Space Center Visitor Complex</h3>
-            <p>Walk through a Saturn V rocket. Meet a real astronaut. Watch a launch from 3.9 miles away at the Saturn V lawn. Plan a full day — there's more here than most people expect.</p>
+            <p>A full-day Space Coast experience with rockets, Atlantis, astronaut history, and launch-viewing opportunities when schedules line up.</p>
+          </div>
+        </a>
+        </div>
+      </section>
+
+      <section class="guide-section" id="day-trips">
+        <div class="guide-section__head">
+          <div>
+            <p class="guide-section__label">A Little Farther</p>
+            <h2>Day Trips</h2>
+            <p>These are the bigger Space Coast and Central Florida outings that work best when you want a change of scenery from Cocoa Beach.</p>
+          </div>
+        </div>
+        <div class="guide-grid--3">
+        <a href="https://www.nps.gov/cana/" target="_blank" rel="noopener" class="guide-card" data-category="beaches">
+          <div class="guide-card__img">
+            <img src="images/snowbird-canaveral-national-seashore.jpg" alt="Canaveral National Seashore" loading="lazy" />
+          </div>
+          <div class="guide-card__body">
+            <p class="guide-card__category cat--beaches">Beaches</p>
+            <p class="guide-card__area">North of Cocoa Beach · 12 miles</p>
+            <h3>Canaveral National Seashore</h3>
+            <p>A quieter, undeveloped stretch of Atlantic coastline with wildlife, turtle nesting, and a very different feel from central Cocoa Beach.</p>
           </div>
         </a>
 
@@ -564,133 +639,95 @@
             <p class="guide-card__category cat--nature">Nature & Wildlife</p>
             <p class="guide-card__area">Merritt Island · 12 miles north</p>
             <h3>Merritt Island National Wildlife Refuge</h3>
-            <p>One of the most biodiverse refuges in the US — bald eagles, manatees, alligators, and over 330 bird species share the same barrier island as Kennedy Space Center. Black Point Wildlife Drive is unmissable.</p>
+            <p>Birding, wildlife drives, manatees, alligators, and natural Florida habitat beside the space center.</p>
           </div>
         </a>
 
-        <!-- ~20-25 MILES -->
-        <a href="https://maps.google.com/?q=Astronaut+Memorial+Planetarium+Observatory+1519+Clearlake+Rd+Cocoa+FL" target="_blank" rel="noopener" class="guide-card" data-category="space">
+        <a href="https://www.satellitebeach.gov/" target="_blank" rel="noopener" class="guide-card" data-category="beaches">
           <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/BCC-Planetarium-and-Observatory.jpg/330px-BCC-Planetarium-and-Observatory.jpg" alt="Astronaut Memorial Planetarium and Observatory Cocoa Florida" loading="lazy" />
+            <img src="images/DJI_0280.webp" alt="Satellite Beach Florida Atlantic coastline" loading="lazy" />
           </div>
           <div class="guide-card__body">
-            <p class="guide-card__category cat--space">Space</p>
-            <p class="guide-card__area">Cocoa · 20 min west</p>
-            <h3>Astronaut Memorial Planetarium</h3>
-            <p>Full-dome digital shows, a 24-inch telescope, and observatory nights open to the public. Great for families and anyone who wants to go deeper than the KSC visitor experience.</p>
+            <p class="guide-card__category cat--beaches">Beaches</p>
+            <p class="guide-card__area">Satellite Beach · 8 miles south</p>
+            <h3>Satellite Beach</h3>
+            <p>A quieter beach-town option south of Cocoa Beach, useful when guests want a less touristy stretch of coast.</p>
           </div>
         </a>
 
         <a href="https://www.cocoavillage.com/" target="_blank" rel="noopener" class="guide-card" data-category="shopping">
           <div class="guide-card__img">
-            <img src="images/CocoaVillage.webp" alt="Cocoa Village historic downtown Florida" loading="lazy" />
+            <img src="images/CocoaVillage.webp" alt="Cocoa Village historic downtown" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--shopping">Shopping & Culture</p>
             <p class="guide-card__area">Cocoa · 20 min west</p>
             <h3>Cocoa Village</h3>
-            <p>Historic downtown on the Indian River with independent boutiques, antique shops, craft breweries, and some of the best local restaurants on the Space Coast. A nice break from the beach scene.</p>
+            <p>Historic downtown on the Indian River with independent shops, restaurants, events, and a different pace from the beach.</p>
           </div>
         </a>
 
         <a href="https://www.brevardzoo.org/" target="_blank" rel="noopener" class="guide-card" data-category="nature">
           <div class="guide-card__img">
-            <img src="https://brevardzoo.org/wp-content/uploads/2025/10/1440x1440_HomePage_GiraffeFeeding-1024x946.jpg" alt="Giraffe feeding at Brevard Zoo Melbourne" loading="lazy" />
+            <img src="https://brevardzoo.org/wp-content/uploads/2025/10/1440x1440_HomePage_GiraffeFeeding-1024x946.jpg" alt="Brevard Zoo giraffe feeding" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--nature">Nature & Wildlife</p>
             <p class="guide-card__area">Melbourne · 25 miles south</p>
             <h3>Brevard Zoo</h3>
-            <p>An award-winning zoo where you can kayak directly through the animal habitats. Rhinos, giraffes, lorikeets, and a zip line over the African savanna. Great for families of all ages.</p>
+            <p>An award-winning zoo with kayaking, animal habitats, zip lining, and a strong family-friendly day-trip option.</p>
           </div>
         </a>
 
-        <a href="https://maps.google.com/?q=Melbourne+Beach+Florida" target="_blank" rel="noopener" class="guide-card" data-category="beaches">
+        <a href="https://downtownmelbourne.com/" target="_blank" rel="noopener" class="guide-card" data-category="shopping">
           <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Beach_in_Cape_Canaveral%2C_Florida.jpg" alt="Melbourne Beach Florida Atlantic coastline" loading="lazy" />
-          </div>
-          <div class="guide-card__body">
-            <p class="guide-card__category cat--beaches">Beaches</p>
-            <p class="guide-card__area">Melbourne Beach · 25 miles south</p>
-            <h3>Melbourne Beach</h3>
-            <p>The southern tip of the Space Coast. Sea turtle nesting season brings rangers and guided tours at night. The beach itself is wide, uncrowded, and beautiful.</p>
-          </div>
-        </a>
-
-        <a href="https://maps.google.com/?q=Downtown+Melbourne+Florida" target="_blank" rel="noopener" class="guide-card" data-category="shopping">
-          <div class="guide-card__img">
-            <img src="images/DowntownMelbourne.webp" alt="Downtown Melbourne Florida arts district" loading="lazy" />
+            <img src="images/DowntownMelbourne.webp" alt="Downtown Melbourne Florida" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--shopping">Shopping & Culture</p>
-            <p class="guide-card__area">Melbourne · 25 miles south</p>
+            <p class="guide-card__area">Melbourne · 30 miles south</p>
             <h3>Downtown Melbourne</h3>
-            <p>A thriving arts and dining scene with galleries, craft cocktail bars, and independent restaurants. First Friday art walks happen monthly. Worth the drive for a different side of the Space Coast.</p>
+            <p>A walkable arts, dining, and shopping district with galleries, restaurants, cocktails, and monthly events.</p>
           </div>
         </a>
 
-        <!-- 45+ MINUTES -->
-        <a href="https://maps.google.com/?q=airboat+rides+Titusville+FL" target="_blank" rel="noopener" class="guide-card" data-category="water">
+        <a href="https://www.brevardfl.gov/UtilityServices/RitchGrissomMemorialWetlands" target="_blank" rel="noopener" class="guide-card" data-category="nature">
           <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Miccosukee_airboat_tour.JPG/960px-Miccosukee_airboat_tour.JPG" alt="Airboat tour gliding across a Florida river" loading="lazy" />
-          </div>
-          <div class="guide-card__body">
-            <p class="guide-card__category cat--water">Water Sports</p>
-            <p class="guide-card__area">St. Johns River · 45 min west</p>
-            <h3>Airboat Rides</h3>
-            <p>Fly across the St. Johns River and spot alligators, eagles, and herons up close. Several outfitters near Titusville run tours that are easy to combine with a KSC visit.</p>
-          </div>
-        </a>
-
-        <a href="https://www.visitorlando.com/things-to-do/theme-parks/" target="_blank" rel="noopener" class="guide-card" data-category="daytrips">
-          <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Cinderella_Castle.jpg" alt="Orlando theme parks Walt Disney World" loading="lazy" />
-          </div>
-          <div class="guide-card__body">
-            <p class="guide-card__category cat--daytrips">Day Trips</p>
-            <p class="guide-card__area">Orlando · 45 min west</p>
-            <h3>Orlando Theme Parks</h3>
-            <p>Walt Disney World, Universal Studios, and SeaWorld are all under an hour away. A natural day trip from the Space Coast — stay on the beach, play in the parks, repeat.</p>
-          </div>
-        </a>
-
-        <a href="https://www.floridastateparks.org/parks-and-trails/blue-spring-state-park" target="_blank" rel="noopener" class="guide-card" data-category="nature">
-          <div class="guide-card__img">
-            <img src="images/BlueSprings.webp" alt="Blue Spring State Park manatees Florida" loading="lazy" />
+            <img src="images/snowbird-merritt-island-birds.jpg" alt="Birding and wetlands on the Space Coast" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--nature">Nature & Wildlife</p>
-            <p class="guide-card__area">Orange City · 90 min west</p>
-            <h3>Blue Spring State Park</h3>
-            <p>Hundreds of manatees gather in the warm spring water November through March. Swim, snorkel, kayak, or just watch from the boardwalk. One of the most magical wildlife experiences in Florida.</p>
+            <p class="guide-card__area">Viera · about 35 miles southwest</p>
+            <h3>Viera Wetlands</h3>
+            <p>A low-key wildlife stop for birding, walking, photography, and seeing a different side of Brevard County within an hour of Cocoa Beach.</p>
           </div>
         </a>
 
-        <a href="https://www.visitnsbfl.com/" target="_blank" rel="noopener" class="guide-card" data-category="daytrips">
+        <a href="https://www.visitorlando.com/" target="_blank" rel="noopener" class="guide-card" data-category="daytrips">
           <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/New_Smyrna_Beach_Inlet_FL_2016.jpg/960px-New_Smyrna_Beach_Inlet_FL_2016.jpg" alt="New Smyrna Beach inlet Florida" loading="lazy" />
+            <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_433,q_65,w_640,x_4183,y_2531/v1/clients/orlandofl/2441_disney_springs_aerial_lake_ed286868-cc9c-41aa-b3d5-89e045d1521b.jpg" alt="Orlando day trip from Cocoa Beach" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--daytrips">Day Trips</p>
-            <p class="guide-card__area">New Smyrna Beach · 1 hr north</p>
-            <h3>New Smyrna Beach</h3>
-            <p>A charming beach town with a thriving arts scene, great restaurants, and less crowded waves than Cocoa. Canaveral National Seashore connects the two — you can drive the beach at low tide.</p>
+            <p class="guide-card__area">Orlando · 50 miles west</p>
+            <h3>Orlando Day Trip</h3>
+            <p>Theme parks, restaurants, shopping, and downtown Orlando are close enough for a day trip while still sleeping at the beach.</p>
           </div>
         </a>
 
-        <a href="https://www.floridashistoriccoast.com/" target="_blank" rel="noopener" class="guide-card" data-category="daytrips">
+        <a href="https://www.visitstaugustine.com/" target="_blank" rel="noopener" class="guide-card" data-category="daytrips">
           <div class="guide-card__img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Castillo_de_San_Marcos_Fort_Panorama_1.jpg/960px-Castillo_de_San_Marcos_Fort_Panorama_1.jpg" alt="Castillo de San Marcos fort St. Augustine" loading="lazy" />
+            <img src="https://www.visitstaugustine.com/sites/default/files/styles/hero_desktop/public/2022-08/Castillo-sunrise-water-25x15-WEB.jpg?itok=4QtwKT-H" alt="St. Augustine historic day trip" loading="lazy" />
           </div>
           <div class="guide-card__body">
             <p class="guide-card__category cat--daytrips">Day Trips</p>
-            <p class="guide-card__area">St. Augustine · 2 hrs north</p>
+            <p class="guide-card__area">St. Augustine · 2.5 hours north</p>
             <h3>St. Augustine</h3>
-            <p>America's oldest city. Spanish colonial architecture, a 16th-century fort, cobblestone streets, and some great seafood. Plan an early start and stay for dinner before the drive back.</p>
+            <p>America's oldest city, with Spanish colonial streets, the fort, restaurants, museums, and a full-day road-trip feel.</p>
           </div>
         </a>
-
-      </div>
+        </div>
+      </section>
     </div>
   </section>
 
