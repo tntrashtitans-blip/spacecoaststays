@@ -1,0 +1,3 @@
+# Redirect sandcastlescocoabeach.com to primary domain
+https://sandcastlescocoabeach.com/* https://spacecoaststays.com/:splat 301!
+https://www.sandcastlescocoabeach.com/* https://spacecoaststays.com/:splat 301!
