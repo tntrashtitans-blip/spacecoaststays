@@ -1,0 +1,4 @@
+[[headers]]
+  for = "/_drafts/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
