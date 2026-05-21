@@ -227,6 +227,24 @@ const LISTINGS = [
       "https://a0.muscache.com/im/pictures/miso/Hosting-44590023/original/c7b23ea8-1cbc-4f1c-ba6e-1b3ec612528d.jpeg",
     ],
   },
+  {
+    unit: "716",
+    floor: 7,
+    view: "ocean-view",
+    beds: 2,
+    baths: 2,
+    title: "Sunrise to Sunset at Sandcastles 716",
+    desc: "Top-floor family and pet-friendly condo with sunrise ocean views, sunset balcony time, 3 beds, and resort amenities. A high-floor perch for beach days, launches, and Cocoa Beach evenings.",
+    platforms: [
+      { name: "airbnb", url: "https://www.airbnb.com/rooms/762275212261958250" }
+    ],
+    photo: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzYyMjc1MjEyMjYxOTU4MjUw/original/0b21a8b0-f3a3-41f7-b973-43b935e838f8.jpeg",
+    photos: [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-762275212261958250/original/2271f6b7-0e36-4536-8695-909e25c9ae2c.jpeg",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-762275212261958250/original/a2160c28-7c75-4c6f-8d1c-cbd7ebbd8675.jpeg",
+      "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzYyMjc1MjEyMjYxOTU4MjUw/original/80b6699b-3fed-4eec-9faa-64a426070d63.jpeg",
+    ],
+  },
 
   // ── OCEANFRONT (floor unlisted) ────────────────────────────────────────────
   {

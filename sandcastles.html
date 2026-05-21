@@ -307,7 +307,7 @@
     const btn   = document.getElementById("avail-btn");
     const hint  = document.getElementById("avail-hint");
     const clear = document.getElementById("date-clear");
-    const liveAvailabilityListings = ["312", "19854968", "934157971631186406"];
+    const liveAvailabilityListings = ["312", "716", "19854968", "934157971631186406"];
 
     function updateBtn() {
       const ready = dates.checkIn && dates.checkOut;
@@ -345,8 +345,10 @@
         const checkedCount = results.filter((data) => !data.error).length;
         hint.textContent = availableCount
           ? `✓ ${availableCount} featured listing${availableCount === 1 ? "" : "s"} available for your dates.`
-          : checkedCount
+          : checkedCount === liveAvailabilityListings.length
           ? "✗ Featured listings are booked for those dates. Try different dates or browse other units."
+          : checkedCount
+          ? "Some calendars couldn't be reached. Try again in a moment or open the listing to confirm."
           : "Couldn't reach the calendars right now. Try again in a moment.";
       } catch (e) {
         liveAvailabilityListings.forEach((listing) => {

@@ -51,6 +51,10 @@ const CALENDARS = {
     env: "ICAL_SANDCASTLES_312",
     label: "Sandcastles 312",
   },
+  "716": {
+    env: "ICAL_SANDCASTLES_716",
+    label: "Sandcastles 716",
+  },
   "19854968": {
     env: "ICAL_AIRBNB_19854968",
     label: "Corner Direct Oceanfront — Wrap-Around Balcony",
